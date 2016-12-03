@@ -272,4 +272,11 @@ public class PanelActualizarProveedor extends javax.swing.JPanel {
     public void setEtiquetaDireccion(javax.swing.JLabel jLabel3) {
         this.etiquetaDireccion = jLabel3;
     }
+    
+        public void vaciarCamposActualizarProveedor(){
+        getCampoTextoClave().setText(null);
+        getCampoTextoDireccion().setText(null);
+        getCampoTextoNombre().setText(null);
+        getCampoTextoTel().setText(null);
+    }
 }

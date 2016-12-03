@@ -27,7 +27,7 @@ public class ControladorPanelActualizarArticulo {
     private static ControladorPanelActualizarArticulo controladorPanelActualizarArticulo = null;
     private static PanelActualizarArticulo panelActualizarArticulo = null;
 
-    public ControladorPanelActualizarArticulo() {
+    private ControladorPanelActualizarArticulo() {
 
     }
 

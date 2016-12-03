@@ -3,12 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ControladoresVentanas;
+package ControladoresGraficos.Ventanas;
 
-import ControladoresPaneles.ControladorPanelVerReporte;
+import ControladoresGraficos.Paneles.Reportes.ControladorPanelVerReporte;
 import Modelo.GeneradorReportesVentas;
 import Modelo.Reporte;
-import Ventanas.reportes.PanelVerReporte;
 import Ventanas.reportes.VentanaReportes;
 import javax.swing.JComboBox;
 

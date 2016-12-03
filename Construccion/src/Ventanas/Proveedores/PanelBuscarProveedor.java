@@ -287,6 +287,31 @@ public class PanelBuscarProveedor extends javax.swing.JPanel {
     public void mostrarEtiquetaDireccion(){
         etiquetaDireccion.setVisible(true);
     }
-    
+        public void mostrarCamposPanelBuscarProveedor() {
+        getCampoTextoClave().setVisible(true);
+        getEtiquetaDireccion().setVisible(true);
+        getEtiquetaInstruccion().setVisible(true);
+        getEtiquetaNombre().setVisible(true);
+        getEtiquetaTel().setVisible(true);
+        getCampoTextoDireccion().setVisible(true);
+        getCampoTextoNombre().setVisible(true);
+        getCampoTextoTel().setVisible(true);
+    }
+
+    public void vaciarCamposPanelBuscarProveedor() {
+        getCampoTextoDireccion().setText(null);
+        getCampoTextoClave().setText(null);
+        getCampoTextoNombre().setText(null);
+        getCampoTextoTel().setText(null);
+    }
+
+    public void ocultarCamposPanelBuscarProveedor() {
+        getCampoTextoDireccion().setVisible(false);
+        getCampoTextoNombre().setVisible(false);
+        getCampoTextoTel().setVisible(false);
+        getEtiquetaDireccion().setVisible(false);
+        getEtiquetaNombre().setVisible(false);
+        getEtiquetaTel().setVisible(false);
+    }
     
 }

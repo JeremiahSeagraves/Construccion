@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ControladoresPaneles;
+package ControladoresGraficos.Paneles.Reportes;
 
 import Modelo.Reporte;
 import Modelo.TablaReporte;
