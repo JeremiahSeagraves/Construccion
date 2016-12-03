@@ -35,6 +35,7 @@ public class ControladorVentanaPrincipal {
         agregarEventoBotonRealizarVenta();
         agregarEventoBotonVerEmpleados();
         agregarEventoBotonAgregarEmpleado( );
+        agregarEventoBotonGenerarReporte();
     }
 
     public void agregarEventoBotonVerInventario() {
