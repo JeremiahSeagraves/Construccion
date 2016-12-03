@@ -22,6 +22,8 @@ public class ControladorVentanaPrincipal {
     private ControladorVentanaProveedores controladorVentanaProveedores;
     private ControladorVentanaVentas controladorVentanaVentas;
     private ControladorVentanaEmpleados controladorVentanaEmpleados;
+    private ControladorVentanaReportes controladorVentanaReportes;
+
     
     public void inicializarVentanaPrincipal() {
         ventanaPrincipal = new VentanaPrincipal();
@@ -46,6 +48,18 @@ public class ControladorVentanaPrincipal {
             }
         });
         ventanaPrincipal.setMenuItemVerInventario(botonVerInventario);
+    }
+    
+    public void agregarEventoBotonGenerarReporte() {
+        JMenuItem botonGenerarReporte = ventanaPrincipal.getMenuItemGenerarReporte();
+        botonGenerarReporte.addActionListener((java.awt.event.ActionEvent evt) -> {
+            try {
+                inicializarPanelReportes();
+            } catch (SQLException ex) {
+                Logger.getLogger(ControladorVentanaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
+        ventanaPrincipal.setMenuItemGenerarReporte(botonGenerarReporte);
     }
 
     public void agregarEventoBotonAgregarArticulo() {
@@ -122,6 +136,11 @@ public class ControladorVentanaPrincipal {
         controladorVentanaInventario.getControladorPanelInventario().agregarEventoBotonBuscarArticulo();
         controladorVentanaInventario.getControladorPanelInventario().agregarEventoBotonEliminarArticulo();
         controladorVentanaInventario.getControladorPanelInventario().agregarEventoBotonActualizarArticulo();
+
+    }
+    
+    private void inicializarPanelReportes() throws SQLException {
+        controladorVentanaReportes = new ControladorVentanaReportes();
 
     }
 

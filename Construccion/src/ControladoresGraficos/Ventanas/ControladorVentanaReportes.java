@@ -66,4 +66,8 @@ public class ControladorVentanaReportes {
         });
 
     }
+
+    public ControladorPanelVerReporte getControladorPanelVerReporte() {
+        return controladorPanelVerReporte;
+    }
 }
