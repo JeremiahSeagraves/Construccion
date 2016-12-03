@@ -10,37 +10,132 @@ import Administradores.AdministradorVentas;
 import java.util.ArrayList;
 //import java.util.Date;
 import java.sql.Date;
+import java.text.DateFormat;
+import java.text.FieldPosition;
+import java.text.ParseException;
+import java.text.ParsePosition;
+import java.text.SimpleDateFormat;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author Noe
  */
 public class GeneradorReportesVentas {
+
     private AdministradorVentas administrador;
-    
-    public GeneradorReportesVentas(){
+
+    public GeneradorReportesVentas() {
         administrador = new AdministradorVentas();
     }
-    
-    public void generarReporteVentasEmpleados(Date fechaInicial, Date fechaFinal){
-        
+
+    public Reporte generarReporteVentasEmpleados() {
+
         AdministradorEmpleados empleados = new AdministradorEmpleados();
         int numeroEmpleados = empleados.obtenerDatos().size();
         ArrayList<Venta> ventas = (ArrayList<Venta>) administrador.obtenerDatos();
-        Reporte reporteEmpleados = new Reporte("Ventas Empleados");
-        String[] encabezados = {"Nombre","Cantidad"};
-        
-        for(int j = 0; j<numeroEmpleados;j++){
-            String nombreEmpleado = empleados.obtenerDatos().get(j).getNombre();
-            listaEmpleadoVenta[j][0] = nombreEmpleado ;
-        }
-        for(Venta venta : ventas){
-            for(int i=0;i<listaEmpleadoVenta.length;i++){
-                if((venta.getEmpleado().getNombre()).equals(listaEmpleadoVenta[i][0])){
-                    
+
+//        String fechaInicialString = cambiarDate();
+        Reporte reporteEmpleados = new Reporte("Reporte Ventas Empleados/n ");
+        String[] encabezados = {"Nombre", "Cantidad"};
+
+        TablaReporte tablaDatos = new TablaReporte();
+        tablaDatos.setEncabezados(encabezados);
+        ArrayList<Object[]> filas = new ArrayList<Object[]>();
+        for (int i = 0; i < numeroEmpleados; i++) {
+            int cantidadVenta = 0;
+            String nombreEmpleado = empleados.obtenerDatos().get(i).getNombre();
+            Object[] fila = {nombreEmpleado, cantidadVenta};
+            for (Venta venta : ventas) {
+                if ((venta.getEmpleado().getNombre()).equals(nombreEmpleado)) {
+                    cantidadVenta++;
+
                 }
             }
-            
+
+            tablaDatos.agregarFila(fila);
         }
+
+        return reporteEmpleados;
     }
+
+    public Reporte generarReporteVentas() {
+        ArrayList<Venta> ventas = (ArrayList<Venta>) administrador.obtenerDatos();
+        Reporte reporteVentas = new Reporte("Reporte Ventas /n ");
+
+        String[] encabezados = {"ClaveVenta", "MontoVenta", "Ganancia", "Fecha"};
+
+        TablaReporte tablaDatos = new TablaReporte();
+        tablaDatos.setEncabezados(encabezados);
+        ArrayList<Object[]> filas = new ArrayList<Object[]>();
+        for (Venta venta : ventas) {
+            Object[] fila = {venta.getClave(), venta.getMontoVenta(), venta.getGanancia(), venta.getFecha()};
+
+            tablaDatos.agregarFila(fila);
+        }
+        return reporteVentas;
+    }
+
+    public Reporte generarReporteArticulosVendidos() {
+        ArrayList<Venta> ventas = (ArrayList<Venta>) administrador.obtenerDatos();
+        Reporte reporteArticulosVendidos = new Reporte("Articulos Vendidos/n ");
+
+        String[] encabezados = {"ClaveArticulo", "Cantidad", "Precio", "Fecha"};
+
+        TablaReporte tablaDatos = new TablaReporte();
+        tablaDatos.setEncabezados(encabezados);
+        ArrayList<Object[]> filas = new ArrayList<Object[]>();
+        for (Venta venta : ventas) {
+            ArrayList<Articulo> articulos = venta.getArticulosVendidos();
+
+            for (Articulo articulo : articulos) {
+                Object[] fila = {articulo.getClaveArticulo(), articulo.getDetalleArticulo().getPrecioVenta(), venta.getFecha()};
+                tablaDatos.agregarFila(fila);
+            }
+
+        }
+        return reporteArticulosVendidos;
+    }
+
+    public Reporte generarReporteProveedor(String nombreProveedor) {
+        ArrayList<Venta> ventas = (ArrayList<Venta>) administrador.obtenerDatos();
+        Reporte reporteArticulosVendidos = new Reporte("Proveedor: " + nombreProveedor);
+
+        String[] encabezados = {"ClaveArticulo", "Cantidad", "Precio", "Fecha"};
+
+        TablaReporte tablaDatos = new TablaReporte();
+        tablaDatos.setEncabezados(encabezados);
+        ArrayList<Object[]> filas = new ArrayList<Object[]>();
+        for (Venta venta : ventas) {
+            ArrayList<Articulo> articulos = venta.getArticulosVendidos();
+
+            for (Articulo articulo : articulos) {
+                if (articulo.getClaveArticulo().equals(nombreProveedor)) {
+                    Object[] fila = {articulo.getClaveArticulo(), articulo.getDetalleArticulo().getPrecioVenta(), venta.getFecha()};
+                    tablaDatos.agregarFila(fila);
+                }
+
+            }
+
+        }
+        return reporteArticulosVendidos;
+    }
+
+    private Date cambiarStringADate(String fecha) {
+        SimpleDateFormat formatoFecha = new SimpleDateFormat("yyyyMMdd");
+        Date fechaNueva = null;
+        try {
+            fechaNueva = (Date) formatoFecha.parse(fecha);
+        } catch (ParseException ex) {
+            Logger.getLogger(GeneradorReportesVentas.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return fechaNueva;
+    }
+
+    private String cambiarDateAString(Date fecha) {
+        SimpleDateFormat formatoFecha = new SimpleDateFormat("yyyyMMdd");
+        return formatoFecha.format(fecha);
+    }
+
 }
