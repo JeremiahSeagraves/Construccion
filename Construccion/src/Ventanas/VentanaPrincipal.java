@@ -37,9 +37,10 @@ public class VentanaPrincipal extends JFrame {
     private JMenuItem menuItemRealizarVenta;
     private JMenuItem menuItemAgregarEmpleado;
     private JMenuItem menuItemVerEmpleados;
+    private JMenuItem menuItemVerReportes;
     
-    private InputStream imagenDeFondo;
-    private static ControladorVentanaPrincipal controladorVentanaPrincipal;
+//    private InputStream imagenDeFondo;
+//    private static ControladorVentanaPrincipal controladorVentanaPrincipal;
 
     
     public VentanaPrincipal( ){
@@ -58,10 +59,11 @@ public class VentanaPrincipal extends JFrame {
         menuItemRealizarVenta = new javax.swing.JMenuItem( );
         menuItemAgregarEmpleado = new javax.swing.JMenuItem( );
         menuItemVerEmpleados = new javax.swing.JMenuItem( );
+        menuItemVerReportes = new javax.swing.JMenuItem( );
         
         
-        cargarImagenDeFondo();
-        
+//        cargarImagenDeFondo();
+//        
         setDefaultCloseOperation( javax.swing.WindowConstants.EXIT_ON_CLOSE );
 
         crearMenuVentana();
@@ -109,23 +111,26 @@ public class VentanaPrincipal extends JFrame {
         getMenuItemAgregarEmpleado().setText( "Agregar" );
         getMenuEmpleados().add(getMenuItemAgregarEmpleado());
         getBarraMenuPrincipal().add(getMenuEmpleados());
+        getMenuReportes().setText("Reportes");
+        getMenuItemVerReportes().setText( "Ver" );
+        getMenuReportes().add( getMenuItemVerReportes());
         getBarraMenuPrincipal().add(getMenuReportes());
         setJMenuBar(getBarraMenuPrincipal());
     }
     
-    public final void cargarImagenDeFondo(){
-        imagenDeFondo= VentanaPrincipal.class.getResourceAsStream("/imagenes/imagenDeFondo.jpg");
-        BufferedImage imagenDeFondoImg = null;
-        try {
-            imagenDeFondoImg = ImageIO.read(imagenDeFondo);
-        } catch (IOException ex) {
-            Logger.getLogger(VentanaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
-        }
-           
-        Image dimensionImagen = imagenDeFondoImg.getScaledInstance(877, 500, Image.SCALE_SMOOTH);
-        ImageIcon iconoImagen = new ImageIcon(dimensionImagen);
-        setContentPane(new JLabel(iconoImagen));
-    }
+//    public final void cargarImagenDeFondo(){
+//        imagenDeFondo= VentanaPrincipal.class.getResourceAsStream("/imagenes/imagenDeFondo.jpg");
+//        BufferedImage imagenDeFondoImg = null;
+//        try {
+//            imagenDeFondoImg = ImageIO.read(imagenDeFondo);
+//        } catch (IOException ex) {
+//            Logger.getLogger(VentanaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//           
+//        Image dimensionImagen = imagenDeFondoImg.getScaledInstance(877, 500, Image.SCALE_SMOOTH);
+//        ImageIcon iconoImagen = new ImageIcon(dimensionImagen);
+//        setContentPane(new JLabel(iconoImagen));
+//    }
     
 
     /**
@@ -304,6 +309,20 @@ public class VentanaPrincipal extends JFrame {
      */
     public void setMenuReportes(JMenu menuReportes) {
         this.menuReportes = menuReportes;
+    }
+
+    /**
+     * @return the menuItemVerReportes
+     */
+    public JMenuItem getMenuItemVerReportes() {
+        return menuItemVerReportes;
+    }
+
+    /**
+     * @param menuItemVerReportes the menuItemVerReportes to set
+     */
+    public void setMenuItemVerReportes(JMenuItem menuItemVerReportes) {
+        this.menuItemVerReportes = menuItemVerReportes;
     }
     
     

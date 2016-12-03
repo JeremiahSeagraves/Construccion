@@ -22,7 +22,7 @@ public class ControladorVentanaPrincipal {
     private ControladorVentanaProveedores controladorVentanaProveedores;
     private ControladorVentanaVentas controladorVentanaVentas;
     private ControladorVentanaEmpleados controladorVentanaEmpleados;
-
+    
     public void inicializarVentanaPrincipal() {
         ventanaPrincipal = new VentanaPrincipal();
         ventanaPrincipal.setVisible(true);
@@ -111,6 +111,8 @@ public class ControladorVentanaPrincipal {
         });
         ventanaPrincipal.setMenuItemAgregarEmpleado(botonAgregarEmpleado);
     }
+    
+  
     
 
     private void inicializarPanelVerInventario() throws SQLException {
