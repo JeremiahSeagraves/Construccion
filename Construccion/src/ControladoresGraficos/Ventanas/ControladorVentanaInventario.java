@@ -3,13 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ControladoresVentanas;
+package ControladoresGraficos.Ventanas;
 
-import ControladoresPaneles.ControladorPanelActualizarArticulo;
-import ControladoresPaneles.ControladorPanelAgregarArticulo;
-import ControladoresPaneles.ControladorPanelBuscarArticulo;
-import ControladoresPaneles.ControladorPanelEliminarArticulo;
-import ControladoresPaneles.ControladorPanelInventario;
+import ControladoresGraficos.Paneles.Inventario.ControladorPanelActualizarArticulo;
+import ControladoresGraficos.Paneles.Inventario.ControladorPanelAgregarArticulo;
+import ControladoresGraficos.Paneles.Inventario.ControladorPanelBuscarArticulo;
+import ControladoresGraficos.Paneles.Inventario.ControladorPanelEliminarArticulo;
+import ControladoresGraficos.Paneles.Inventario.ControladorPanelInventario;
 import Ventanas.Inventario.VentanaInventario;
 
 /**

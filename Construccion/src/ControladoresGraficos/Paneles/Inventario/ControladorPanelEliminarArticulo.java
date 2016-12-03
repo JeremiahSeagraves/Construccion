@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ControladoresPaneles;
+package ControladoresGraficos.Paneles.Inventario;
 
 import Administradores.AdministradorInventario;
-import ControladoresVentanas.ControladorVentanaInventario;
+import ControladoresGraficos.Ventanas.ControladorVentanaInventario;
 import Ventanas.Inventario.PanelEliminarArticulo;
 import Ventanas.Inventario.VentanaInventario;
 import java.sql.SQLException;
