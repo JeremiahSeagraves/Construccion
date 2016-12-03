@@ -9,6 +9,7 @@ import Ventanas.VentanaPrincipal;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 
 /**
@@ -22,6 +23,7 @@ public class ControladorVentanaPrincipal {
     private ControladorVentanaProveedores controladorVentanaProveedores;
     private ControladorVentanaVentas controladorVentanaVentas;
     private ControladorVentanaEmpleados controladorVentanaEmpleados;
+    private ControladorVentanaReportes controladorVentanaReportes;
 
     public void inicializarVentanaPrincipal() {
         ventanaPrincipal = new VentanaPrincipal();
@@ -34,6 +36,7 @@ public class ControladorVentanaPrincipal {
         agregarEventoBotonRealizarVenta();
         agregarEventoBotonVerEmpleados();
         agregarEventoBotonAgregarEmpleado( );
+        agregarEventoBotonReportes( ); 
     }
 
     public void agregarEventoBotonVerInventario() {
@@ -112,6 +115,13 @@ public class ControladorVentanaPrincipal {
         ventanaPrincipal.setMenuItemAgregarEmpleado(botonAgregarEmpleado);
     }
     
+    public void agregarEventoBotonReportes(){
+        JMenu botonReportes = ventanaPrincipal.getMenuReportes();
+         botonReportes.addActionListener( ( java.awt.event.ActionEvent evt ) -> {
+            inicializarVentanaReportes();
+        });
+        ventanaPrincipal.setMenuReportes(botonReportes);
+    }
 
     private void inicializarPanelVerInventario() throws SQLException {
         controladorVentanaInventario = new ControladorVentanaInventario();
@@ -166,6 +176,10 @@ public class ControladorVentanaPrincipal {
      public void inicializarPanelAgregarEmpleado(){
          controladorVentanaEmpleados = new ControladorVentanaEmpleados();
          controladorVentanaEmpleados.desplegarPanelAgregarEmpleado();
+     }
+     
+     public void inicializarVentanaReportes(){
+         controladorVentanaReportes = new ControladorVentanaReportes();
      }
      
 }
