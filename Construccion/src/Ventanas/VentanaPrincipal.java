@@ -6,7 +6,7 @@
 package Ventanas;
 
 
-import ControladoresVentanas.ControladorVentanaPrincipal;
+import ControladoresGraficos.Ventanas.ControladorVentanaPrincipal;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
