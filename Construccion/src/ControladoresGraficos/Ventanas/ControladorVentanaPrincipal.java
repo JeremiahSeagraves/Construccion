@@ -22,7 +22,8 @@ public class ControladorVentanaPrincipal {
     private ControladorVentanaProveedores controladorVentanaProveedores;
     private ControladorVentanaVentas controladorVentanaVentas;
     private ControladorVentanaEmpleados controladorVentanaEmpleados;
-
+    private ControladorVentanaReportes controladorVentanaReportes;
+    
     public void inicializarVentanaPrincipal() {
         ventanaPrincipal = new VentanaPrincipal();
         ventanaPrincipal.setVisible(true);
@@ -39,6 +40,18 @@ public class ControladorVentanaPrincipal {
     public void agregarEventoBotonVerInventario() {
         JMenuItem botonVerInventario = ventanaPrincipal.getMenuItemVerInventario();
         botonVerInventario.addActionListener((java.awt.event.ActionEvent evt) -> {
+            try {
+                inicializarPanelVerInventario();
+            } catch (SQLException ex) {
+                Logger.getLogger(ControladorVentanaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
+        ventanaPrincipal.setMenuItemVerInventario(botonVerInventario);
+    }
+    
+    public void agregarEventoBotonGenerarReporte() {
+        JMenuItem botonGenerarReporte = ventanaPrincipal.getMenuItemGenerarReporte();
+        botonGenerarReporte.addActionListener((java.awt.event.ActionEvent evt) -> {
             try {
                 inicializarPanelVerInventario();
             } catch (SQLException ex) {
@@ -117,6 +130,16 @@ public class ControladorVentanaPrincipal {
         controladorVentanaInventario = new ControladorVentanaInventario();
 
         controladorVentanaInventario.getControladorPanelInventario().desplegarPanelVerInventario();
+        controladorVentanaInventario.getControladorPanelInventario().agregarEventoBotonBuscarArticulo();
+        controladorVentanaInventario.getControladorPanelInventario().agregarEventoBotonEliminarArticulo();
+        controladorVentanaInventario.getControladorPanelInventario().agregarEventoBotonActualizarArticulo();
+
+    }
+    
+    private void inicializarPanelReportes() throws SQLException {
+        controladorVentanaReportes = new ControladorVentanaReportes();
+
+        controladorVentanaReportes.getControladorPanelVerReporte().desplegarPanelVerInventario();
         controladorVentanaInventario.getControladorPanelInventario().agregarEventoBotonBuscarArticulo();
         controladorVentanaInventario.getControladorPanelInventario().agregarEventoBotonEliminarArticulo();
         controladorVentanaInventario.getControladorPanelInventario().agregarEventoBotonActualizarArticulo();

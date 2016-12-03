@@ -5,7 +5,6 @@
  */
 package Ventanas;
 
-
 import ControladoresGraficos.Ventanas.ControladorVentanaPrincipal;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
@@ -16,13 +15,12 @@ import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
-
 /**
  *
  * @author rodrigopeniche
  */
 public class VentanaPrincipal extends JFrame {
-    
+
     private JMenuBar barraMenuPrincipal;
     private JMenu menuInventario;
     private JMenu menuProveedores;
@@ -37,96 +35,98 @@ public class VentanaPrincipal extends JFrame {
     private JMenuItem menuItemRealizarVenta;
     private JMenuItem menuItemAgregarEmpleado;
     private JMenuItem menuItemVerEmpleados;
-    
+    private JMenuItem menuItemGenerarReporte;
+
     private InputStream imagenDeFondo;
     private static ControladorVentanaPrincipal controladorVentanaPrincipal;
 
-    
-    public VentanaPrincipal( ){
-       
-        barraMenuPrincipal = new javax.swing.JMenuBar( );
-        menuInventario = new javax.swing.JMenu( );
-        menuProveedores = new javax.swing.JMenu( );
-        menuVentas = new javax.swing.JMenu( );
-        menuClientes = new javax.swing.JMenu( );
-        menuReportes = new javax.swing.JMenu( );
-        menuItemAgregarArticulo = new javax.swing.JMenuItem( );
-        menuItemVerProveedores = new javax.swing.JMenuItem( );
-        menuItemAgregarProveedor = new javax.swing.JMenuItem( );
-        menuItemVerInventario = new javax.swing.JMenuItem( );
-        menuItemVerVentas = new javax.swing.JMenuItem( );
-        menuItemRealizarVenta = new javax.swing.JMenuItem( );
-        menuItemAgregarEmpleado = new javax.swing.JMenuItem( );
-        menuItemVerEmpleados = new javax.swing.JMenuItem( );
-        
-        
+    public VentanaPrincipal() {
+
+        barraMenuPrincipal = new javax.swing.JMenuBar();
+        menuInventario = new javax.swing.JMenu();
+        menuProveedores = new javax.swing.JMenu();
+        menuVentas = new javax.swing.JMenu();
+        menuClientes = new javax.swing.JMenu();
+        menuReportes = new javax.swing.JMenu();
+        menuItemAgregarArticulo = new javax.swing.JMenuItem();
+        menuItemVerProveedores = new javax.swing.JMenuItem();
+        menuItemAgregarProveedor = new javax.swing.JMenuItem();
+        menuItemVerInventario = new javax.swing.JMenuItem();
+        menuItemVerVentas = new javax.swing.JMenuItem();
+        menuItemRealizarVenta = new javax.swing.JMenuItem();
+        menuItemAgregarEmpleado = new javax.swing.JMenuItem();
+        menuItemVerEmpleados = new javax.swing.JMenuItem();
+        menuItemGenerarReporte = new javax.swing.JMenuItem();
+
         cargarImagenDeFondo();
-        
-        setDefaultCloseOperation( javax.swing.WindowConstants.EXIT_ON_CLOSE );
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         crearMenuVentana();
 //        agregarReceptoresEventos();
 //        
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout( getContentPane( ) );
-        getContentPane( ).setLayout( layout );
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup( javax.swing.GroupLayout.Alignment.LEADING )
-            .addGap( 0, 877, Short.MAX_VALUE )
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(0, 877, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup( javax.swing.GroupLayout.Alignment.LEADING )
-            .addGap( 0, 500, Short.MAX_VALUE )
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(0, 500, Short.MAX_VALUE)
         );
 
-        pack( );
-        
-        
+        pack();
+
     }
-    
-    private void crearMenuVentana(){
-        getMenuInventario().setText( "Inventario" );
-        getMenuItemVerInventario().setText( "Ver" );
+
+    private void crearMenuVentana() {
+        getMenuInventario().setText("Inventario");
+        getMenuItemVerInventario().setText("Ver");
         getMenuInventario().add(getMenuItemVerInventario());
-        getMenuItemAgregarArticulo().setText( "Agregar" );
+        getMenuItemAgregarArticulo().setText("Agregar");
         getMenuInventario().add(getMenuItemAgregarArticulo());
         getBarraMenuPrincipal().add(getMenuInventario());
-        getMenuProveedores().setText( "Proveedores" );
-        getMenuItemVerProveedores().setText( "Ver" );
+        getMenuProveedores().setText("Proveedores");
+        getMenuItemVerProveedores().setText("Ver");
         getMenuProveedores().add(getMenuItemVerProveedores());
-        getMenuItemAgregarProveedor().setText( "Agregar" );
+        getMenuItemAgregarProveedor().setText("Agregar");
         getMenuProveedores().add(getMenuItemAgregarProveedor());
         getBarraMenuPrincipal().add(getMenuProveedores());
-        getMenuVentas().setText( "Ventas" );
-        getMenuItemVerVentas().setText( "Ver" );
+        getMenuVentas().setText("Ventas");
+        getMenuItemVerVentas().setText("Ver");
         getMenuVentas().add(getMenuItemVerVentas());
-        getMenuItemRealizarVenta().setText( "Realizar Venta" );
+        getMenuItemRealizarVenta().setText("Realizar Venta");
         getMenuVentas().add(getMenuItemRealizarVenta());
         getBarraMenuPrincipal().add(getMenuVentas());
-        getMenuEmpleados().setText( "Empleados" );
-        getMenuItemEmpleados().setText( "Ver" );
+        getMenuEmpleados().setText("Empleados");
+        getMenuItemEmpleados().setText("Ver");
         getMenuEmpleados().add(getMenuItemEmpleados());
-        getMenuItemAgregarEmpleado().setText( "Agregar" );
+        getMenuReportes().setText("Reportes");
+        getMenuItemGenerarReporte().setText("Generar reporte");
+        getMenuReportes().add(getMenuItemGenerarReporte());
+        getMenuItemAgregarEmpleado().setText("Agregar");
         getMenuEmpleados().add(getMenuItemAgregarEmpleado());
         getBarraMenuPrincipal().add(getMenuEmpleados());
         getBarraMenuPrincipal().add(getMenuReportes());
+        getBarraMenuPrincipal().add(getMenuReportes());
         setJMenuBar(getBarraMenuPrincipal());
     }
-    
-    public final void cargarImagenDeFondo(){
-        imagenDeFondo= VentanaPrincipal.class.getResourceAsStream("/imagenes/imagenDeFondo.jpg");
+
+    public final void cargarImagenDeFondo() {
+        imagenDeFondo = VentanaPrincipal.class.getResourceAsStream("/imagenes/imagenDeFondo.jpg");
         BufferedImage imagenDeFondoImg = null;
         try {
             imagenDeFondoImg = ImageIO.read(imagenDeFondo);
         } catch (IOException ex) {
             Logger.getLogger(VentanaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
         }
-           
+
         Image dimensionImagen = imagenDeFondoImg.getScaledInstance(877, 500, Image.SCALE_SMOOTH);
         ImageIcon iconoImagen = new ImageIcon(dimensionImagen);
         setContentPane(new JLabel(iconoImagen));
     }
-    
 
     /**
      * @return the barraMenuPrincipal
@@ -305,7 +305,19 @@ public class VentanaPrincipal extends JFrame {
     public void setMenuReportes(JMenu menuReportes) {
         this.menuReportes = menuReportes;
     }
-    
-    
-     
- }
+
+    /**
+     * @return the menuItemGenerarReporte
+     */
+    public JMenuItem getMenuItemGenerarReporte() {
+        return menuItemGenerarReporte;
+    }
+
+    /**
+     * @param menuItemGenerarReporte the menuItemGenerarReporte to set
+     */
+    public void setMenuItemGenerarReporte(JMenuItem menuItemGenerarReporte) {
+        this.menuItemGenerarReporte = menuItemGenerarReporte;
+    }
+
+}
