@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Controladores;
+package ControladoresVentanas;
 
 import Ventanas.VentanaPrincipal;
 import java.sql.SQLException;
@@ -116,16 +116,16 @@ public class ControladorVentanaPrincipal {
     private void inicializarPanelVerInventario() throws SQLException {
         controladorVentanaInventario = new ControladorVentanaInventario();
 
-        controladorVentanaInventario.desplegarPanelVerInventario();
-        controladorVentanaInventario.agregarEventoBotonBuscarArticulo();
-        controladorVentanaInventario.agregarEventoBotonEliminarArticulo();
-        controladorVentanaInventario.agregarEventoBotonActualizarArticulo();
+        controladorVentanaInventario.getControladorPanelInventario().desplegarPanelVerInventario();
+        controladorVentanaInventario.getControladorPanelInventario().agregarEventoBotonBuscarArticulo();
+        controladorVentanaInventario.getControladorPanelInventario().agregarEventoBotonEliminarArticulo();
+        controladorVentanaInventario.getControladorPanelInventario().agregarEventoBotonActualizarArticulo();
 
     }
 
     private void inicializarPanelAgregarArticulo() {
         controladorVentanaInventario = new ControladorVentanaInventario();
-        controladorVentanaInventario.desplegarPanelAgregarArticulo();
+        controladorVentanaInventario.getControladorPanelAgregarArticulo().desplegarPanelAgregarArticulo();
     }
 
     private void inicializarPanelVerProveedores() throws SQLException {
