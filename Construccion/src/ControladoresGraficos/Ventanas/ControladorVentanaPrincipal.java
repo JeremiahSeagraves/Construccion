@@ -23,7 +23,6 @@ public class ControladorVentanaPrincipal {
     private ControladorVentanaVentas controladorVentanaVentas;
     private ControladorVentanaEmpleados controladorVentanaEmpleados;
     private ControladorVentanaReportes controladorVentanaReportes;
-
     
     public void inicializarVentanaPrincipal() {
         ventanaPrincipal = new VentanaPrincipal();
@@ -36,6 +35,7 @@ public class ControladorVentanaPrincipal {
         agregarEventoBotonRealizarVenta();
         agregarEventoBotonVerEmpleados();
         agregarEventoBotonAgregarEmpleado( );
+        agregarEventoBotonGenerarReporte();
     }
 
     public void agregarEventoBotonVerInventario() {
@@ -142,6 +142,10 @@ public class ControladorVentanaPrincipal {
     private void inicializarPanelReportes() throws SQLException {
         controladorVentanaReportes = new ControladorVentanaReportes();
 
+    }
+    
+    private void inicializarPanelReportes() throws SQLException {
+        controladorVentanaReportes = new ControladorVentanaReportes();
     }
 
     private void inicializarPanelAgregarArticulo() {

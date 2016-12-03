@@ -114,6 +114,7 @@ public class VentanaPrincipal extends JFrame {
         getMenuReportes().add( getMenuItemGenerarReporte());
         getBarraMenuPrincipal().add(getMenuReportes());
         getBarraMenuPrincipal().add(getMenuReportes());
+        getBarraMenuPrincipal().add(getMenuReportes());
         setJMenuBar(getBarraMenuPrincipal());
     }
 
