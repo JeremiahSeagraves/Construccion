@@ -19,7 +19,7 @@ public class PanelVerProveedores extends javax.swing.JPanel {
      * Creates new form PanelVerProveedores
      * @param ventanaPrincipal
      */
-    PanelVerProveedores( ) {
+    public PanelVerProveedores( ) {
         initComponents( );
                 
         contenidoTablaProveedores = new DefaultTableModel( );

@@ -5,10 +5,25 @@
  */
 package ControladoresGraficos.Paneles.Proveedores;
 
+import Ventanas.Proveedores.PanelBuscarProveedor;
+
 /**
  *
  * @author juan
  */
 public class ControladorPanelBuscarProveedor {
+    private static PanelBuscarProveedor panelBuscarProveedor;
+    private static ControladorPanelBuscarProveedor controladorPanelBuscarProveedor;
     
+    private ControladorPanelBuscarProveedor(){
+        
+    }
+    
+    public static ControladorPanelBuscarProveedor obtenerControladorPanelBuscarProveedor(){
+        if(controladorPanelBuscarProveedor == null){
+            controladorPanelBuscarProveedor = new ControladorPanelBuscarProveedor();
+            panelBuscarProveedor = new PanelBuscarProveedor();
+        }
+        return controladorPanelBuscarProveedor;
+    }
 }

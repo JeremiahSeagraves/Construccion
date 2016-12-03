@@ -17,11 +17,11 @@ import Ventanas.Inventario.VentanaInventario;
  * @author rodrigopeniche
  */
 public class ControladorVentanaInventario {
-    private ControladorPanelAgregarArticulo controladorPanelAgregarArticulo;
-    private ControladorPanelEliminarArticulo controladorPanelEliminarArticulo;
-    private ControladorPanelBuscarArticulo controladorPanelBuscarArticulo;
-    private ControladorPanelActualizarArticulo controladorPanelActualizarArticulo;
-    private ControladorPanelVerInventario controladorPanelInventario; 
+    private final ControladorPanelAgregarArticulo controladorPanelAgregarArticulo;
+    private final ControladorPanelEliminarArticulo controladorPanelEliminarArticulo;
+    private final ControladorPanelBuscarArticulo controladorPanelBuscarArticulo;
+    private final ControladorPanelActualizarArticulo controladorPanelActualizarArticulo;
+    private final ControladorPanelVerInventario controladorPanelInventario; 
     
     public ControladorVentanaInventario() {
         this.controladorPanelAgregarArticulo = ControladorPanelAgregarArticulo.obtenerControladorPanelAgregaArticulo();
