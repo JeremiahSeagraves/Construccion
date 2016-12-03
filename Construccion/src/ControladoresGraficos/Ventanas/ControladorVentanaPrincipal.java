@@ -53,12 +53,12 @@ public class ControladorVentanaPrincipal {
         JMenuItem botonGenerarReporte = ventanaPrincipal.getMenuItemGenerarReporte();
         botonGenerarReporte.addActionListener((java.awt.event.ActionEvent evt) -> {
             try {
-                inicializarPanelVerInventario();
+                inicializarPanelReportes();
             } catch (SQLException ex) {
                 Logger.getLogger(ControladorVentanaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
-        ventanaPrincipal.setMenuItemVerInventario(botonVerInventario);
+        ventanaPrincipal.setMenuItemGenerarReporte(botonGenerarReporte);
     }
 
     public void agregarEventoBotonAgregarArticulo() {
