@@ -5,7 +5,7 @@
  */
 package ControladoresGraficos.Ventanas;
 
-import ControladoresPaneles.ControladorPanelVerReporte;
+import ControladoresGraficos.Paneles.Reportes.ControladorPanelVerReporte;
 import Modelo.GeneradorReportesVentas;
 import Modelo.Reporte;
 import Ventanas.reportes.VentanaReportes;
