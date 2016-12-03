@@ -138,12 +138,6 @@ public class ControladorVentanaPrincipal {
     
     private void inicializarPanelReportes() throws SQLException {
         controladorVentanaReportes = new ControladorVentanaReportes();
-
-        controladorVentanaReportes.getControladorPanelVerReporte().desplegarPanelVerInventario();
-        controladorVentanaInventario.getControladorPanelInventario().agregarEventoBotonBuscarArticulo();
-        controladorVentanaInventario.getControladorPanelInventario().agregarEventoBotonEliminarArticulo();
-        controladorVentanaInventario.getControladorPanelInventario().agregarEventoBotonActualizarArticulo();
-
     }
 
     private void inicializarPanelAgregarArticulo() {
