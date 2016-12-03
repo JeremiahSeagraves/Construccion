@@ -20,19 +20,19 @@ import javax.swing.JButton;
  *
  * @author juan
  */
-public class ControladorPanelInventario {
+public class ControladorPanelVerInventario {
 
-    private static ControladorPanelInventario controladorPanelInventario = null;
+    private static ControladorPanelVerInventario controladorPanelInventario = null;
     private static PanelVerInventario panelVerInventario;
     private ArrayList<Articulo> articulos;
 
-    private ControladorPanelInventario() {
+    private ControladorPanelVerInventario() {
         this.articulos = new ArrayList<Articulo>();
     }
 
-    public static ControladorPanelInventario obtenerControladorPanelInventario() {
+    public static ControladorPanelVerInventario obtenerControladorPanelInventario() {
         if (controladorPanelInventario == null) {
-            controladorPanelInventario = new ControladorPanelInventario();
+            controladorPanelInventario = new ControladorPanelVerInventario();
             panelVerInventario = new PanelVerInventario();
         }
         return controladorPanelInventario;
@@ -107,7 +107,7 @@ public class ControladorPanelInventario {
     }
 
     public void agregarEventoBotonEliminarArticulo() {
-        ControladorPanelInventario controladorPanelVerInventario = ControladorPanelInventario.obtenerControladorPanelInventario();
+        ControladorPanelVerInventario controladorPanelVerInventario = ControladorPanelVerInventario.obtenerControladorPanelInventario();
 
         JButton botonEliminar = controladorPanelVerInventario.getPanelVerInventario().getBotonEliminarArticulo();
         botonEliminar.addMouseListener(new java.awt.event.MouseAdapter() {

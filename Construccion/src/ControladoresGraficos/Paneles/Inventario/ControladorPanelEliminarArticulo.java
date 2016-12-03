@@ -77,7 +77,7 @@ public class ControladorPanelEliminarArticulo {
     private void accionarBotonEliminarArticulo() {
         AdministradorInventario adminInventario = new AdministradorInventario();
         String claveArticulo = panelEliminarArticulo.getCampoTextoClave().getText();
-        ControladorPanelInventario controladorPanelInventario = ControladorPanelInventario.obtenerControladorPanelInventario();
+        ControladorPanelVerInventario controladorPanelInventario = ControladorPanelVerInventario.obtenerControladorPanelInventario();
         try {
             adminInventario.eliminar(claveArticulo);
             controladorPanelInventario.actualizarTablaArticulos();

@@ -23,45 +23,44 @@ import javax.swing.JOptionPane;
  * @author juan
  */
 public class ControladorPanelActualizarArticulo {
-    
+
     private static ControladorPanelActualizarArticulo controladorPanelActualizarArticulo = null;
     private static PanelActualizarArticulo panelActualizarArticulo = null;
-    
-    public ControladorPanelActualizarArticulo(){
-        
+
+    public ControladorPanelActualizarArticulo() {
+
     }
-    
-    public static ControladorPanelActualizarArticulo obtenerControladorPanelActualizarArticulo(){
-        if(controladorPanelActualizarArticulo == null){
+
+    public static ControladorPanelActualizarArticulo obtenerControladorPanelActualizarArticulo() {
+        if (controladorPanelActualizarArticulo == null) {
             controladorPanelActualizarArticulo = new ControladorPanelActualizarArticulo();
             panelActualizarArticulo = new PanelActualizarArticulo();
         }
         return controladorPanelActualizarArticulo;
     }
-    
-        public void configurarPanelActualizarArticulo(  ){
-            mostrarPanelActualizarArticulo();
+
+    public void configurarPanelActualizarArticulo() {
+        mostrarPanelActualizarArticulo();
         ControladorPanelAgregarArticulo.obtenerControladorPanelAgregaArticulo().ocultarPanelAgregarArticulo();
         ControladorPanelBuscarArticulo.obtenerControladorPanelBuscarArticulo().ocultarPanelBuscarArticulo();
         ControladorPanelEliminarArticulo.obtenerControladorPanelEliminarArticulo().ocultarPanelEliminarArticulo();
-        
-        
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(VentanaInventario.obtenerContenedorVentanaInventario());
         VentanaInventario.obtenerContenedorVentanaInventario().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(456, Short.MAX_VALUE)
-                .addComponent(panelActualizarArticulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(34, 34, 34))
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                        .addContainerGap(456, Short.MAX_VALUE)
+                        .addComponent(panelActualizarArticulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(34, 34, 34))
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(panelActualizarArticulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 202, Short.MAX_VALUE))
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                        .addComponent(panelActualizarArticulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 202, Short.MAX_VALUE))
         );
-     }
+    }
 
     void agregarEventoBotonActualizar() {
         JButton botonActualizar = panelActualizarArticulo.getBotonGuardarCambios();
@@ -95,13 +94,13 @@ public class ControladorPanelActualizarArticulo {
             JOptionPane.showMessageDialog(null, "Error al actualizar el artículo");
         }
 
-        ControladorPanelInventario controladorPanelInventario = ControladorPanelInventario.obtenerControladorPanelInventario();
+        ControladorPanelVerInventario controladorPanelInventario = ControladorPanelVerInventario.obtenerControladorPanelInventario();
         try {
             controladorPanelInventario.actualizarTablaArticulos();
         } catch (SQLException | ClassNotFoundException ex) {
             Logger.getLogger(PanelActualizarArticulo.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
         panelActualizarArticulo.vaciarCamposActualizarArticulo();
     }
 
@@ -115,21 +114,19 @@ public class ControladorPanelActualizarArticulo {
         });
         panelActualizarArticulo.setBotonCancelar(botonCancelar);
     }
-    
-    private void accionarBotonCancelarActualizacion(){
+
+    private void accionarBotonCancelarActualizacion() {
         panelActualizarArticulo.setVisible(false);
         panelActualizarArticulo.vaciarCamposActualizarArticulo();
     }
-    
-    public void mostrarPanelActualizarArticulo(){
+
+    public void mostrarPanelActualizarArticulo() {
         panelActualizarArticulo.setVisible(true);
     }
-    
-    public void ocultarPanelActualizarArticulo(){
+
+    public void ocultarPanelActualizarArticulo() {
         panelActualizarArticulo.setVisible(false);
         panelActualizarArticulo.vaciarCamposActualizarArticulo();
     }
-    
-    
-    
+
 }

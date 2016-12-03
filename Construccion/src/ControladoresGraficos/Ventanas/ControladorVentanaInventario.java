@@ -9,7 +9,7 @@ import ControladoresGraficos.Paneles.Inventario.ControladorPanelActualizarArticu
 import ControladoresGraficos.Paneles.Inventario.ControladorPanelAgregarArticulo;
 import ControladoresGraficos.Paneles.Inventario.ControladorPanelBuscarArticulo;
 import ControladoresGraficos.Paneles.Inventario.ControladorPanelEliminarArticulo;
-import ControladoresGraficos.Paneles.Inventario.ControladorPanelInventario;
+import ControladoresGraficos.Paneles.Inventario.ControladorPanelVerInventario;
 import Ventanas.Inventario.VentanaInventario;
 
 /**
@@ -21,14 +21,14 @@ public class ControladorVentanaInventario {
     private ControladorPanelEliminarArticulo controladorPanelEliminarArticulo;
     private ControladorPanelBuscarArticulo controladorPanelBuscarArticulo;
     private ControladorPanelActualizarArticulo controladorPanelActualizarArticulo;
-    private ControladorPanelInventario controladorPanelInventario; 
+    private ControladorPanelVerInventario controladorPanelInventario; 
     
     public ControladorVentanaInventario() {
         this.controladorPanelAgregarArticulo = ControladorPanelAgregarArticulo.obtenerControladorPanelAgregaArticulo();
         this.controladorPanelEliminarArticulo = ControladorPanelEliminarArticulo.obtenerControladorPanelEliminarArticulo();
         this.controladorPanelBuscarArticulo = ControladorPanelBuscarArticulo.obtenerControladorPanelBuscarArticulo();
         this.controladorPanelActualizarArticulo = ControladorPanelActualizarArticulo.obtenerControladorPanelActualizarArticulo();
-        this.controladorPanelInventario = ControladorPanelInventario.obtenerControladorPanelInventario();
+        this.controladorPanelInventario = ControladorPanelVerInventario.obtenerControladorPanelInventario();
         
         inicializarVentana();
     }
@@ -53,7 +53,7 @@ public class ControladorVentanaInventario {
         return controladorPanelActualizarArticulo;
     }
 
-    public ControladorPanelInventario getControladorPanelInventario() {
+    public ControladorPanelVerInventario getControladorPanelInventario() {
         return controladorPanelInventario;
     }
     
