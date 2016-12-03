@@ -79,7 +79,7 @@ public class ControladorVentanaVentas {
                
         claveArticulo = JOptionPane.showInputDialog("Ingrese la clave del articulo");
         articulo = adminInventario.buscar(claveArticulo);
-        adminVentas.agregarAlCarrito(articulo);
+        adminVentas.agregarArticuloACarrito(articulo);
         actualizarTablaCarrito();
         
     }
@@ -143,7 +143,7 @@ public class ControladorVentanaVentas {
         String claveArticulo;
 
         claveArticulo = JOptionPane.showInputDialog("Ingrese la clave del articulo");
-        adminVentas.eliminarDelCarrito(claveArticulo);
+        adminVentas.eliminarArticuloDeCarrito(claveArticulo);
         actualizarTablaCarrito();
     }
     

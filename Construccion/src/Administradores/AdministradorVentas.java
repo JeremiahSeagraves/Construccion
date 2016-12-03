@@ -29,10 +29,9 @@ public class AdministradorVentas implements Administrador {
         accesoBDVentas = new AccesoBDVentas( );
         carritoCompras = new CarritoCompras();
         articulosEnCarrito = carritoCompras.getArticulosEnCarrito();
-
     }
     
-    public void agregarAlCarrito(Articulo articulo){
+    public void agregarArticuloACarrito(Articulo articulo){
         boolean articuloEncontrado = false;  
        
         for(int i=0; i< articulosEnCarrito.size(); i++){
@@ -48,7 +47,7 @@ public class AdministradorVentas implements Administrador {
         }
     }
     
-    public void eliminarDelCarrito(String claveArticulo){
+    public void eliminarArticuloDeCarrito(String claveArticulo){
         for(int i=0; i<articulosEnCarrito.size(); i++){
             if(articulosEnCarrito.get(i).getClaveArticulo().equals(claveArticulo)){
                 articulosEnCarrito.remove(i);
@@ -74,8 +73,6 @@ public class AdministradorVentas implements Administrador {
         agregar(venta);
         
     }
-    
-
     
     private double calcularMontoVenta(){
         double monto = 0;
@@ -106,6 +103,7 @@ public class AdministradorVentas implements Administrador {
         
         return gananciaTotal;
     }
+    
     @Override
     public void agregar( Object registro ) {
         try{
@@ -143,20 +141,6 @@ public class AdministradorVentas implements Administrador {
         }
         
         return ventas;
-    }
-    
-    public int obtenerTotalArticulosVendidos() throws ClassNotFoundException, SQLException{
-        ArrayList<Venta> ventas;
-        ventas = accesoBDVentas.obtenerVentas();
-        
-        int articulosVendidos = 0;
-        for(int i = 0; i<ventas.size(); i++){
-            for(int j = 0; j < ventas.get(i).getArticulosVendidos().size(); j++){
-                articulosVendidos += 1;
-            }
-        }
-        
-        return articulosVendidos;
     }
 
     public CarritoCompras getCarritoCompras() {
