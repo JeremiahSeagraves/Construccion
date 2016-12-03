@@ -144,9 +144,6 @@ public class ControladorVentanaPrincipal {
 
     }
     
-    private void inicializarPanelReportes() throws SQLException {
-        controladorVentanaReportes = new ControladorVentanaReportes();
-    }
 
     private void inicializarPanelAgregarArticulo() {
         controladorVentanaInventario = new ControladorVentanaInventario();
