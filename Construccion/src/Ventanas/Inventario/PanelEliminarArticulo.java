@@ -157,4 +157,8 @@ public class PanelEliminarArticulo extends javax.swing.JPanel {
     public void setEtiquetaEliminar(javax.swing.JLabel etiquetaEliminar) {
         this.etiquetaEliminar = etiquetaEliminar;
     }
+    
+    public void vaciarCamposPanelEliminarArticulo(){
+        getCampoTextoClave().setText(null);
+    }
 }

@@ -348,4 +348,13 @@ public class PanelActualizarArticulo extends javax.swing.JPanel {
     public void setEtiquetaPrecioVenta(javax.swing.JLabel etiquetaPrecioVenta) {
         this.etiquetaPrecioVenta = etiquetaPrecioVenta;
     }
+    
+    public void vaciarCamposActualizarArticulo(){
+        getCampoTextoCantidad().setText(null);
+        getCampoTextoClave().setText(null);
+        getCampoTextoClaveProveedor().setText(null);
+        getCampoTextoDescripcion().setText(null);
+        getCampoTextoPrecioCompra().setText(null);
+        getCampoTextoPrecioVenta().setText(null);
+    }
 }
