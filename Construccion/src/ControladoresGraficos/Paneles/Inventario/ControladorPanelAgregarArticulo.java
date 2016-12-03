@@ -73,6 +73,7 @@ public class ControladorPanelAgregarArticulo {
                 accionarBotonAgregarArticulo();
             }
         });
+        panelAgregarArticulo.setBotonAgregarArticulo(botonAgregar);
     }
 
     private void agregarEventoBotonCancelarAgregacion() {
@@ -81,7 +82,7 @@ public class ControladorPanelAgregarArticulo {
         botonCancelar.addMouseListener(new java.awt.event.MouseAdapter() {
             @Override
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                
+                accionarBotonCancelarAgregacion();
             }
         });
         panelAgregarArticulo.setBotonCancelar(botonCancelar);

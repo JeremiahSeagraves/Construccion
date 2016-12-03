@@ -127,7 +127,7 @@ public class ControladorPanelVerInventario {
         panelVerInventario.getBotonActualizarArticulo().addMouseListener(new java.awt.event.MouseAdapter() {
             @Override
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                ControladorPanelActualizarArticulo controladorPanelActualizarArticulo = new ControladorPanelActualizarArticulo();
+                ControladorPanelActualizarArticulo controladorPanelActualizarArticulo = ControladorPanelActualizarArticulo.obtenerControladorPanelActualizarArticulo();
                 controladorPanelActualizarArticulo.configurarPanelActualizarArticulo();
                 controladorPanelActualizarArticulo.agregarEventoBotonActualizar();
                 controladorPanelActualizarArticulo.agregarEventoBotonCancelarActualizacion();

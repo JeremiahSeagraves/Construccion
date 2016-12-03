@@ -279,4 +279,12 @@ public class PanelAgregarProveedor extends javax.swing.JPanel {
     public void setEtiquetaTel(javax.swing.JLabel etiquetaTel) {
         this.etiquetaTel = etiquetaTel;
     }
+    
+    
+    public void vaciarCamposAgregarProveedor() {
+        getCampoTextoClave().setText(null);
+        getCampoTextoDireccion().setText(null);
+        getCampoTextoNombre().setText(null);
+        getCampoTextoTel().setText(null);
+    }
 }

@@ -160,4 +160,8 @@ public class PanelEliminarProveedor extends javax.swing.JPanel {
     public void setEtiquetaEliminar(javax.swing.JLabel etiquetaEliminar) {
         this.etiquetaEliminar = etiquetaEliminar;
     }
+    
+        public void vaciarCamposPanelEliminarProveedor(){
+        getCampoTextoClave().setText(null);
+    }
 }
