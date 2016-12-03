@@ -55,7 +55,7 @@ public class AdministradorVentas implements Administrador {
         }
     }
     
-    public void realizarVenta( String claveCliente ){
+    public void realizarVenta( String claveCliente ) throws ClassNotFoundException, SQLException{
         Venta venta = new Venta(articulosEnCarrito);
         
         double monto;
@@ -66,10 +66,14 @@ public class AdministradorVentas implements Administrador {
         
         Empleado empleado = (Empleado) administradorEmpleados.buscar(claveCliente);
         
+        
         venta.setMonto(monto);
         venta.setGanancia(ganancia);
         venta.setEmpleado(empleado);
-              
+
+            int claveActualizadaVenta = obtenerClaveUltimVenta()+1;
+            venta.setClave(claveActualizadaVenta);
+
         agregar(venta);
         
     }
@@ -102,6 +106,11 @@ public class AdministradorVentas implements Administrador {
         }
         
         return gananciaTotal;
+    }
+    
+    public int obtenerClaveUltimVenta() throws ClassNotFoundException, SQLException{
+        int claveUltimaVenta = accesoBDVentas.obtenerClaveUlimaVenta();
+        return claveUltimaVenta;
     }
     
     @Override

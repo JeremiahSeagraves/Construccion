@@ -5,7 +5,7 @@
  */
 package Aplicacion;
 
-import ControladoresVentanas.ControladorVentanaPrincipal;
+import ControladoresGraficos.Ventanas.ControladorVentanaPrincipal;
 
 /**
  *

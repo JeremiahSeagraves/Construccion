@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ControladoresPaneles;
+package ControladoresGraficos.Paneles.Inventario;
 
 import Administradores.AdministradorInventario;
-import ControladoresVentanas.ControladorVentanaInventario;
+import ControladoresGraficos.Ventanas.ControladorVentanaInventario;
 import Ventanas.Inventario.PanelEliminarArticulo;
 import Ventanas.Inventario.VentanaInventario;
 import java.sql.SQLException;
@@ -77,7 +77,7 @@ public class ControladorPanelEliminarArticulo {
     private void accionarBotonEliminarArticulo() {
         AdministradorInventario adminInventario = new AdministradorInventario();
         String claveArticulo = panelEliminarArticulo.getCampoTextoClave().getText();
-        ControladorPanelInventario controladorPanelInventario = ControladorPanelInventario.obtenerControladorPanelInventario();
+        ControladorPanelVerInventario controladorPanelInventario = ControladorPanelVerInventario.obtenerControladorPanelInventario();
         try {
             adminInventario.eliminar(claveArticulo);
             controladorPanelInventario.actualizarTablaArticulos();

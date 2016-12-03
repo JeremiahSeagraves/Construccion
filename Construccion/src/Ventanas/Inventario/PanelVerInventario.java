@@ -15,7 +15,6 @@ import javax.swing.table.DefaultTableModel;
  */
 public class PanelVerInventario extends javax.swing.JPanel {
 
-    private VentanaInventario ventanaInventario;
     private DefaultTableModel contenidoTablaArticulos;
 
     /**
@@ -115,25 +114,7 @@ public class PanelVerInventario extends javax.swing.JPanel {
     private javax.swing.JTable tablaArticulos;
     // End of variables declaration//GEN-END:variables
 
-    /**
-     * @param row
-     * @param col
-     * @return the ventanaInventario
-     */
-    public boolean isCellEditable(int row, int col) { 
-    return true; 
-}
-    
-    public VentanaInventario getVentanaInventario() {
-        return ventanaInventario;
-    }
-
-    /**
-     * @param ventanaInventario the ventanaInventario to set
-     */
-    public void setVentanaInventario(VentanaInventario ventanaInventario) {
-        this.ventanaInventario = ventanaInventario;
-    }
+   
 
     /**
      * @return the contenidoTablaArticulos

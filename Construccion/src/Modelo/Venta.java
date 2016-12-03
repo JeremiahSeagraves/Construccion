@@ -16,8 +16,7 @@ import java.util.Date;
  */
 public class Venta {
     
-    private static int contadorVentas = 0;
-    private final int clave;
+    private int clave;
     private final ArrayList<Articulo> articulosVendidos;
     private double montoVenta;
     private double ganancia;
@@ -30,7 +29,10 @@ public class Venta {
         Date fechaActual = new Date();
         SimpleDateFormat formatoFecha = new SimpleDateFormat("yyyyMMdd");
         fecha = formatoFecha.format(fechaActual);
-        clave = ++contadorVentas;
+    }
+
+    public void setClave(int clave) {
+        this.clave = clave;
     }
 
     public ArrayList<Articulo> getArticulosVendidos() {
@@ -44,6 +46,12 @@ public class Venta {
     public int getClave() {
         return clave;
     }
+
+
+    public void setMontoVenta(double montoVenta) {
+        this.montoVenta = montoVenta;
+    }
+
 
     public double getGanancia() {
         return ganancia;

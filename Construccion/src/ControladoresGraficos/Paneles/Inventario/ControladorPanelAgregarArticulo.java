@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ControladoresPaneles;
+package ControladoresGraficos.Paneles.Inventario;
 
 import Administradores.AdministradorInventario;
 import Modelo.Articulo;
@@ -41,7 +41,7 @@ public class ControladorPanelAgregarArticulo {
         ControladorPanelBuscarArticulo.obtenerControladorPanelBuscarArticulo().ocultarPanelBuscarArticulo();
         ControladorPanelActualizarArticulo.obtenerControladorPanelActualizarArticulo().ocultarPanelActualizarArticulo();
         ControladorPanelEliminarArticulo.obtenerControladorPanelEliminarArticulo().ocultarPanelEliminarArticulo();
-        ControladorPanelInventario.obtenerControladorPanelInventario().ocultarPanelInventario();
+        ControladorPanelVerInventario.obtenerControladorPanelInventario().ocultarPanelInventario();
         
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(VentanaInventario.obtenerContenedorVentanaInventario());
         VentanaInventario.obtenerContenedorVentanaInventario().setLayout(layout);

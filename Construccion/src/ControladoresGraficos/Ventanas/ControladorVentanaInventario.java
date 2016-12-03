@@ -3,13 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ControladoresVentanas;
+package ControladoresGraficos.Ventanas;
 
-import ControladoresPaneles.ControladorPanelActualizarArticulo;
-import ControladoresPaneles.ControladorPanelAgregarArticulo;
-import ControladoresPaneles.ControladorPanelBuscarArticulo;
-import ControladoresPaneles.ControladorPanelEliminarArticulo;
-import ControladoresPaneles.ControladorPanelInventario;
+import ControladoresGraficos.Paneles.Inventario.ControladorPanelActualizarArticulo;
+import ControladoresGraficos.Paneles.Inventario.ControladorPanelAgregarArticulo;
+import ControladoresGraficos.Paneles.Inventario.ControladorPanelBuscarArticulo;
+import ControladoresGraficos.Paneles.Inventario.ControladorPanelEliminarArticulo;
+import ControladoresGraficos.Paneles.Inventario.ControladorPanelVerInventario;
 import Ventanas.Inventario.VentanaInventario;
 
 /**
@@ -17,18 +17,18 @@ import Ventanas.Inventario.VentanaInventario;
  * @author rodrigopeniche
  */
 public class ControladorVentanaInventario {
-    private ControladorPanelAgregarArticulo controladorPanelAgregarArticulo;
-    private ControladorPanelEliminarArticulo controladorPanelEliminarArticulo;
-    private ControladorPanelBuscarArticulo controladorPanelBuscarArticulo;
-    private ControladorPanelActualizarArticulo controladorPanelActualizarArticulo;
-    private ControladorPanelInventario controladorPanelInventario; 
+    private final ControladorPanelAgregarArticulo controladorPanelAgregarArticulo;
+    private final ControladorPanelEliminarArticulo controladorPanelEliminarArticulo;
+    private final ControladorPanelBuscarArticulo controladorPanelBuscarArticulo;
+    private final ControladorPanelActualizarArticulo controladorPanelActualizarArticulo;
+    private final ControladorPanelVerInventario controladorPanelInventario; 
     
     public ControladorVentanaInventario() {
         this.controladorPanelAgregarArticulo = ControladorPanelAgregarArticulo.obtenerControladorPanelAgregaArticulo();
         this.controladorPanelEliminarArticulo = ControladorPanelEliminarArticulo.obtenerControladorPanelEliminarArticulo();
         this.controladorPanelBuscarArticulo = ControladorPanelBuscarArticulo.obtenerControladorPanelBuscarArticulo();
         this.controladorPanelActualizarArticulo = ControladorPanelActualizarArticulo.obtenerControladorPanelActualizarArticulo();
-        this.controladorPanelInventario = ControladorPanelInventario.obtenerControladorPanelInventario();
+        this.controladorPanelInventario = ControladorPanelVerInventario.obtenerControladorPanelInventario();
         
         inicializarVentana();
     }
@@ -53,7 +53,7 @@ public class ControladorVentanaInventario {
         return controladorPanelActualizarArticulo;
     }
 
-    public ControladorPanelInventario getControladorPanelInventario() {
+    public ControladorPanelVerInventario getControladorPanelInventario() {
         return controladorPanelInventario;
     }
     
