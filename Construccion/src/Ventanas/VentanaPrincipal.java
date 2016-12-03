@@ -122,12 +122,6 @@ public class VentanaPrincipal extends JFrame {
         setContentPane(new JLabel(iconoImagen));
     }
     
-     public static void main(String[] args) {
-         controladorVentanaPrincipal = new ControladorVentanaPrincipal();
-         controladorVentanaPrincipal.inicializarVentanaPrincipal();
-
-        
-     }
 
     /**
      * @return the barraMenuPrincipal

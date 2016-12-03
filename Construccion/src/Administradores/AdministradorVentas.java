@@ -63,7 +63,9 @@ public class AdministradorVentas implements Administrador {
         double ganancia;
         monto = calcularMontoVenta();
         ganancia = obtenerGanancia();
-        Empleado empleado = buscarEmpleado(claveCliente);
+        AdministradorEmpleados administradorEmpleados = new AdministradorEmpleados();
+        
+        Empleado empleado = (Empleado) administradorEmpleados.buscar(claveCliente);
         
         venta.setMonto(monto);
         venta.setGanancia(ganancia);
@@ -73,13 +75,7 @@ public class AdministradorVentas implements Administrador {
         
     }
     
-    private Empleado buscarEmpleado(String claveCliente){
-        Empleado empleado;
-        AdministradorEmpleados admin = new AdministradorEmpleados();
-        empleado = (Empleado) admin.buscar(claveCliente);
-        
-        return empleado;       
-    }
+
     
     private double calcularMontoVenta(){
         double monto = 0;
