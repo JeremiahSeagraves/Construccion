@@ -164,7 +164,18 @@ public class ControladorVentanaVentas {
     private void accionarBotonEventoRealizarVenta(){
         String claveEmpleado;
         claveEmpleado = JOptionPane.showInputDialog("Ingrese la clave del empleado");
-        adminVentas.realizarVenta( claveEmpleado );
+        try {
+            adminVentas.realizarVenta( claveEmpleado );
+            JOptionPane.showMessageDialog(null, "Venta exitosa");
+            borrarContenidoTablaCarrito();
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ControladorVentanaVentas.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(ControladorVentanaVentas.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+        
     }
     
     private void inicializarVentana() {

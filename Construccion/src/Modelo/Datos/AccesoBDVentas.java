@@ -84,7 +84,7 @@ public class AccesoBDVentas extends AccesoBD {
         AdministradorInventario adminInventario = new AdministradorInventario();
         String claveArticulo;
         
-        consultaBD =  COMANDO_SELECT + COMANDO_ALL + COMANDO_FROM + TABLA_DETALLES_VENTAS + "where claveventa = "+claveVenta;
+        consultaBD =  COMANDO_SELECT + COMANDO_ALL + COMANDO_FROM + TABLA_DETALLES_VENTAS + " where claveventa = '"+claveVenta+"'";
          sentenciaConsulta = conexionBD.createStatement( );
          ResultSet resultadoConsultaDetalleVentas = sentenciaConsulta.executeQuery( consultaBD );
          
@@ -136,6 +136,19 @@ public class AccesoBDVentas extends AccesoBD {
          ManejadorConexionBD.obtenerInstancia( ).desconectarConBD( );
     }
     
+    public int obtenerClaveUlimaVenta() throws ClassNotFoundException, SQLException{
+        ManejadorConexionBD.obtenerInstancia( ).conectarConBD( );
+        conexionBD = ManejadorConexionBD.obtenerConexion( );
+        consultaBD = COMANDO_SELECT + "max("+ CLAVE_VENTA + ")" + COMANDO_FROM + TABLA_VENTAS;
+        sentenciaConsulta = conexionBD.createStatement();
+        ResultSet resultadoConsulta = sentenciaConsulta.executeQuery(consultaBD);
+        resultadoConsulta.next();
+        
+        
+        int claveUltimVenta = Integer.parseInt(resultadoConsulta.getString("max(ClaveVenta)"));
+        
+        return claveUltimVenta;
+    }
     
     
 //     public Venta buscarVenta( String claveVenta ) throws SQLException, ClassNotFoundException {
