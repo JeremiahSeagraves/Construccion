@@ -8,7 +8,6 @@ package ControladoresGraficos.Ventanas;
 import ControladoresPaneles.ControladorPanelVerReporte;
 import Modelo.GeneradorReportesVentas;
 import Modelo.Reporte;
-import Ventanas.reportes.PanelVerReporte;
 import Ventanas.reportes.VentanaReportes;
 import javax.swing.JComboBox;
 
