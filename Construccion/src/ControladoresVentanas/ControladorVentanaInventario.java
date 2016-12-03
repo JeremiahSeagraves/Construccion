@@ -10,7 +10,7 @@ import ControladoresPaneles.ControladorPanelAgregarArticulo;
 import ControladoresPaneles.ControladorPanelBuscarArticulo;
 import ControladoresPaneles.ControladorPanelEliminarArticulo;
 import ControladoresPaneles.ControladorPanelInventario;
-import Ventanas.Inventario.*;
+import Ventanas.Inventario.VentanaInventario;
 
 /**
  *
