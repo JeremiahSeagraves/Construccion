@@ -97,7 +97,7 @@ public class AccesoBDVentas extends AccesoBD {
              claveArticulo = resultadoConsultaDetalleVentas.getString(CLAVE_ARTICULO);
              cantidadArticulo =resultadoConsultaDetalleVentas.getInt(CANTIDAD_ARTICULO_VENDIDO);
               articulo = adminInventario.buscar(claveArticulo);
-              
+              articulo.getDetalleArticulo().setCantidad(cantidadArticulo);
               articulosEnVenta.add(articulo);
          }
         

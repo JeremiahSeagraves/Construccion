@@ -82,5 +82,5 @@ public class Venta {
         this.fecha = fecha;
     }
     
-       
+         
 }

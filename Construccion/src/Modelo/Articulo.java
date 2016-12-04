@@ -43,4 +43,6 @@ public class Articulo {
         this.descripcion = descripcion;
     }
     
+    
+    
 }
