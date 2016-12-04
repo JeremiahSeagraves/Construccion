@@ -35,7 +35,7 @@ public class GeneradorReportesVentas {
         AdministradorEmpleados empleados = new AdministradorEmpleados();
         int numeroEmpleados = empleados.obtenerDatos().size();
         ArrayList<Venta> ventas = (ArrayList<Venta>) administrador.obtenerDatos();
-
+        System.out.println(ventas.size());
 //        String fechaInicialString = cambiarDate();
         Reporte reporteEmpleados = new Reporte("Reporte Ventas Empleados");
         String[] encabezados = {"Nombre", "Cantidad"};
@@ -46,13 +46,16 @@ public class GeneradorReportesVentas {
         for (int i = 0; i < numeroEmpleados; i++) {
             int cantidadVenta = 0;
             String nombreEmpleado = empleados.obtenerDatos().get(i).getNombre();
-            Object[] fila = {nombreEmpleado, cantidadVenta};
+        
             for (Venta venta : ventas) {
+               
                 if ((venta.getEmpleado().getNombre()).equals(nombreEmpleado)) {
                     cantidadVenta++;
 
                 }
             }
+            
+            Object[] fila = {nombreEmpleado, cantidadVenta};
 
             tablaDatos.agregarFila(fila);
         }
@@ -63,7 +66,7 @@ public class GeneradorReportesVentas {
 
     public Reporte generarReporteVentas() {
         ArrayList<Venta> ventas = (ArrayList<Venta>) administrador.obtenerDatos();
-        Reporte reporteVentas = new Reporte("Reporte Ventas /n ");
+        Reporte reporteVentas = new Reporte("Reporte Ventas");
 
         String[] encabezados = {"ClaveVenta", "MontoVenta", "Ganancia", "Fecha"};
 
@@ -81,7 +84,7 @@ public class GeneradorReportesVentas {
 
     public Reporte generarReporteArticulosVendidos() {
         ArrayList<Venta> ventas = (ArrayList<Venta>) administrador.obtenerDatos();
-        Reporte reporteArticulosVendidos = new Reporte("Articulos Vendidos/n ");
+        Reporte reporteArticulosVendidos = new Reporte("Articulos Vendidos ");
 
         String[] encabezados = {"ClaveArticulo", "Cantidad", "Precio", "Fecha"};
 
@@ -92,7 +95,7 @@ public class GeneradorReportesVentas {
             ArrayList<Articulo> articulos = venta.getArticulosVendidos();
 
             for (Articulo articulo : articulos) {
-                Object[] fila = {articulo.getClaveArticulo(), articulo.getDetalleArticulo().getPrecioVenta(), venta.getFecha()};
+                Object[] fila = {articulo.getClaveArticulo(),articulo.getDetalleArticulo().getCantidad(),articulo.getDetalleArticulo().getPrecioVenta().getPrecio(), venta.getFecha()};
                 tablaDatos.agregarFila(fila);
             }
 

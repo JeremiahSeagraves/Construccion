@@ -32,6 +32,11 @@ public class PanelSeleccionarReporte extends javax.swing.JPanel {
         botonGenerarReporte = new javax.swing.JButton();
 
         comboBoxReporte.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Empleados", "Proveedor", "Articulos Vendidos", "Ventas" }));
+        comboBoxReporte.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboBoxReporteActionPerformed(evt);
+            }
+        });
 
         botonGenerarReporte.setText("GenerarReporte");
 
@@ -59,6 +64,10 @@ public class PanelSeleccionarReporte extends javax.swing.JPanel {
                 .addContainerGap(22, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void comboBoxReporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxReporteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comboBoxReporteActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

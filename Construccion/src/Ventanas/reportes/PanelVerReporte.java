@@ -115,7 +115,7 @@ public class PanelVerReporte extends javax.swing.JPanel {
     }
 
     
-    public void setTablaReporte(javax.swing.JTable tablaReporte) {
-        this.tablaReporte = tablaReporte;
+    public void setContenidoTabla(javax.swing.table.DefaultTableModel contenidoTablaReporte) {
+        tablaReporte.setModel(contenidoTablaReporte);
     }
 }

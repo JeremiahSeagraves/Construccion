@@ -38,7 +38,6 @@ public class ControladorPanelVerReporte {
     public void desplegarPanelVerReporte(Reporte reporte)  {
          configurarPanelVerReporte();
          establecerTituloReporte(reporte.getEncabezado());
-         System.out.println(reporte.getTablaDatos().tamaño());
          llenarTablaReporte(reporte.getTablaDatos());
         
     }
@@ -77,22 +76,20 @@ public class ControladorPanelVerReporte {
    private void llenarTablaReporte(TablaReporte tabla){
        borrarContenidoTablaReporte();
       
-       
        DefaultTableModel modeloTabla = new DefaultTableModel();
        modeloTabla.setColumnIdentifiers(tabla.getEncabezados());
        for(int i=0;i<tabla.tamaño();i++){
            modeloTabla.addRow(tabla.getFila(i));
+          
        }
-       JTable tablaVentana = panelVerReporte.getTablaReporte();
-       tablaVentana.setModel(modeloTabla);
-       panelVerReporte.setTablaReporte(tablaVentana);
+       panelVerReporte.setContenidoTabla(modeloTabla);
+       
+       
    }
    
    private void borrarContenidoTablaReporte() {
        DefaultTableModel modeloTabla = new DefaultTableModel();
        modeloTabla.setRowCount(0);
-       JTable tabla = new JTable();
-       tabla.setModel(modeloTabla);
-       panelVerReporte.setTablaReporte(tabla);
+       panelVerReporte.setContenidoTabla(modeloTabla);
     }
 }

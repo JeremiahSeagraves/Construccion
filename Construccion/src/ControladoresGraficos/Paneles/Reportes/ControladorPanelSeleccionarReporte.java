@@ -19,6 +19,7 @@ public class ControladorPanelSeleccionarReporte {
 
     private static PanelSeleccionarReporte panelSeleccionarReporte;
     private static ControladorPanelSeleccionarReporte controladorPanelSeleccionarReporte = null;
+    private final int itemProveedor = 1;
 
     private ControladorPanelSeleccionarReporte() {
 
@@ -56,21 +57,25 @@ public class ControladorPanelSeleccionarReporte {
 
     public void desplegarPanelSeleccionarReporte() {
         configurarPanelSeleccionarReporte();
-        panelSeleccionarReporte.getCampoCriterio().setEnabled(false);
+        panelSeleccionarReporte.getCampoCriterio().setVisible(false);
         panelSeleccionarReporte.getBotonGenerarReporte().setVisible(true);
     }
 
     public void agregarEventoComboBoxReporte() {
-        JComboBox comboBox = panelSeleccionarReporte.getComboBoxReporte();
-        comboBox.addMouseListener(new java.awt.event.MouseAdapter() {
+        System.out.println("EventoComboBox");
+        JComboBox comboBoxReporte = panelSeleccionarReporte.getComboBoxReporte();
+        comboBoxReporte.addMouseListener(new java.awt.event.MouseAdapter() {
             @Override
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                if (comboBox.getSelectedItem().toString().equals("Proveedor")) {
-                    panelSeleccionarReporte.getCampoCriterio().setEnabled(true);
+                int numeroItemSeleccionado = comboBoxReporte.getSelectedIndex();
+                System.out.println(numeroItemSeleccionado);
+                if (numeroItemSeleccionado==itemProveedor) {
+                    System.out.println("  selecionador ");
+                    panelSeleccionarReporte.getCampoCriterio().setVisible(true);
                 }
             }
         });
-        panelSeleccionarReporte.setComboBoxReporte(comboBox);
+        panelSeleccionarReporte.setComboBoxReporte(comboBoxReporte);
     }
 
     public void agregarEventoBotonGenerar() {
