@@ -147,10 +147,12 @@ public class AccesoBDVentas extends AccesoBD {
         sentenciaConsulta = conexionBD.createStatement();
         ResultSet resultadoConsulta = sentenciaConsulta.executeQuery(consultaBD);
         resultadoConsulta.next();
-        
-        
-        int claveUltimVenta = Integer.parseInt(resultadoConsulta.getString("max(ClaveVenta)"));
-        
+        int claveUltimVenta;
+        try{
+        claveUltimVenta = Integer.parseInt(resultadoConsulta.getString("max(ClaveVenta)"));
+        }catch(NumberFormatException e){
+            claveUltimVenta = 0;
+        }
         return claveUltimVenta;
     }
     
