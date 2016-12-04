@@ -19,9 +19,11 @@ import java.util.logging.Logger;
 public class AdministradorEmpleados implements Administrador {
     
     private final AccesoBDEmpleados accesoBDEmpleados;
+    private final String adminContrasena;
     
     public AdministradorEmpleados(){
         accesoBDEmpleados = new AccesoBDEmpleados();
+        adminContrasena = "theironhorse";
     }
 
     @Override
@@ -75,5 +77,11 @@ public class AdministradorEmpleados implements Administrador {
         
         return empleados;
     }
+
+    public String getAdminContrasena() {
+        return adminContrasena;
+    }
+    
+    
     
 }

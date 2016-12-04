@@ -5,11 +5,13 @@
  */
 package ControladoresGraficos.Ventanas;
 
+import Administradores.AdministradorEmpleados;
 import Ventanas.VentanaPrincipal;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -23,10 +25,18 @@ public class ControladorVentanaPrincipal {
     private ControladorVentanaVentas controladorVentanaVentas;
     private ControladorVentanaEmpleados controladorVentanaEmpleados;
     private ControladorVentanaReportes controladorVentanaReportes;
-
+    
+    private AdministradorEmpleados adminEmpleados;
+    
+    private String adminContrasena;
+    
     public void inicializarVentanaPrincipal() {
         ventanaPrincipal = new VentanaPrincipal();
         ventanaPrincipal.setVisible(true);
+        
+        adminEmpleados = new AdministradorEmpleados();
+        adminContrasena = adminEmpleados.getAdminContrasena();
+        
         agregarEventoBotonAgregarArticulo();
         agregarEventoBotonVerInventario();
         agregarEventoBotonVerProveedores();
@@ -38,7 +48,7 @@ public class ControladorVentanaPrincipal {
         agregarEventoBotonGenerarReporte();
     }
 
-    public void agregarEventoBotonVerInventario() {
+    private void agregarEventoBotonVerInventario() {
         JMenuItem botonVerInventario = ventanaPrincipal.getMenuItemVerInventario();
         botonVerInventario.addActionListener((java.awt.event.ActionEvent evt) -> {
             try {
@@ -50,7 +60,7 @@ public class ControladorVentanaPrincipal {
         ventanaPrincipal.setMenuItemVerInventario(botonVerInventario);
     }
 
-   public void agregarEventoBotonGenerarReporte() {
+   private void agregarEventoBotonGenerarReporte() {
         JMenuItem botonGenerarReporte = ventanaPrincipal.getMenuItemGenerarReporte();
         botonGenerarReporte.addActionListener((java.awt.event.ActionEvent evt) -> {
                 inicializarPanelReportes();
@@ -58,7 +68,7 @@ public class ControladorVentanaPrincipal {
         ventanaPrincipal.setMenuItemGenerarReporte(botonGenerarReporte);
     }
 
-    public void agregarEventoBotonAgregarArticulo() {
+    private void agregarEventoBotonAgregarArticulo() {
         JMenuItem botonAgregarArticulo = ventanaPrincipal.getMenuItemAgregarArticulo();
         botonAgregarArticulo.addActionListener((java.awt.event.ActionEvent evt) -> {
             inicializarPanelAgregarArticulo();
@@ -66,7 +76,7 @@ public class ControladorVentanaPrincipal {
         ventanaPrincipal.setMenuItemAgregarArticulo(botonAgregarArticulo);
     }
 
-    public void agregarEventoBotonVerProveedores() {
+    private void agregarEventoBotonVerProveedores() {
         JMenuItem botonVerProveedores = ventanaPrincipal.getMenuItemVerProveedores();
         botonVerProveedores.addActionListener((java.awt.event.ActionEvent evt) -> {
             try {
@@ -78,7 +88,7 @@ public class ControladorVentanaPrincipal {
         ventanaPrincipal.setMenuItemVerProveedores(botonVerProveedores);
     }
 
-    public void agregarEventoBotonAgregarProveedor() {
+    private void agregarEventoBotonAgregarProveedor() {
         JMenuItem botonAgregarProveedor = ventanaPrincipal.getMenuItemAgregarProveedor();
         botonAgregarProveedor.addActionListener((java.awt.event.ActionEvent evt) -> {
             inicializarPanelAgregarProveedores();
@@ -86,7 +96,7 @@ public class ControladorVentanaPrincipal {
         ventanaPrincipal.setMenuItemAgregarProveedor(botonAgregarProveedor);
     }
 
-    public void agregarEventoBotonVerVentas() {
+    private void agregarEventoBotonVerVentas() {
         JMenuItem botonVerVentas = ventanaPrincipal.getMenuItemVerVentas();
         botonVerVentas.addActionListener((java.awt.event.ActionEvent evt) -> {
             try {
@@ -98,7 +108,7 @@ public class ControladorVentanaPrincipal {
         ventanaPrincipal.setMenuItemVerVentas(botonVerVentas);
     }
 
-    public void agregarEventoBotonRealizarVenta() {
+    private void agregarEventoBotonRealizarVenta() {
         JMenuItem botonRealizarVenta = ventanaPrincipal.getMenuItemRealizarVenta();
         botonRealizarVenta.addActionListener((java.awt.event.ActionEvent evt) -> {
             inicializarPanelRealizarVenta();
@@ -106,22 +116,40 @@ public class ControladorVentanaPrincipal {
         ventanaPrincipal.setMenuItemRealizarVenta(botonRealizarVenta);
     }
 
-    public void agregarEventoBotonVerEmpleados() {
+    private void agregarEventoBotonVerEmpleados() {
+        
         JMenuItem botonVerEmpleados = ventanaPrincipal.getMenuItemEmpleados();
         botonVerEmpleados.addActionListener((java.awt.event.ActionEvent evt) -> {
             inicializarPanelVerEmpleados();
         });
         ventanaPrincipal.setMenuItemVerEmpleados(botonVerEmpleados);
+        
+       
     }
 
-    public void agregarEventoBotonAgregarEmpleado() {
+    private void agregarEventoBotonAgregarEmpleado() {
         JMenuItem botonAgregarEmpleado = ventanaPrincipal.getMenuItemAgregarEmpleado();
         botonAgregarEmpleado.addActionListener((java.awt.event.ActionEvent evt) -> {
             inicializarPanelAgregarEmpleado();
         });
         ventanaPrincipal.setMenuItemAgregarEmpleado(botonAgregarEmpleado);
     }
-
+    
+    private boolean validarContrasenaAdmin(){
+        boolean coincidencia_contrasenas = false;
+        String input_usuario;
+        input_usuario = JOptionPane.showInputDialog("Ingrese la contrasena");
+        
+        if(input_usuario !=  null){
+         if(input_usuario.equals(adminContrasena)){
+                coincidencia_contrasenas = true;
+           }
+        }
+   
+        return coincidencia_contrasenas;
+    }
+    
+  
     private void inicializarPanelVerInventario() throws SQLException {
         controladorVentanaInventario = new ControladorVentanaInventario();
 
@@ -172,18 +200,29 @@ public class ControladorVentanaPrincipal {
         controladorVentanaVentas.agregarEventoBotonRealizarVenta();
     }
 
-    public void inicializarPanelVerEmpleados() {
+    private void inicializarPanelVerEmpleados() {
+       
+        if(validarContrasenaAdmin()){
         controladorVentanaEmpleados = new ControladorVentanaEmpleados();
         controladorVentanaEmpleados.getControladorPanelEmpleados().desplegarPanelVerEmpleados();
         controladorVentanaEmpleados.getControladorPanelEmpleados().agregarEventoBotonBuscarEmpleado();
         controladorVentanaEmpleados.getControladorPanelEmpleados().agregarEventoBotonEliminarEmpleado();
         controladorVentanaEmpleados.getControladorPanelEmpleados().agregarEventoBotonActualizarEmpleado();
-
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Contrasena incorrecta");
+        }
     }
 
-    public void inicializarPanelAgregarEmpleado() {
+    private void inicializarPanelAgregarEmpleado() {
+        
+        if(validarContrasenaAdmin()){
         controladorVentanaEmpleados = new ControladorVentanaEmpleados();
         controladorVentanaEmpleados.getControladorPanelAgregarEmpleado().desplegarPanelAgregarEmpleado();
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Contrasena incorrecta");
+        }
     }
 
 }
