@@ -71,7 +71,7 @@ public class ControladorPanelAgregarEmpleado {
         String nombre = panelAgregarEmpleado.getCampoTextoNombre().getText();
         String telefono = panelAgregarEmpleado.getCampoTextoTel().getText();
         String direccion = panelAgregarEmpleado.getCampoTextoDireccion().getText();
-
+        
         AdministradorEmpleados adminEmpleados = new AdministradorEmpleados();
 
         Empleado empleado = new Empleado(claveEmpleado, nombre, telefono, direccion);

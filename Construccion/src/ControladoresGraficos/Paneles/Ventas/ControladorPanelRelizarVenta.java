@@ -153,6 +153,9 @@ public class ControladorPanelRelizarVenta {
     
     private void accionarBotonEventoRealizarVenta(){
         String claveEmpleado;
+        String montoVenta = String.valueOf(adminVentas.calcularMontoVenta());
+        
+        JOptionPane.showMessageDialog(null, "Monto total de la venta: $" + montoVenta);
         claveEmpleado = JOptionPane.showInputDialog("Ingrese la clave del empleado");
         try {
             adminVentas.realizarVenta( claveEmpleado );
