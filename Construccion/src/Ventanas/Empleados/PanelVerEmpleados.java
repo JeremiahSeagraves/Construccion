@@ -108,7 +108,7 @@ public class PanelVerEmpleados extends javax.swing.JPanel {
                     .addComponent(botonEliminar))
                 .addGap(18, 18, 18)
                 .addComponent(botonActualizar)
-                .addContainerGap(129, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
