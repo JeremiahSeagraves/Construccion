@@ -9,6 +9,7 @@ import ControladoresGraficos.Paneles.Reportes.ControladorPanelVerReporte;
 import Modelo.GeneradorReportesVentas;
 import Modelo.Reporte;
 import Ventanas.reportes.VentanaReportes;
+import javax.swing.JButton;
 import javax.swing.JComboBox;
 
 /**
@@ -23,20 +24,25 @@ public class ControladorVentanaReportes {
 
     public ControladorVentanaReportes() {
         controladorPanelVerReporte = ControladorPanelVerReporte.obtenerControladorPanelVerReporte();
-        inicializarVentana();
+       generadorReportesVentas = new GeneradorReportesVentas();
     }
 
-    private void inicializarVentana() {
-        VentanaReportes.obtenerVentanaReportes().setVisible(true);
-        VentanaReportes.obtenerVentanaReportes().getCampoCriterio().setEnabled(false);
-        agregarEventoComboBox();
+    public void inicializarVentana() {
+        ventanaReportes = VentanaReportes.obtenerVentanaReportes();
+        ventanaReportes.setVisible(true);
+        ventanaReportes.getCampoCriterio().setEnabled(false);
+        ventanaReportes.getBotonGenerar().setVisible(true);
+        agregarEventoBotonGenerar();
     }
+    
 
-    public void agregarEventoComboBox() {
-        JComboBox comboBox = ventanaReportes.getComboBoxReportes();
-        comboBox.addMouseListener(new java.awt.event.MouseAdapter() {
+    private void agregarEventoBotonGenerar() {
+        
+        JButton botonGenerar = ventanaReportes.getBotonGenerar();
+        botonGenerar.addMouseListener(new java.awt.event.MouseAdapter() {
             @Override
             public void mouseClicked(java.awt.event.MouseEvent evt) {
+                JComboBox comboBox = ventanaReportes.getComboBoxReportes();
                 switch (comboBox.getSelectedItem().toString()) {
                     case "Empleados": {
                         Reporte reporte = generadorReportesVentas.generarReporteVentasEmpleados();
@@ -44,7 +50,7 @@ public class ControladorVentanaReportes {
                     }
                     break;
                     case "Proveedores": {
-                        VentanaReportes.obtenerVentanaReportes().getCampoCriterio().setEnabled(false);
+                        VentanaReportes.obtenerVentanaReportes().getCampoCriterio().setEnabled(true);
                         String criterio = VentanaReportes.obtenerVentanaReportes().getCampoCriterio().getText();
                         Reporte reporte = generadorReportesVentas.generarReporteProveedor(criterio);
                         controladorPanelVerReporte.obtenerControladorPanelVerReporte().desplegarPanelVerReporte(reporte);
@@ -64,6 +70,8 @@ public class ControladorVentanaReportes {
 
             }
         });
+        
+        ventanaReportes.setBotonGenerar(botonGenerar);
 
     }
 
