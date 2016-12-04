@@ -189,15 +189,15 @@ public class ControladorVentanaPrincipal {
 
     private void inicializarPanelVerVentas() throws ClassNotFoundException, SQLException {
         controladorVentanaVentas = new ControladorVentanaVentas();
-        controladorVentanaVentas.desplegarPanelVerVentas();
+        controladorVentanaVentas.getControladorPanelVerVentas().desplegarPanelVerVentas();
     }
 
     private void inicializarPanelRealizarVenta() {
         controladorVentanaVentas = new ControladorVentanaVentas();
-        controladorVentanaVentas.desplegarPanelRealizarVenta();
-        controladorVentanaVentas.agregarEventoBotonAgregarAlCarrito();
-        controladorVentanaVentas.agregarEventoBotonEliminarDelCarrito();
-        controladorVentanaVentas.agregarEventoBotonRealizarVenta();
+        controladorVentanaVentas.getControladorPanelRealizarVenta().desplegarPanelRealizarVenta();
+        controladorVentanaVentas.getControladorPanelRealizarVenta().agregarEventoBotonAgregarAlCarrito();
+        controladorVentanaVentas.getControladorPanelRealizarVenta().agregarEventoBotonEliminarDelCarrito();
+        controladorVentanaVentas.getControladorPanelRealizarVenta().agregarEventoBotonRealizarVenta();
     }
 
     private void inicializarPanelVerEmpleados() {
