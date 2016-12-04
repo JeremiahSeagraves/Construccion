@@ -15,10 +15,10 @@ import java.sql.SQLException;
  */
 public class ManejadorConexionBD {
     
-    private static String URLBD_STRING = "jdbc:mysql://localhost:3306/";
-    private static String NOMBRECONTROLADOR_STRING = "com.mysql.jdbc.Driver";
-    private static String USUARIO_STRING = "root";
-    private static String CONTRASENIA_STRING = "";
+    private static final String DB_HOST_URL = "jdbc:mysql://localhost:3306/";
+    private static final String CONTROLADOR = "com.mysql.jdbc.Driver";
+    private static final String USUARIO = "root";
+    private static final String CONTRASENIA = "";
     private static ManejadorConexionBD instanciaManejadorConexion = null;
     private static Connection conexion;
     
@@ -39,8 +39,8 @@ public class ManejadorConexionBD {
     }
 
     public void conectarConBD ( ) throws ClassNotFoundException, SQLException {
-        Class.forName( NOMBRECONTROLADOR_STRING );
-        conexion=DriverManager.getConnection( URLBD_STRING + "elcaballodehierro", USUARIO_STRING, CONTRASENIA_STRING );
+        Class.forName(CONTROLADOR );
+        conexion=DriverManager.getConnection(DB_HOST_URL + "elcaballodehierro", USUARIO, CONTRASENIA );
     }
 
     public void desconectarConBD( ) throws SQLException {
