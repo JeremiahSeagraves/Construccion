@@ -36,31 +36,21 @@ public class ControladorPanelAgregarArticulo {
         return controladorPanelAgregarArticulo;
     }
 
-    public void configurarPanelAgregarArticulo() {
-        mostrarPanelAgregarArticulo();
+    public void mostrarPanelAgregarArticulo() {
+        configurarPanelAgregarArticulo();
+        panelAgregarArticulo.setVisible(true);
+        ocultarOtrosPaneles();
+    }
+    
+    private void ocultarOtrosPaneles(){
         ControladorPanelBuscarArticulo.obtenerControladorPanelBuscarArticulo().ocultarPanelBuscarArticulo();
         ControladorPanelActualizarArticulo.obtenerControladorPanelActualizarArticulo().ocultarPanelActualizarArticulo();
         ControladorPanelEliminarArticulo.obtenerControladorPanelEliminarArticulo().ocultarPanelEliminarArticulo();
         ControladorPanelVerInventario.obtenerControladorPanelInventario().ocultarPanelInventario();
-        
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(VentanaInventario.obtenerContenedorVentanaInventario());
-        VentanaInventario.obtenerContenedorVentanaInventario().setLayout(layout);
-        layout.setHorizontalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                        .addComponent(panelAgregarArticulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 492, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                        .addComponent(panelAgregarArticulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 208, Short.MAX_VALUE))
-        );
     }
 
     public void desplegarPanelAgregarArticulo() {
-        configurarPanelAgregarArticulo();
+        mostrarPanelAgregarArticulo();
         agregarEventoBotonAgregarArticulo();
         agregarEventoBotonCancelarAgregacion();
     }
@@ -118,8 +108,21 @@ public class ControladorPanelAgregarArticulo {
         }
     }
 
-    public void mostrarPanelAgregarArticulo(){
-        panelAgregarArticulo.setVisible(true);
+    private void configurarPanelAgregarArticulo(){
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(VentanaInventario.obtenerContenedorVentanaInventario());
+        VentanaInventario.obtenerContenedorVentanaInventario().setLayout(layout);
+        layout.setHorizontalGroup(
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                        .addComponent(panelAgregarArticulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 492, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                        .addComponent(panelAgregarArticulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 208, Short.MAX_VALUE))
+        );
     }
     
     public void ocultarPanelAgregarArticulo() {

@@ -32,28 +32,17 @@ public class ControladorPanelBuscarArticulo {
         return controladorPanelBuscarArticulo;
     }
 
-    public void configurarPanelBuscarArticulo() {
-        mostrarPanelBuscarArticulo();
+    public void mostrarPanelBuscarArticulo() {
+        configurarPanelBuscarArticulo();
+        panelBuscarArticulo.setVisible(true);
+        ocultarOtrosPaneles();
+    }
+
+    private void ocultarOtrosPaneles() {
         ControladorPanelAgregarArticulo.obtenerControladorPanelAgregaArticulo().ocultarPanelAgregarArticulo();
         ControladorPanelActualizarArticulo.obtenerControladorPanelActualizarArticulo().ocultarPanelActualizarArticulo();
         ControladorPanelEliminarArticulo.obtenerControladorPanelEliminarArticulo().ocultarPanelEliminarArticulo();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(VentanaInventario.obtenerContenedorVentanaInventario());
-        VentanaInventario.obtenerContenedorVentanaInventario().setLayout(layout);
-        layout.setHorizontalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap(566, Short.MAX_VALUE)
-                        .addComponent(panelBuscarArticulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(47, 47, 47))
-        );
-        layout.setVerticalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                        .addGap(28, 28, 28)
-                        .addComponent(panelBuscarArticulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(180, Short.MAX_VALUE))
-        );
     }
 
     public void agregarEventoBotonBuscar() {
@@ -74,18 +63,18 @@ public class ControladorPanelBuscarArticulo {
         botonCancelar.addMouseListener(new java.awt.event.MouseAdapter() {
             @Override
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-             accionarBotonCancelarBusqueda();
+                accionarBotonCancelarBusqueda();
             }
         });
         panelBuscarArticulo.setBotonCancelar(botonCancelar);
     }
 
-    private void accionarBotonCancelarBusqueda(){
+    private void accionarBotonCancelarBusqueda() {
         panelBuscarArticulo.setVisible(false);
         panelBuscarArticulo.vaciarCamposPanelBuscarArticulo();
         panelBuscarArticulo.ocultarCamposPanelBuscarArticulo();
     }
-    
+
     private void accionarBotonBuscarArticulo() {
         panelBuscarArticulo.mostrarCamposPanelBuscarArticulo();
 
@@ -99,8 +88,23 @@ public class ControladorPanelBuscarArticulo {
         panelBuscarArticulo.setCampoTextoPrecioVenta(String.valueOf(articulo.getDetalleArticulo().getPrecioVenta().getPrecio()));
     }
 
-    public void mostrarPanelBuscarArticulo() {
-        panelBuscarArticulo.setVisible(true);
+    private void configurarPanelBuscarArticulo() {
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(VentanaInventario.obtenerContenedorVentanaInventario());
+        VentanaInventario.obtenerContenedorVentanaInventario().setLayout(layout);
+        layout.setHorizontalGroup(
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap(566, Short.MAX_VALUE)
+                        .addComponent(panelBuscarArticulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(47, 47, 47))
+        );
+        layout.setVerticalGroup(
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                        .addGap(28, 28, 28)
+                        .addComponent(panelBuscarArticulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(180, Short.MAX_VALUE))
+        );
     }
 
     public void ocultarPanelBuscarArticulo() {
@@ -109,5 +113,4 @@ public class ControladorPanelBuscarArticulo {
         panelBuscarArticulo.ocultarCamposPanelBuscarArticulo();
     }
 
- 
 }
