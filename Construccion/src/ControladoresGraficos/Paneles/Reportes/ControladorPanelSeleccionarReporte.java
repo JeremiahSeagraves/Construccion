@@ -8,6 +8,7 @@ import Modelo.GeneradorReportesVentas;
 import Modelo.Reporte;
 import Ventanas.reportes.PanelSeleccionarReporte;
 import Ventanas.reportes.VentanaReportes;
+import java.awt.event.ActionEvent;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 
@@ -64,16 +65,15 @@ public class ControladorPanelSeleccionarReporte {
     public void agregarEventoComboBoxReporte() {
         System.out.println("EventoComboBox");
         JComboBox comboBoxReporte = panelSeleccionarReporte.getComboBoxReporte();
-        comboBoxReporte.addMouseListener(new java.awt.event.MouseAdapter() {
+        comboBoxReporte.addActionListener(new java.awt.event.ActionListener() {
             @Override
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                int numeroItemSeleccionado = comboBoxReporte.getSelectedIndex();
+            public void actionPerformed(ActionEvent e) {
+            int numeroItemSeleccionado = comboBoxReporte.getSelectedIndex();
                 System.out.println(numeroItemSeleccionado);
                 if (numeroItemSeleccionado==itemProveedor) {
                     System.out.println("  selecionador ");
                     panelSeleccionarReporte.getCampoCriterio().setVisible(true);
-                }
-            }
+                }}
         });
         panelSeleccionarReporte.setComboBoxReporte(comboBoxReporte);
     }
@@ -117,6 +117,7 @@ public class ControladorPanelSeleccionarReporte {
             }
             break;
         }
+        System.out.println(comboBox.getSelectedItem().toString());
 
     }
     
