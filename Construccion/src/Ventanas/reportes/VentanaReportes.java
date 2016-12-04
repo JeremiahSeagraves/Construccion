@@ -24,52 +24,22 @@ public class VentanaReportes extends JFrame {
     private static VentanaReportes ventanaReportes = null;
     
     private VentanaReportes(){
-        etiquetaVentanaReporte = new javax.swing.JLabel();
-        comboBoxReportes = new javax.swing.JComboBox();
-        campoCriterio = new javax.swing.JTextField();
-        botonGenerar = new javax.swing.JButton();
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        etiquetaVentanaReporte.setText("Reportes");
-
-        comboBoxReportes.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Empleados", "Proveedor", "Ventas", "Articulos Vendidos" }));
-
-         botonGenerar.setText("GenerarReporte");
+       setTitle("Reportes");
+        
+        setDefaultCloseOperation( javax.swing.WindowConstants.DISPOSE_ON_CLOSE );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(46, 46, 46)
-                .addComponent(comboBoxReportes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(44, 44, 44)
-                        .addComponent(etiquetaVentanaReporte)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(campoCriterio, javax.swing.GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE)
-                        .addGap(18, 18, 18)
-                        .addComponent( botonGenerar)
-                        .addGap(23, 23, 23))))
+            .addGap(0, 453, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(etiquetaVentanaReporte)
-                .addGap(32, 32, 32)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(comboBoxReportes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(campoCriterio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent( botonGenerar))
-                .addContainerGap(220, Short.MAX_VALUE))
+            .addGap(0, 300, Short.MAX_VALUE)
         );
         
-           pack();
+        pack();
     }
        
     

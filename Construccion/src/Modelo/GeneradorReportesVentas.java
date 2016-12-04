@@ -37,7 +37,7 @@ public class GeneradorReportesVentas {
         ArrayList<Venta> ventas = (ArrayList<Venta>) administrador.obtenerDatos();
 
 //        String fechaInicialString = cambiarDate();
-        Reporte reporteEmpleados = new Reporte("Reporte Ventas Empleados/n ");
+        Reporte reporteEmpleados = new Reporte("Reporte Ventas Empleados");
         String[] encabezados = {"Nombre", "Cantidad"};
 
         TablaReporte tablaDatos = new TablaReporte();
@@ -56,6 +56,7 @@ public class GeneradorReportesVentas {
 
             tablaDatos.agregarFila(fila);
         }
+        reporteEmpleados.setTablaDatos(tablaDatos);
 
         return reporteEmpleados;
     }
@@ -74,6 +75,7 @@ public class GeneradorReportesVentas {
 
             tablaDatos.agregarFila(fila);
         }
+        reporteVentas.setTablaDatos(tablaDatos);
         return reporteVentas;
     }
 
@@ -95,12 +97,14 @@ public class GeneradorReportesVentas {
             }
 
         }
+        
+        reporteArticulosVendidos.setTablaDatos(tablaDatos);
         return reporteArticulosVendidos;
     }
 
     public Reporte generarReporteProveedor(String nombreProveedor) {
         ArrayList<Venta> ventas = (ArrayList<Venta>) administrador.obtenerDatos();
-        Reporte reporteArticulosVendidos = new Reporte("Proveedor: " + nombreProveedor);
+        Reporte reporteProveedor = new Reporte("Proveedor: " + nombreProveedor);
 
         String[] encabezados = {"ClaveArticulo", "Cantidad", "Precio", "Fecha"};
 
@@ -119,7 +123,8 @@ public class GeneradorReportesVentas {
             }
 
         }
-        return reporteArticulosVendidos;
+        reporteProveedor.setTablaDatos(tablaDatos);
+        return reporteProveedor;
     }
 
     private Date cambiarStringADate(String fecha) {

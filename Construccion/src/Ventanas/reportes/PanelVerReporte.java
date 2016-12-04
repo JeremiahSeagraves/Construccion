@@ -12,20 +12,14 @@ import javax.swing.table.DefaultTableModel;
  * @author rodrigopeniche
  */
 public class PanelVerReporte extends javax.swing.JPanel {
-    
-    private VentanaReportes ventanaReportes;
-    private DefaultTableModel contenidoTablaReporte;
+
     /**
      * Creates new form PanelVerProveedores
      * @param ventanaPrincipal
      */
     public PanelVerReporte( ) {
         initComponents( );
-                
-//        contenidoTablaReporte = new DefaultTableModel( );
-//        String camposTabla[] = new String[]{"Clave", "Nombre", "Teléfono", "Dirección"};
-//       contenidoTablaReporte.setColumnIdentifiers( camposTabla );
-//        tablaReporte.setModel( contenidoTablaReporte );
+
 
     }
 
@@ -65,18 +59,19 @@ public class PanelVerReporte extends javax.swing.JPanel {
                         .addContainerGap()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 418, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(170, 170, 170)
-                        .addComponent(tituloReporte, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(25, Short.MAX_VALUE))
+                        .addGap(162, 162, 162)
+                        .addComponent(tituloReporte, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(157, 157, 157)))
+                .addGap(25, 25, 25))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(23, 23, 23)
                 .addComponent(tituloReporte, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(54, 54, 54))
+                .addGap(42, 42, 42))
         );
     }// </editor-fold>//GEN-END:initComponents
     
@@ -85,35 +80,6 @@ public class PanelVerReporte extends javax.swing.JPanel {
     private javax.swing.JTable tablaReporte;
     private javax.swing.JLabel tituloReporte;
     // End of variables declaration//GEN-END:variables
-
-    /**
-     * @return the ventanaProveedores
-     */
-    public VentanaReportes getVentanaReportes() {
-        
-        return ventanaReportes;
-    }
-
-    /**
-     * @param ventanaProveedores the ventanaProveedores to set
-     */
-    public void setVentanaReportes(VentanaReportes ventanaReportes) {
-        this.ventanaReportes = ventanaReportes;
-    }
-
-    /**
-     * @return the contenidoTablaProveedores
-     */
-    public DefaultTableModel getContenidoTablaReporte() {
-        return contenidoTablaReporte;
-    }
-
-    /**
-     * @param contenidoTablaProveedores the contenidoTablaProveedores to set
-     */
-    public void setContenidoTablaReporte(DefaultTableModel contenidoTablaReporte) {
-        this.contenidoTablaReporte = contenidoTablaReporte;
-    }
 
 
     /**
