@@ -32,28 +32,17 @@ public class ControladorPanelBuscarProveedor {
         return controladorPanelBuscarProveedor;
     }
 
-    public void configurarPanelBuscarProveedor() {
-        mostrarPanelBuscarProveedor();
+    public void mostrarPanelBuscarProveedor() {
+        configurarPanelBuscarProveedor();
+        panelBuscarProveedor.setVisible(true);
+        ocultarOtrosPaneles();
+    }
+
+    private void ocultarOtrosPaneles() {
         ControladorPanelAgregarProveedor.obtenerControladorPanelAgregarProveedor().ocultarPanelAgregarProveedor();
         ControladorPanelActualizarProveedor.obtenerControladorPanelActualizarProveedor().ocultarPanelActualizarProveedor();
         ControladorPanelEliminarProveedor.obtenerControladorPanelEliminarProveedor().ocultarPanelEliminarProveedor();
-        
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(VentanaProveedores.obtenerContenedorVentanaProveedores());
-        VentanaProveedores.obtenerContenedorVentanaProveedores().setLayout(layout);
-        layout.setHorizontalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap(566, Short.MAX_VALUE)
-                        .addComponent(panelBuscarProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(47, 47, 47))
-        );
-        layout.setVerticalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                        .addGap(28, 28, 28)
-                        .addComponent(panelBuscarProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(180, Short.MAX_VALUE))
-        );
+
     }
 
     public void agregarEventoBotonBuscar() {
@@ -96,15 +85,30 @@ public class ControladorPanelBuscarProveedor {
         });
         panelBuscarProveedor.setBotonCancelar(botonCancelar);
     }
-    
-    private void accionarBotonCancelarBusqueda(){
+
+    private void accionarBotonCancelarBusqueda() {
         panelBuscarProveedor.setVisible(false);
         panelBuscarProveedor.vaciarCamposPanelBuscarProveedor();
         panelBuscarProveedor.ocultarCamposPanelBuscarProveedor();
     }
-    
-        public void mostrarPanelBuscarProveedor() {
-        panelBuscarProveedor.setVisible(true);
+
+    private void configurarPanelBuscarProveedor() {
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(VentanaProveedores.obtenerContenedorVentanaProveedores());
+        VentanaProveedores.obtenerContenedorVentanaProveedores().setLayout(layout);
+        layout.setHorizontalGroup(
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap(566, Short.MAX_VALUE)
+                        .addComponent(panelBuscarProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(47, 47, 47))
+        );
+        layout.setVerticalGroup(
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                        .addGap(28, 28, 28)
+                        .addComponent(panelBuscarProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(180, Short.MAX_VALUE))
+        );
     }
 
     public void ocultarPanelBuscarProveedor() {

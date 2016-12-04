@@ -36,30 +36,19 @@ public class ControladorPanelActualizarProveedor {
         }
         return controladorPanelActualizarProveedor;
     }
-    
-        public void configurarPanelActualizarProveedor( ){
+
+    public void mostrarPanelActualizarProveedor() {
+        configurarPanelActualizarProveedor();
         panelActualizarProveedor.setVisible(true);
-         mostrarPanelActualizarProveedor();
+        ocultarOtrosPanles();
+    }
+
+    private void ocultarOtrosPanles() {
         ControladorPanelAgregarProveedor.obtenerControladorPanelAgregarProveedor().ocultarPanelAgregarProveedor();
         ControladorPanelBuscarProveedor.obtenerControladorPanelBuscarProveedor().ocultarPanelBuscarProveedor();
         ControladorPanelEliminarProveedor.obtenerControladorPanelEliminarProveedor().ocultarPanelEliminarProveedor();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(VentanaProveedores.obtenerContenedorVentanaProveedores());
-        VentanaProveedores.obtenerContenedorVentanaProveedores().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(456, Short.MAX_VALUE)
-                .addComponent(panelActualizarProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(34, 34, 34))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(panelActualizarProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 202, Short.MAX_VALUE))
-        ); 
-     }
+    }
 
     public void agregarEventoBotonActualizar() {
         JButton botonActualizar = panelActualizarProveedor.getBotonGuardarCambios();
@@ -89,14 +78,14 @@ public class ControladorPanelActualizarProveedor {
         } catch (HeadlessException updateException) {
             JOptionPane.showMessageDialog(null, "Error al actualizar el proveedor");
         }
-        
+
         ControladorPanelVerProveedores controladorPanelVerProveedores = ControladorPanelVerProveedores.obtenerControladorPanelVerProveedores();
         try {
             controladorPanelVerProveedores.actualizarTablaProveedores();
         } catch (SQLException | ClassNotFoundException ex) {
             Logger.getLogger(PanelActualizarProveedor.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
         panelActualizarProveedor.vaciarCamposActualizarProveedor();
     }
 
@@ -110,9 +99,23 @@ public class ControladorPanelActualizarProveedor {
         });
         panelActualizarProveedor.setBotonCancelar(botonCancelar);
     }
-    
-        public void mostrarPanelActualizarProveedor() {
-        panelActualizarProveedor.setVisible(true);
+
+    private void configurarPanelActualizarProveedor() {
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(VentanaProveedores.obtenerContenedorVentanaProveedores());
+        VentanaProveedores.obtenerContenedorVentanaProveedores().setLayout(layout);
+        layout.setHorizontalGroup(
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                        .addContainerGap(456, Short.MAX_VALUE)
+                        .addComponent(panelActualizarProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(34, 34, 34))
+        );
+        layout.setVerticalGroup(
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                        .addComponent(panelActualizarProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 202, Short.MAX_VALUE))
+        );
     }
 
     public void ocultarPanelActualizarProveedor() {

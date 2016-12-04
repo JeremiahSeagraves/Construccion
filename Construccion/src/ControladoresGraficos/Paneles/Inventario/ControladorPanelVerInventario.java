@@ -35,39 +35,26 @@ public class ControladorPanelVerInventario {
         return controladorPanelInventario;
     }
 
-    public void configurarPanelInventario() {
-        mostrarPanelInventario();
+    public void mostrarrPanelInventario() {
+        configurarPanelInventario();
+        panelVerInventario.setVisible(true);
+        ocultarOtrosPaneles();
+    }
+
+    private void ocultarOtrosPaneles() {
         ControladorPanelAgregarArticulo.obtenerControladorPanelAgregaArticulo().ocultarPanelAgregarArticulo();
         ControladorPanelActualizarArticulo.obtenerControladorPanelActualizarArticulo().ocultarPanelActualizarArticulo();
         ControladorPanelBuscarArticulo.obtenerControladorPanelBuscarArticulo().ocultarPanelBuscarArticulo();
         ControladorPanelEliminarArticulo.obtenerControladorPanelEliminarArticulo().ocultarPanelEliminarArticulo();
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(VentanaInventario.obtenerContenedorVentanaInventario());
-        VentanaInventario.obtenerContenedorVentanaInventario().setLayout(layout);
-        layout.setHorizontalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                        .addComponent(panelVerInventario, javax.swing.GroupLayout.PREFERRED_SIZE,
-                                javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(280, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                        .addComponent(panelVerInventario, javax.swing.GroupLayout.PREFERRED_SIZE,
-                                javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(237, Short.MAX_VALUE))
-        );
-
     }
 
     public void desplegarPanelVerInventario() throws SQLException {
-        configurarPanelInventario();
+        mostrarrPanelInventario();
         try {
             obtenerArticulosBD();
             llenarTablaArticulos(articulos);
         } catch (ClassNotFoundException ex) {
-       
+
         }
     }
 
@@ -95,7 +82,7 @@ public class ControladorPanelVerInventario {
             @Override
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 ControladorPanelBuscarArticulo controladorPanelBuscarArticulo = new ControladorPanelBuscarArticulo();
-                controladorPanelBuscarArticulo.configurarPanelBuscarArticulo();
+                controladorPanelBuscarArticulo.mostrarPanelBuscarArticulo();
                 controladorPanelBuscarArticulo.agregarEventoBotonBuscar();
                 controladorPanelBuscarArticulo.agregarEventoBotonCancelarBusqueda();
             }
@@ -110,7 +97,7 @@ public class ControladorPanelVerInventario {
             @Override
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 ControladorPanelEliminarArticulo controaldorPanelEliminarArticulo = ControladorPanelEliminarArticulo.obtenerControladorPanelEliminarArticulo();
-                controaldorPanelEliminarArticulo.configurarPanel();
+                controaldorPanelEliminarArticulo.mostrarPanelEliminarArticulo();
                 controaldorPanelEliminarArticulo.agregarEventoBotonEliminar();
                 controaldorPanelEliminarArticulo.agregarEventoBotonCancelarEliminacion();
             }
@@ -124,7 +111,7 @@ public class ControladorPanelVerInventario {
             @Override
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 ControladorPanelActualizarArticulo controladorPanelActualizarArticulo = ControladorPanelActualizarArticulo.obtenerControladorPanelActualizarArticulo();
-                controladorPanelActualizarArticulo.configurarPanelActualizarArticulo();
+                controladorPanelActualizarArticulo.mostrarPanelActualizarArticulo();
                 controladorPanelActualizarArticulo.agregarEventoBotonActualizar();
                 controladorPanelActualizarArticulo.agregarEventoBotonCancelarActualizacion();
             }
@@ -145,8 +132,23 @@ public class ControladorPanelVerInventario {
         return panelVerInventario;
     }
 
-    public void mostrarPanelInventario() {
-        panelVerInventario.setVisible(true);
+    private void configurarPanelInventario() {
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(VentanaInventario.obtenerContenedorVentanaInventario());
+        VentanaInventario.obtenerContenedorVentanaInventario().setLayout(layout);
+        layout.setHorizontalGroup(
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                        .addComponent(panelVerInventario, javax.swing.GroupLayout.PREFERRED_SIZE,
+                                javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(280, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                        .addComponent(panelVerInventario, javax.swing.GroupLayout.PREFERRED_SIZE,
+                                javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(237, Short.MAX_VALUE))
+        );
     }
 
     public void ocultarPanelInventario() {

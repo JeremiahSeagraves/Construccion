@@ -38,34 +38,21 @@ public class ControladorPanelVerProveedores {
         return controladorPanelVerProveedores;
     }
 
-    public void configurarPanelVerProveedores() {
-        mostrarPanelVerProveedores();
+    public void mostrarPanelVerProveedores() {
+        configurarPanelVerProveedores();
+        panelVerProveedores.setVisible(true);
+        ocultarOtrosPaneles();
+    }
+
+    private void ocultarOtrosPaneles() {
         ControladorPanelAgregarProveedor.obtenerControladorPanelAgregarProveedor().ocultarPanelAgregarProveedor();
         ControladorPanelActualizarProveedor.obtenerControladorPanelActualizarProveedor().ocultarPanelActualizarProveedor();
         ControladorPanelBuscarProveedor.obtenerControladorPanelBuscarProveedor().ocultarPanelBuscarProveedor();
         ControladorPanelEliminarProveedor.obtenerControladorPanelEliminarProveedor().ocultarPanelEliminarProveedor();
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(VentanaProveedores.obtenerContenedorVentanaProveedores());
-        VentanaProveedores.obtenerContenedorVentanaProveedores().setLayout(layout);
-        layout.setHorizontalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                        .addComponent(panelVerProveedores, javax.swing.GroupLayout.PREFERRED_SIZE,
-                                javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(280, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                        .addComponent(panelVerProveedores, javax.swing.GroupLayout.PREFERRED_SIZE,
-                                javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(237, Short.MAX_VALUE))
-        );
-
     }
 
     public void desplegarPanelVerProveedores() throws SQLException {
-        configurarPanelVerProveedores();
+        mostrarPanelVerProveedores();
         try {
             obtenerProveedoresBD();
             llenarTablaProveedores(proveedores);
@@ -106,7 +93,7 @@ public class ControladorPanelVerProveedores {
             @Override
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 ControladorPanelActualizarProveedor controladorPanelActualizarProveedor = ControladorPanelActualizarProveedor.obtenerControladorPanelActualizarProveedor();
-                controladorPanelActualizarProveedor.configurarPanelActualizarProveedor();
+                controladorPanelActualizarProveedor.mostrarPanelActualizarProveedor();
                 controladorPanelActualizarProveedor.agregarEventoBotonActualizar();
                 controladorPanelActualizarProveedor.agregarEventoBotonCancelarActualizacion();
             }
@@ -121,7 +108,7 @@ public class ControladorPanelVerProveedores {
             @Override
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 ControladorPanelEliminarProveedor controladorPanelEliminarProveedor = ControladorPanelEliminarProveedor.obtenerControladorPanelEliminarProveedor();
-                controladorPanelEliminarProveedor.configurarPanelEliminarProveedor();
+                controladorPanelEliminarProveedor.mostrarPanelEliminarProveedor();
                 controladorPanelEliminarProveedor.agregarEventoBotonEliminar();
                 controladorPanelEliminarProveedor.agregarEventoBotonCancelarEliminacion();
             }
@@ -136,18 +123,33 @@ public class ControladorPanelVerProveedores {
             @Override
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 ControladorPanelBuscarProveedor controladorPanelBuscarProveedor = ControladorPanelBuscarProveedor.obtenerControladorPanelBuscarProveedor();
-                controladorPanelBuscarProveedor.configurarPanelBuscarProveedor();
+                controladorPanelBuscarProveedor.mostrarPanelBuscarProveedor();
                 controladorPanelBuscarProveedor.agregarEventoBotonBuscar();
                 controladorPanelBuscarProveedor.agregarEventoBotonCancelarBusqueda();
             }
         });
         panelVerProveedores.setBotonBuscar(botonBuscar);
     }
-    
-    private void mostrarPanelVerProveedores(){
-        panelVerProveedores.setVisible(true);
+
+    private void configurarPanelVerProveedores() {
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(VentanaProveedores.obtenerContenedorVentanaProveedores());
+        VentanaProveedores.obtenerContenedorVentanaProveedores().setLayout(layout);
+        layout.setHorizontalGroup(
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                        .addComponent(panelVerProveedores, javax.swing.GroupLayout.PREFERRED_SIZE,
+                                javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(280, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                        .addComponent(panelVerProveedores, javax.swing.GroupLayout.PREFERRED_SIZE,
+                                javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(237, Short.MAX_VALUE))
+        );
     }
-    
+
     public void ocultarPanelVerProveedores() {
         panelVerProveedores.setVisible(false);
     }

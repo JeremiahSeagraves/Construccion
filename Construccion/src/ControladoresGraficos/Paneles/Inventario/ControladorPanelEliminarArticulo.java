@@ -22,7 +22,7 @@ public class ControladorPanelEliminarArticulo {
     private static ControladorPanelEliminarArticulo controladorPanelEliminarArticulo = null;
 
     private ControladorPanelEliminarArticulo() {
-        
+
     }
 
     public static ControladorPanelEliminarArticulo obtenerControladorPanelEliminarArticulo() {
@@ -33,30 +33,17 @@ public class ControladorPanelEliminarArticulo {
         return controladorPanelEliminarArticulo;
     }
 
-    public void configurarPanel() {
-        mostrarPanelEliminarArticulo();
+    public void mostrarPanelEliminarArticulo() {
+        configurarPanelEliminarArticulo();
+        panelEliminarArticulo.setVisible(true);
+        ocultarOtrosPaneles();
+    }
+
+    private void ocultarOtrosPaneles() {
         ControladorPanelAgregarArticulo.obtenerControladorPanelAgregaArticulo().ocultarPanelAgregarArticulo();
         ControladorPanelActualizarArticulo.obtenerControladorPanelActualizarArticulo().ocultarPanelActualizarArticulo();
         ControladorPanelBuscarArticulo.obtenerControladorPanelBuscarArticulo().ocultarPanelBuscarArticulo();
-        
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(VentanaInventario.obtenerContenedorVentanaInventario());
-        VentanaInventario.obtenerContenedorVentanaInventario().setLayout(layout);
-        layout.setHorizontalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addComponent(panelEliminarArticulo, javax.swing.GroupLayout.PREFERRED_SIZE,
-                                javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(282, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap(342, Short.MAX_VALUE)
-                        .addComponent(panelEliminarArticulo, javax.swing.GroupLayout.PREFERRED_SIZE,
-                                javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(27, 27, 27))
-        );
+
     }
 
     public void agregarEventoBotonEliminar() {
@@ -84,8 +71,6 @@ public class ControladorPanelEliminarArticulo {
         }
     }
 
-
-
     public void agregarEventoBotonCancelarEliminacion() {
         JButton botonCancelarEliminacion = panelEliminarArticulo.getBotonCancelar();
 
@@ -97,21 +82,36 @@ public class ControladorPanelEliminarArticulo {
         });
         panelEliminarArticulo.setBotonCancelar(botonCancelarEliminacion);
     }
-    
-    private void accionarBotonCancelarEliminacion(){
+
+    private void accionarBotonCancelarEliminacion() {
         panelEliminarArticulo.setVisible(false);
         panelEliminarArticulo.vaciarCamposPanelEliminarArticulo();
     }
-    
-    public void mostrarPanelEliminarArticulo(){
-        panelEliminarArticulo.setVisible(true);
+
+    private void configurarPanelEliminarArticulo() {
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(VentanaInventario.obtenerContenedorVentanaInventario());
+        VentanaInventario.obtenerContenedorVentanaInventario().setLayout(layout);
+        layout.setHorizontalGroup(
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                        .addGap(26, 26, 26)
+                        .addComponent(panelEliminarArticulo, javax.swing.GroupLayout.PREFERRED_SIZE,
+                                javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(282, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap(342, Short.MAX_VALUE)
+                        .addComponent(panelEliminarArticulo, javax.swing.GroupLayout.PREFERRED_SIZE,
+                                javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(27, 27, 27))
+        );
     }
-    
-    public void ocultarPanelEliminarArticulo(){
+
+    public void ocultarPanelEliminarArticulo() {
         panelEliminarArticulo.setVisible(false);
         panelEliminarArticulo.vaciarCamposPanelEliminarArticulo();
     }
-    
-    
 
 }
