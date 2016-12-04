@@ -163,7 +163,13 @@ public class ControladorVentanaVentas {
     
     private void accionarBotonEventoRealizarVenta(){
         String claveEmpleado;
+        String montoVenta = String.valueOf(adminVentas.calcularMontoVenta());
+        
+        JOptionPane.showMessageDialog(ventanaVentas, "Total de venta: $" + montoVenta);
         claveEmpleado = JOptionPane.showInputDialog("Ingrese la clave del empleado");
+
+       
+        
         try {
             adminVentas.realizarVenta( claveEmpleado );
             JOptionPane.showMessageDialog(null, "Venta exitosa");

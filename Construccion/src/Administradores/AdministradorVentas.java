@@ -78,7 +78,7 @@ public class AdministradorVentas implements Administrador {
         
     }
     
-    private double calcularMontoVenta(){
+    public double calcularMontoVenta(){
         double monto = 0;
         double precioVentaArticulo;
         int cantidadArticulo;
