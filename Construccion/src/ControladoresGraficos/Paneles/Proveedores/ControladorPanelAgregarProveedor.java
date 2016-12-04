@@ -13,7 +13,6 @@ import java.awt.HeadlessException;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 
-
 /**
  *
  * @author juan
@@ -35,31 +34,22 @@ public class ControladorPanelAgregarProveedor {
         return controladorPanelAgregarProveedor;
     }
 
-    public void configurarPanelAgregarProveedor() {
-        mostrarPanelAgregarProveedor();
+    public void mostrarPanelAgregarProveedor() {
+        configurarPanelAgregarProveedor();
+        panelAgregarProveedor.setVisible(true);
+        ocultarOtrosPaneles();
+    }
+
+    private void ocultarOtrosPaneles() {
         ControladorPanelBuscarProveedor.obtenerControladorPanelBuscarProveedor().ocultarPanelBuscarProveedor();
         ControladorPanelActualizarProveedor.obtenerControladorPanelActualizarProveedor().ocultarPanelActualizarProveedor();
         ControladorPanelEliminarProveedor.obtenerControladorPanelEliminarProveedor().ocultarPanelEliminarProveedor();
         ControladorPanelVerProveedores.obtenerControladorPanelVerProveedores().ocultarPanelVerProveedores();
-        
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(VentanaProveedores.obtenerContenedorVentanaProveedores());
-        VentanaProveedores.obtenerContenedorVentanaProveedores().setLayout(layout);
-        layout.setHorizontalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                        .addComponent(panelAgregarProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 492, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                        .addComponent(panelAgregarProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 208, Short.MAX_VALUE))
-        );
+
     }
 
     public void desplegarPanelAgregarProveedor() {
-        configurarPanelAgregarProveedor();
+        mostrarPanelAgregarProveedor();
         agregarEventoBotonAgregarProveedor();
         agregarEventoBotonCancelarAgregacion();
     }
@@ -92,7 +82,7 @@ public class ControladorPanelAgregarProveedor {
         } catch (HeadlessException createException) {
             JOptionPane.showMessageDialog(null, "Ha ocurrido un error al agregar el proveedor");
         }
-        
+
         panelAgregarProveedor.vaciarCamposAgregarProveedor();
     }
 
@@ -107,16 +97,29 @@ public class ControladorPanelAgregarProveedor {
         });
         panelAgregarProveedor.setBotonCancelar(botonCancelar);
     }
-    
-    private void accionarBotonCancelarAgregacion(){
+
+    private void accionarBotonCancelarAgregacion() {
         panelAgregarProveedor.setVisible(false);
         panelAgregarProveedor.vaciarCamposAgregarProveedor();
     }
-    
-    private void mostrarPanelAgregarProveedor(){
-        panelAgregarProveedor.setVisible(true);
+
+    private void configurarPanelAgregarProveedor() {
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(VentanaProveedores.obtenerContenedorVentanaProveedores());
+        VentanaProveedores.obtenerContenedorVentanaProveedores().setLayout(layout);
+        layout.setHorizontalGroup(
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                        .addComponent(panelAgregarProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 492, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                        .addComponent(panelAgregarProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 208, Short.MAX_VALUE))
+        );
     }
-    
+
     public void ocultarPanelAgregarProveedor() {
         panelAgregarProveedor.setVisible(false);
         panelAgregarProveedor.vaciarCamposAgregarProveedor();
