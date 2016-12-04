@@ -38,20 +38,21 @@ public class GeneradorReportesVentas {
         System.out.println(ventas.size());
 //        String fechaInicialString = cambiarDate();
         Reporte reporteEmpleados = new Reporte("Reporte Ventas Empleados");
-        String[] encabezados = {"Nombre", "Cantidad"};
+        String[] encabezados = {"Nombre", " Numero de ventas"};
 
         TablaReporte tablaDatos = new TablaReporte();
         tablaDatos.setEncabezados(encabezados);
         ArrayList<Object[]> filas = new ArrayList<Object[]>();
         for (int i = 0; i < numeroEmpleados; i++) {
             int cantidadVenta = 0;
+            int cantidadArticulos =0;
             String nombreEmpleado = empleados.obtenerDatos().get(i).getNombre();
         
             for (Venta venta : ventas) {
                
                 if ((venta.getEmpleado().getNombre()).equals(nombreEmpleado)) {
                     cantidadVenta++;
-
+                    venta.getArticulosVendidos().get(i).getDetalleArticulo().getCantidad();
                 }
             }
             

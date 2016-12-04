@@ -59,7 +59,7 @@ public class AccesoBDVentas extends AccesoBD {
             claveVenta = resultadoConsultaVentas.getString(CLAVE_VENTA);
             monto  = resultadoConsultaVentas.getDouble(MONTO);
             ganancia = resultadoConsultaVentas.getDouble(GANANCIA);
-            fecha = resultadoConsultaVentas.getDate(FECHA).toString();
+            fecha = resultadoConsultaVentas.getString(FECHA);
             claveEmpleado = resultadoConsultaVentas.getString(CLAVE_EMPLEADO);
             empleado = (Empleado) adminEmpleado.buscar(claveEmpleado);
             
