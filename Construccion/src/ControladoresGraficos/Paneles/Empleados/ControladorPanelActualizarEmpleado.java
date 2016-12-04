@@ -34,25 +34,17 @@ public class ControladorPanelActualizarEmpleado {
         return controladorPanelActualizarEmpleado;
     }
 
-    public void configurarPanelActualizarEmpleado() {
-        mostrarPanelActualizarProveedor();
+    public void mostrarPanelActualizarEmpleado() {
+        configurarPanelActualizarEmpleado();
+        panelActualizarEmpleado.setVisible(true);
+        ocultarOtrosPaneles();
+    }
+
+    private void ocultarOtrosPaneles() {
         ControladorPanelAgregarEmpleado.obtenerControladorPanelAgregarEmpleado().ocultarPanelAgregarEmpleado();
         ControladorPanelBuscarEmpleado.obtenerControladorPanelBuscarEmpleado().ocultarPanelBuscarEmpleado();
         ControladorPanelEliminarEmpleado.obtenerControladorPanelEliminarEmpleado().ocultarPanelEliminarEmpleado();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(VentanaEmpleados.obtenerContenedorVentanaEmpleados());
-        VentanaEmpleados.obtenerContenedorVentanaEmpleados().setLayout(layout);
-        layout.setHorizontalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(456, Short.MAX_VALUE)
-                        .addComponent(panelActualizarEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(34, 34, 34))
-        );
-        layout.setVerticalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                        .addComponent(panelActualizarEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 202, Short.MAX_VALUE))
-        );
     }
 
     public void agregarEventoBotonActualizar() {
@@ -105,8 +97,20 @@ public class ControladorPanelActualizarEmpleado {
         panelActualizarEmpleado.vaciarCamposActualizarEmpleado();
     }
 
-    private void mostrarPanelActualizarProveedor() {
-        panelActualizarEmpleado.setVisible(true);
+    private void configurarPanelActualizarEmpleado() {
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(VentanaEmpleados.obtenerContenedorVentanaEmpleados());
+        VentanaEmpleados.obtenerContenedorVentanaEmpleados().setLayout(layout);
+        layout.setHorizontalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                        .addContainerGap(456, Short.MAX_VALUE)
+                        .addComponent(panelActualizarEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(34, 34, 34))
+        );
+        layout.setVerticalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                        .addComponent(panelActualizarEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 202, Short.MAX_VALUE))
+        );
     }
 
     public void ocultarPanelActualizarEmpleado() {

@@ -34,29 +34,22 @@ public class ControladorPanelAgregarEmpleado {
         return controladorPanelAgregarEmpleado;
     }
 
-    public void configurarPanelAgregarEmpleado() {
-        mostrarPanelAgregarEmpleado();
+    public void mostrarPanelAgregarEmpleado() {
+        configurarPanelAgregarEmpleado();
+        panelAgregarEmpleado.setVisible(true);
+        ocultarOtrosPaneles();
+    }
+
+    private void ocultarOtrosPaneles() {
         ControladorPanelActualizarEmpleado.obtenerControladorPanelActualizarEmpleado().ocultarPanelActualizarEmpleado();
         ControladorPanelBuscarEmpleado.obtenerControladorPanelBuscarEmpleado().ocultarPanelBuscarEmpleado();
         ControladorPanelEliminarEmpleado.obtenerControladorPanelEliminarEmpleado().ocultarPanelEliminarEmpleado();
         ControladorPanelVerEmpleados.obtenerControladorPanelVerEmpleados().ocultarPanelVerEmpleados();
-        
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(VentanaEmpleados.obtenerContenedorVentanaEmpleados());
-        VentanaEmpleados.obtenerContenedorVentanaEmpleados().setLayout(layout);
-        layout.setHorizontalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                        .addComponent(panelAgregarEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 492, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                        .addComponent(panelAgregarEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 208, Short.MAX_VALUE))
-        );
+
     }
 
     public void desplegarPanelAgregarEmpleado() {
-        configurarPanelAgregarEmpleado();
+        mostrarPanelAgregarEmpleado();
         agregarEventoBotonAgregarEmpleado();
         agregarEventoBotonCancelarAgregacion();
 
@@ -109,8 +102,20 @@ public class ControladorPanelAgregarEmpleado {
         panelAgregarEmpleado.vaciarCamposAgregarEmpleado();
     }
 
-    private void mostrarPanelAgregarEmpleado() {
-        panelAgregarEmpleado.setVisible(true);
+    private void configurarPanelAgregarEmpleado() {
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(VentanaEmpleados.obtenerContenedorVentanaEmpleados());
+        VentanaEmpleados.obtenerContenedorVentanaEmpleados().setLayout(layout);
+        layout.setHorizontalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                        .addComponent(panelAgregarEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 492, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                        .addComponent(panelAgregarEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 208, Short.MAX_VALUE))
+        );
     }
 
     public void ocultarPanelAgregarEmpleado() {

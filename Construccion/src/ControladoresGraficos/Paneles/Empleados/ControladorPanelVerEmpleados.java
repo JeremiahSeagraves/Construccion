@@ -34,33 +34,22 @@ public class ControladorPanelVerEmpleados {
         return controladorPanelVerEmpleados;
     }
 
-    public void configurarPanelVerEmpleados() {
-        mostrarPanelVerEmpleados();
+    public void mostrarPanelVerEmpleados() {
+        configurarPanelVerEmpleados();
+        panelVerEmpleados.setVisible(true);
+        ocultarOtrosPaneles();
+    }
+
+    private void ocultarOtrosPaneles() {
         ControladorPanelAgregarEmpleado.obtenerControladorPanelAgregarEmpleado().ocultarPanelAgregarEmpleado();
         ControladorPanelActualizarEmpleado.obtenerControladorPanelActualizarEmpleado().ocultarPanelActualizarEmpleado();
         ControladorPanelBuscarEmpleado.obtenerControladorPanelBuscarEmpleado().ocultarPanelBuscarEmpleado();
         ControladorPanelEliminarEmpleado.obtenerControladorPanelEliminarEmpleado().ocultarPanelEliminarEmpleado();
 
-        
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(VentanaEmpleados.obtenerContenedorVentanaEmpleados());
-        VentanaEmpleados.obtenerContenedorVentanaEmpleados().setLayout(layout);
-        layout.setHorizontalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                        .addComponent(panelVerEmpleados, javax.swing.GroupLayout.PREFERRED_SIZE,
-                                javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(280, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                        .addComponent(panelVerEmpleados, javax.swing.GroupLayout.PREFERRED_SIZE,
-                                javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(237, Short.MAX_VALUE))
-        );
-
     }
 
     public void desplegarPanelVerEmpleados() {
-        configurarPanelVerEmpleados();
+        mostrarPanelVerEmpleados();
         obtenerEmpleadosBD();
         llenarTablaEmpleados(empleados);
     }
@@ -87,7 +76,7 @@ public class ControladorPanelVerEmpleados {
             @Override
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 ControladorPanelBuscarEmpleado controladorPanelBuscarEmpleado = ControladorPanelBuscarEmpleado.obtenerControladorPanelBuscarEmpleado();
-                controladorPanelBuscarEmpleado.configurarPanelBuscarEmpleado();
+                controladorPanelBuscarEmpleado.mostrarPanelBuscarEmpleado();
                 controladorPanelBuscarEmpleado.agregarEventoBotonBuscar();
                 controladorPanelBuscarEmpleado.agregarEventoBotonCancelarBusqueda();
             }
@@ -101,8 +90,8 @@ public class ControladorPanelVerEmpleados {
         botonEliminar.addMouseListener(new java.awt.event.MouseAdapter() {
             @Override
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                ControladorPanelEliminarEmpleado controladorPanelEliminarEmpleado =  ControladorPanelEliminarEmpleado.obtenerControladorPanelEliminarEmpleado();
-                controladorPanelEliminarEmpleado.configurarPanelEliminarEmpleado();
+                ControladorPanelEliminarEmpleado controladorPanelEliminarEmpleado = ControladorPanelEliminarEmpleado.obtenerControladorPanelEliminarEmpleado();
+                controladorPanelEliminarEmpleado.mostrarPanelEliminarEmpleado();
                 controladorPanelEliminarEmpleado.agregarEventoBotonEliminar();
                 controladorPanelEliminarEmpleado.agregarEventoBotonCancelarEliminacion();
             }
@@ -117,7 +106,7 @@ public class ControladorPanelVerEmpleados {
             @Override
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 ControladorPanelActualizarEmpleado controladorPanelActualizarEmpleado = ControladorPanelActualizarEmpleado.obtenerControladorPanelActualizarEmpleado();
-                controladorPanelActualizarEmpleado.configurarPanelActualizarEmpleado();
+                controladorPanelActualizarEmpleado.mostrarPanelActualizarEmpleado();
                 controladorPanelActualizarEmpleado.agregarEventoBotonActualizar();
                 controladorPanelActualizarEmpleado.agregarEventoBotonCancelarActualizacion();
             }
@@ -135,8 +124,21 @@ public class ControladorPanelVerEmpleados {
         panelVerEmpleados.getContenidoTablaEmpleados().setRowCount(0);
     }
 
-    private void mostrarPanelVerEmpleados() {
-        panelVerEmpleados.setVisible(true);
+    private void configurarPanelVerEmpleados() {
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(VentanaEmpleados.obtenerContenedorVentanaEmpleados());
+        VentanaEmpleados.obtenerContenedorVentanaEmpleados().setLayout(layout);
+        layout.setHorizontalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                        .addComponent(panelVerEmpleados, javax.swing.GroupLayout.PREFERRED_SIZE,
+                                javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(280, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                        .addComponent(panelVerEmpleados, javax.swing.GroupLayout.PREFERRED_SIZE,
+                                javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(237, Short.MAX_VALUE))
+        );
     }
 
     public void ocultarPanelVerEmpleados() {
