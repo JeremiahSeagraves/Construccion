@@ -144,7 +144,6 @@ public class AdministradorVentas implements Administrador {
         ArrayList<Venta> ventas = null;
         try {   
             ventas = accesoBDVentas.obtenerVentas();
-            return ventas;
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(AdministradorVentas.class.getName()).log(Level.SEVERE, null, ex);
         }

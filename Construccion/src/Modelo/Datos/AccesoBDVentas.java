@@ -30,6 +30,7 @@ public class AccesoBDVentas extends AccesoBD {
     private static final String CLAVE_EMPLEADO = "claveEmpleado";
     private static final String TABLA_VENTAS = "ventas";
     private static final String TABLA_DETALLES_VENTAS ="detalleventa";
+    private static final String CANTIDAD_ARTICULO_VENDIDO = "Cantidad";
     
     public ArrayList<Venta> obtenerVentas() throws ClassNotFoundException, SQLException{
         ManejadorConexionBD.obtenerInstancia( ).conectarConBD( );
@@ -39,7 +40,7 @@ public class AccesoBDVentas extends AccesoBD {
          sentenciaConsulta = conexionBD.createStatement( );
          ResultSet resultadoConsultaVentas = sentenciaConsulta.executeQuery( consultaBD );
          
-         resultadoConsultaVentas.next();
+//         resultadoConsultaVentas.next();
          //omite el primer resultado de la consulta de Ventas
          
          ArrayList<Venta> ventas= new ArrayList<>( );
@@ -83,18 +84,21 @@ public class AccesoBDVentas extends AccesoBD {
         Articulo articulo;
         AdministradorInventario adminInventario = new AdministradorInventario();
         String claveArticulo;
+        int cantidadArticulo;
         
         consultaBD =  COMANDO_SELECT + COMANDO_ALL + COMANDO_FROM + TABLA_DETALLES_VENTAS + " where claveventa = '"+claveVenta+"'";
          sentenciaConsulta = conexionBD.createStatement( );
          ResultSet resultadoConsultaDetalleVentas = sentenciaConsulta.executeQuery( consultaBD );
          
-         resultadoConsultaDetalleVentas.next();
-         //omite el primer resultado que es una direccion de memoria.
+//         resultadoConsultaDetalleVentas.next();
+//         //omite el primer resultado que es una direccion de memoria.
          
          while(resultadoConsultaDetalleVentas.next()){
              claveArticulo = resultadoConsultaDetalleVentas.getString(CLAVE_ARTICULO);
-                 articulo = adminInventario.buscar(claveArticulo);
-                 articulosEnVenta.add(articulo);
+             cantidadArticulo =resultadoConsultaDetalleVentas.getInt(CANTIDAD_ARTICULO_VENDIDO);
+              articulo = adminInventario.buscar(claveArticulo);
+              
+              articulosEnVenta.add(articulo);
          }
         
         
