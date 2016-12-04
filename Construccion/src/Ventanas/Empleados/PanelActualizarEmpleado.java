@@ -211,6 +211,12 @@ public class PanelActualizarEmpleado extends javax.swing.JPanel {
         this.jScrollBar1 = jScrollBar1;
     }
     
+        public void vaciarCamposActualizarEmpleado(){
+        getCampoTextoClave().setText(null);
+        getCampoTextoDireccion().setText(null);
+        getCampoTextoNombre().setText(null);
+        getCampoTextoTel().setText(null);
+    }
     
     
 }

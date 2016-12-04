@@ -27,7 +27,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="etiquetaEliminar" min="-2" max="-2" attributes="0"/>
+                          <Component id="etiquetaElimiar" min="-2" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="etiquetaClave" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
@@ -44,7 +44,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace pref="47" max="32767" attributes="0"/>
-              <Component id="etiquetaEliminar" min="-2" max="-2" attributes="0"/>
+              <Component id="etiquetaElimiar" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="etiquetaClave" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -78,7 +78,7 @@
         <Property name="text" type="java.lang.String" value="Cancelar"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="etiquetaEliminar">
+    <Component class="javax.swing.JLabel" name="etiquetaElimiar">
       <Properties>
         <Property name="text" type="java.lang.String" value="Eliminar empleado"/>
       </Properties>

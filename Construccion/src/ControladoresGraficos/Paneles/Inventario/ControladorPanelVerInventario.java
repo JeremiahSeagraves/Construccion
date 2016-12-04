@@ -6,14 +6,11 @@
 package ControladoresGraficos.Paneles.Inventario;
 
 import Administradores.AdministradorInventario;
-import ControladoresGraficos.Ventanas.ControladorVentanaInventario;
 import Modelo.Articulo;
 import Ventanas.Inventario.PanelVerInventario;
 import Ventanas.Inventario.VentanaInventario;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JButton;
 
 /**
@@ -70,7 +67,7 @@ public class ControladorPanelVerInventario {
             obtenerArticulosBD();
             llenarTablaArticulos(articulos);
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(ControladorVentanaInventario.class.getName()).log(Level.SEVERE, null, ex);
+       
         }
     }
 
@@ -107,9 +104,8 @@ public class ControladorPanelVerInventario {
     }
 
     public void agregarEventoBotonEliminarArticulo() {
-        ControladorPanelVerInventario controladorPanelVerInventario = ControladorPanelVerInventario.obtenerControladorPanelInventario();
 
-        JButton botonEliminar = controladorPanelVerInventario.getPanelVerInventario().getBotonEliminarArticulo();
+        JButton botonEliminar = panelVerInventario.getBotonEliminarArticulo();
         botonEliminar.addMouseListener(new java.awt.event.MouseAdapter() {
             @Override
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -119,7 +115,7 @@ public class ControladorPanelVerInventario {
                 controaldorPanelEliminarArticulo.agregarEventoBotonCancelarEliminacion();
             }
         });
-        controladorPanelVerInventario.getPanelVerInventario().setBotonEliminarArticulo(botonEliminar);
+        panelVerInventario.setBotonEliminarArticulo(botonEliminar);
     }
 
     public void agregarEventoBotonActualizarArticulo() {

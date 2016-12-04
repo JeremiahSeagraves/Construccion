@@ -227,5 +227,11 @@ public class PanelAgregarEmpleado extends javax.swing.JPanel {
         this.etiquetaTel = etiquetaTel;
     }
    
+    public void vaciarCamposAgregarEmpleado() {
+        getCampoTextoClave().setText(null);
+        getCampoTextoDireccion().setText(null);
+        getCampoTextoNombre().setText(null);
+        getCampoTextoTel().setText(null);
+    }
     
 }

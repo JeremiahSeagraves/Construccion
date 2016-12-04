@@ -23,7 +23,7 @@ public class ControladorVentanaPrincipal {
     private ControladorVentanaVentas controladorVentanaVentas;
     private ControladorVentanaEmpleados controladorVentanaEmpleados;
     private ControladorVentanaReportes controladorVentanaReportes;
-    
+
     public void inicializarVentanaPrincipal() {
         ventanaPrincipal = new VentanaPrincipal();
         ventanaPrincipal.setVisible(true);
@@ -34,7 +34,7 @@ public class ControladorVentanaPrincipal {
         agregarEventoBotonVerVentas();
         agregarEventoBotonRealizarVenta();
         agregarEventoBotonVerEmpleados();
-        agregarEventoBotonAgregarEmpleado( );
+        agregarEventoBotonAgregarEmpleado();
         agregarEventoBotonGenerarReporte();
     }
 
@@ -49,7 +49,7 @@ public class ControladorVentanaPrincipal {
         });
         ventanaPrincipal.setMenuItemVerInventario(botonVerInventario);
     }
-    
+
     public void agregarEventoBotonGenerarReporte() {
         JMenuItem botonGenerarReporte = ventanaPrincipal.getMenuItemGenerarReporte();
         botonGenerarReporte.addActionListener((java.awt.event.ActionEvent evt) -> {
@@ -90,9 +90,9 @@ public class ControladorVentanaPrincipal {
         ventanaPrincipal.setMenuItemAgregarProveedor(botonAgregarProveedor);
     }
 
-    public void agregarEventoBotonVerVentas( ){
+    public void agregarEventoBotonVerVentas() {
         JMenuItem botonVerVentas = ventanaPrincipal.getMenuItemVerVentas();
-        botonVerVentas.addActionListener( ( java.awt.event.ActionEvent evt ) -> {
+        botonVerVentas.addActionListener((java.awt.event.ActionEvent evt) -> {
             try {
                 inicializarPanelVerVentas();
             } catch (ClassNotFoundException | SQLException ex) {
@@ -101,33 +101,30 @@ public class ControladorVentanaPrincipal {
         });
         ventanaPrincipal.setMenuItemVerVentas(botonVerVentas);
     }
-    
-    public void agregarEventoBotonRealizarVenta( ){
+
+    public void agregarEventoBotonRealizarVenta() {
         JMenuItem botonRealizarVenta = ventanaPrincipal.getMenuItemRealizarVenta();
-        botonRealizarVenta.addActionListener( ( java.awt.event.ActionEvent evt ) -> {
+        botonRealizarVenta.addActionListener((java.awt.event.ActionEvent evt) -> {
             inicializarPanelRealizarVenta();
         });
         ventanaPrincipal.setMenuItemRealizarVenta(botonRealizarVenta);
     }
-    
-    public void agregarEventoBotonVerEmpleados( ){
+
+    public void agregarEventoBotonVerEmpleados() {
         JMenuItem botonVerEmpleados = ventanaPrincipal.getMenuItemEmpleados();
-        botonVerEmpleados.addActionListener( ( java.awt.event.ActionEvent evt ) -> {
+        botonVerEmpleados.addActionListener((java.awt.event.ActionEvent evt) -> {
             inicializarPanelVerEmpleados();
         });
         ventanaPrincipal.setMenuItemVerEmpleados(botonVerEmpleados);
     }
-    
-    public void agregarEventoBotonAgregarEmpleado( ){
+
+    public void agregarEventoBotonAgregarEmpleado() {
         JMenuItem botonAgregarEmpleado = ventanaPrincipal.getMenuItemAgregarEmpleado();
-        botonAgregarEmpleado.addActionListener( ( java.awt.event.ActionEvent evt ) -> {
+        botonAgregarEmpleado.addActionListener((java.awt.event.ActionEvent evt) -> {
             inicializarPanelAgregarEmpleado();
         });
         ventanaPrincipal.setMenuItemAgregarEmpleado(botonAgregarEmpleado);
     }
-    
-  
-    
 
     private void inicializarPanelVerInventario() throws SQLException {
         controladorVentanaInventario = new ControladorVentanaInventario();
@@ -138,13 +135,12 @@ public class ControladorVentanaPrincipal {
         controladorVentanaInventario.getControladorPanelInventario().agregarEventoBotonActualizarArticulo();
 
     }
-    
+
     private void inicializarPanelReportes() throws SQLException {
         controladorVentanaReportes = new ControladorVentanaReportes();
         controladorVentanaReportes.inicializarVentana();
 
     }
-    
 
     private void inicializarPanelAgregarArticulo() {
         controladorVentanaInventario = new ControladorVentanaInventario();
@@ -165,30 +161,31 @@ public class ControladorVentanaPrincipal {
         controladorVentanaProveedores.getControladorPanelAgregarProveedor().desplegarPanelAgregarProveedor();
     }
 
-     private void inicializarPanelVerVentas( ) throws ClassNotFoundException, SQLException{
+    private void inicializarPanelVerVentas() throws ClassNotFoundException, SQLException {
         controladorVentanaVentas = new ControladorVentanaVentas();
         controladorVentanaVentas.desplegarPanelVerVentas();
-     }
-     
-     private void inicializarPanelRealizarVenta( ){
+    }
+
+    private void inicializarPanelRealizarVenta() {
         controladorVentanaVentas = new ControladorVentanaVentas();
         controladorVentanaVentas.desplegarPanelRealizarVenta();
         controladorVentanaVentas.agregarEventoBotonAgregarAlCarrito();
         controladorVentanaVentas.agregarEventoBotonEliminarDelCarrito();
         controladorVentanaVentas.agregarEventoBotonRealizarVenta();
-     }
-     
-     public void inicializarPanelVerEmpleados(){
-         controladorVentanaEmpleados = new ControladorVentanaEmpleados();
-         controladorVentanaEmpleados.desplegarPanelVerEmpleados();
-         controladorVentanaEmpleados.agregarEventoBotonActualizarEmpleado();
-         controladorVentanaEmpleados.agregarEventoBotonBuscarEmpleado();
-         controladorVentanaEmpleados.agregarEventoBotonEliminarEmpleado();
-     }
-     
-     public void inicializarPanelAgregarEmpleado(){
-         controladorVentanaEmpleados = new ControladorVentanaEmpleados();
-         controladorVentanaEmpleados.desplegarPanelAgregarEmpleado();
-     }
-     
+    }
+
+    public void inicializarPanelVerEmpleados() {
+        controladorVentanaEmpleados = new ControladorVentanaEmpleados();
+        controladorVentanaEmpleados.getControladorPanelEmpleados().desplegarPanelVerEmpleados();
+        controladorVentanaEmpleados.getControladorPanelEmpleados().agregarEventoBotonBuscarEmpleado();
+        controladorVentanaEmpleados.getControladorPanelEmpleados().agregarEventoBotonEliminarEmpleado();
+        controladorVentanaEmpleados.getControladorPanelEmpleados().agregarEventoBotonActualizarEmpleado();
+
+    }
+
+    public void inicializarPanelAgregarEmpleado() {
+        controladorVentanaEmpleados = new ControladorVentanaEmpleados();
+        controladorVentanaEmpleados.getControladorPanelAgregarEmpleado().desplegarPanelAgregarEmpleado();
+    }
+
 }

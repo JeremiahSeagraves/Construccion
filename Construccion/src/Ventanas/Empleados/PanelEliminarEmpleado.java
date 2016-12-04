@@ -35,7 +35,7 @@ public class PanelEliminarEmpleado extends javax.swing.JPanel {
         campoTextoClave = new javax.swing.JTextField();
         botonEliminar = new javax.swing.JButton();
         botonCancelar = new javax.swing.JButton();
-        etiquetaEliminar = new javax.swing.JLabel();
+        etiquetaElimiar = new javax.swing.JLabel();
 
         etiquetaClave.setText("Clave:");
 
@@ -43,7 +43,7 @@ public class PanelEliminarEmpleado extends javax.swing.JPanel {
 
         botonCancelar.setText("Cancelar");
 
-        etiquetaEliminar.setText("Eliminar empleado");
+        etiquetaElimiar.setText("Eliminar empleado");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -59,7 +59,7 @@ public class PanelEliminarEmpleado extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(45, 45, 45)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(etiquetaEliminar)
+                            .addComponent(etiquetaElimiar)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(etiquetaClave)
                                 .addGap(39, 39, 39)
@@ -70,7 +70,7 @@ public class PanelEliminarEmpleado extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(47, Short.MAX_VALUE)
-                .addComponent(etiquetaEliminar)
+                .addComponent(etiquetaElimiar)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(etiquetaClave)
@@ -89,7 +89,7 @@ public class PanelEliminarEmpleado extends javax.swing.JPanel {
     private javax.swing.JButton botonEliminar;
     private javax.swing.JTextField campoTextoClave;
     private javax.swing.JLabel etiquetaClave;
-    private javax.swing.JLabel etiquetaEliminar;
+    private javax.swing.JLabel etiquetaElimiar;
     // End of variables declaration//GEN-END:variables
 
     public JButton getBotonCancelar() {
@@ -124,6 +124,8 @@ public class PanelEliminarEmpleado extends javax.swing.JPanel {
         this.etiquetaClave = etiquetaClave;
     }
 
-   
-    
+    public void vaciarCamposPanelEliminarEmpleado() {
+        getCampoTextoClave().setText(null);
+    }
+
 }

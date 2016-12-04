@@ -6,12 +6,9 @@
 package ControladoresGraficos.Paneles.Inventario;
 
 import Administradores.AdministradorInventario;
-import ControladoresGraficos.Ventanas.ControladorVentanaInventario;
 import Ventanas.Inventario.PanelEliminarArticulo;
 import Ventanas.Inventario.VentanaInventario;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 
@@ -84,7 +81,6 @@ public class ControladorPanelEliminarArticulo {
             JOptionPane.showMessageDialog(null, "Artículo eliminado exitosamente");
         } catch (SQLException | ClassNotFoundException ex) {
             JOptionPane.showMessageDialog(null, "Hubo un error al actualizar al artículo");
-            Logger.getLogger(ControladorVentanaInventario.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

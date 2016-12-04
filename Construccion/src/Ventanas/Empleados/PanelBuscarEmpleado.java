@@ -247,6 +247,30 @@ public class PanelBuscarEmpleado extends javax.swing.JPanel {
     public void mostrarEtiquetaDireccion() {
         etiquetaDireccion.setVisible(true);
     }
+    public void mostrarCamposPanelBuscarEmpleado() {
+        getCampoTextoClave().setVisible(true);
+        getCampoTextoDireccion().setVisible(true);
+        getEtiquetaDireccion().setVisible(true);
+        getEtiquetaNombre().setVisible(true);
+        getEtiquetaTel().setVisible(true);
+        getCampoTextoNombre().setVisible(true);
+        getCampoTextoTel().setVisible(true);
+    }
 
+    public void vaciarCamposPanelBuscarEmpleado() {
+        getCampoTextoClave().setText(null);
+        getCampoTextoDireccion().setText(null);
+        getCampoTextoNombre().setText(null);
+        getCampoTextoTel().setText(null);
+    }
+
+    public void ocultarCamposPanelBuscarEmpleado() {
+        getCampoTextoDireccion().setVisible(false);
+        getCampoTextoNombre().setVisible(false);
+        getCampoTextoTel().setVisible(false);
+        getEtiquetaDireccion().setVisible(false);
+        getEtiquetaNombre().setVisible(false);
+        getEtiquetaTel().setVisible(false);
+    }
     
 }
