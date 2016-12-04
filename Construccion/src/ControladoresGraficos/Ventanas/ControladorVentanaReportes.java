@@ -5,6 +5,7 @@
  */
 package ControladoresGraficos.Ventanas;
 
+import ControladoresGraficos.Paneles.Reportes.ControladorPanelSeleccionarReporte;
 import ControladoresGraficos.Paneles.Reportes.ControladorPanelVerReporte;
 import Modelo.GeneradorReportesVentas;
 import Modelo.Reporte;
@@ -18,63 +19,26 @@ import javax.swing.JComboBox;
  */
 public class ControladorVentanaReportes {
 
-    private VentanaReportes ventanaReportes;
-    private GeneradorReportesVentas generadorReportesVentas;
-    private ControladorPanelVerReporte controladorPanelVerReporte;
+  
+    private final ControladorPanelVerReporte controladorPanelVerReporte;
+    private final ControladorPanelSeleccionarReporte controladorPanelSeleccionarReporte;
 
     public ControladorVentanaReportes() {
+        
+        controladorPanelSeleccionarReporte = ControladorPanelSeleccionarReporte.obtenerControladorPanelSeleccionarReporte();
         controladorPanelVerReporte = ControladorPanelVerReporte.obtenerControladorPanelVerReporte();
-       generadorReportesVentas = new GeneradorReportesVentas();
+         inicializarVentana();
     }
 
-    public void inicializarVentana() {
-        ventanaReportes = VentanaReportes.obtenerVentanaReportes();
-        ventanaReportes.setVisible(true);
-        ventanaReportes.getCampoCriterio().setEnabled(false);
-        ventanaReportes.getBotonGenerar().setVisible(true);
-        agregarEventoBotonGenerar();
+    private void inicializarVentana() {
+        VentanaReportes.obtenerVentanaReportes().setVisible(true);
+        
     }
     
-
-    private void agregarEventoBotonGenerar() {
-        
-        JButton botonGenerar = ventanaReportes.getBotonGenerar();
-        botonGenerar.addMouseListener(new java.awt.event.MouseAdapter() {
-            @Override
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                JComboBox comboBox = ventanaReportes.getComboBoxReportes();
-                switch (comboBox.getSelectedItem().toString()) {
-                    case "Empleados": {
-                        Reporte reporte = generadorReportesVentas.generarReporteVentasEmpleados();
-                        controladorPanelVerReporte.desplegarPanelVerReporte(reporte);
-                    }
-                    break;
-                    case "Proveedores": {
-                        VentanaReportes.obtenerVentanaReportes().getCampoCriterio().setEnabled(true);
-                        String criterio = VentanaReportes.obtenerVentanaReportes().getCampoCriterio().getText();
-                        Reporte reporte = generadorReportesVentas.generarReporteProveedor(criterio);
-                        controladorPanelVerReporte.obtenerControladorPanelVerReporte().desplegarPanelVerReporte(reporte);
-                    }
-                    break;
-                    case "Ventas": {
-                        Reporte reporte = generadorReportesVentas.generarReporteVentas();
-                        controladorPanelVerReporte.obtenerControladorPanelVerReporte().desplegarPanelVerReporte(reporte);
-                    }
-                    break;
-                    case "Articulos Vendidos": {
-                        Reporte reporte = generadorReportesVentas.generarReporteArticulosVendidos();
-                        controladorPanelVerReporte.obtenerControladorPanelVerReporte().desplegarPanelVerReporte(reporte);
-                    }
-                    break;
-                }
-
-            }
-        });
-        
-        ventanaReportes.setBotonGenerar(botonGenerar);
-
+    public ControladorPanelSeleccionarReporte getControladorPanelSeleccionarReporte() {
+        return controladorPanelSeleccionarReporte;
     }
-
+   
     public ControladorPanelVerReporte getControladorPanelVerReporte() {
         return controladorPanelVerReporte;
     }

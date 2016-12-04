@@ -50,14 +50,10 @@ public class ControladorVentanaPrincipal {
         ventanaPrincipal.setMenuItemVerInventario(botonVerInventario);
     }
 
-    public void agregarEventoBotonGenerarReporte() {
+   public void agregarEventoBotonGenerarReporte() {
         JMenuItem botonGenerarReporte = ventanaPrincipal.getMenuItemGenerarReporte();
         botonGenerarReporte.addActionListener((java.awt.event.ActionEvent evt) -> {
-            try {
                 inicializarPanelReportes();
-            } catch (SQLException ex) {
-                Logger.getLogger(ControladorVentanaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
-            }
         });
         ventanaPrincipal.setMenuItemGenerarReporte(botonGenerarReporte);
     }
@@ -136,9 +132,11 @@ public class ControladorVentanaPrincipal {
 
     }
 
-    private void inicializarPanelReportes() throws SQLException {
+     private void inicializarPanelReportes(){
         controladorVentanaReportes = new ControladorVentanaReportes();
-        controladorVentanaReportes.inicializarVentana();
+        controladorVentanaReportes.getControladorPanelSeleccionarReporte().desplegarPanelSeleccionarReporte();
+        controladorVentanaReportes.getControladorPanelSeleccionarReporte().agregarEventoComboBoxReporte();
+        controladorVentanaReportes.getControladorPanelSeleccionarReporte().agregarEventoBotonGenerar();
 
     }
 

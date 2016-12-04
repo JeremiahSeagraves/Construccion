@@ -24,10 +24,6 @@ public class Reporte {
         this.fechaCreacion = new Date();
     }
 
-  
-
-    
-    
     /**
      * @return the encabezado
      */
@@ -36,7 +32,6 @@ public class Reporte {
     }
 
     
-
     /**
      * @return the fechaCreacion
      */
@@ -53,6 +48,14 @@ public class Reporte {
         return tablaDatos;
     }
 
+    /**
+     * @param tablaDatos the tablaDatos to set
+     */
+    public void setTablaDatos(TablaReporte tablaDatos) {
+        this.tablaDatos = tablaDatos;
+    }
+
+    
     
     
     
