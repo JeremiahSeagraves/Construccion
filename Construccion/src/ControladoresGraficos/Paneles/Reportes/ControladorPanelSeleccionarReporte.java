@@ -63,7 +63,6 @@ public class ControladorPanelSeleccionarReporte {
     }
 
     public void agregarEventoComboBoxReporte() {
-        System.out.println("EventoComboBox");
         JComboBox comboBoxReporte = panelSeleccionarReporte.getComboBoxReporte();
         comboBoxReporte.addActionListener(new java.awt.event.ActionListener() {
             @Override
@@ -71,7 +70,6 @@ public class ControladorPanelSeleccionarReporte {
             int numeroItemSeleccionado = comboBoxReporte.getSelectedIndex();
                 System.out.println(numeroItemSeleccionado);
                 if (numeroItemSeleccionado==itemProveedor) {
-                    System.out.println("  selecionador ");
                     panelSeleccionarReporte.getCampoCriterio().setVisible(true);
                 }}
         });
