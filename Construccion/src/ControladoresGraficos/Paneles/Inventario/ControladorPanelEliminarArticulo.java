@@ -63,11 +63,13 @@ public class ControladorPanelEliminarArticulo {
         String claveArticulo = panelEliminarArticulo.getCampoTextoClave().getText();
         ControladorPanelVerInventario controladorPanelInventario = ControladorPanelVerInventario.obtenerControladorPanelInventario();
         try {
+            if(adminInventario.buscar(claveArticulo)!=null){
             adminInventario.eliminar(claveArticulo);
             controladorPanelInventario.actualizarTablaArticulos();
             JOptionPane.showMessageDialog(null, "Artículo eliminado exitosamente");
+            }
         } catch (SQLException | ClassNotFoundException ex) {
-            JOptionPane.showMessageDialog(null, "Hubo un error al actualizar al artículo");
+            JOptionPane.showMessageDialog(null, "Hubo un error al eliminar al artículo");
         }
     }
 

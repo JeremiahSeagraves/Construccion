@@ -179,7 +179,7 @@ public class ControladorPanelSeleccionarReporte {
         try {
             fechaNueva = (Date) formatoFecha.parse(fecha);
         } catch (ParseException ex) {
-            Logger.getLogger(GeneradorReportesVentas.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "Error al generar reporte, no ingresó fechas");
         }
         return fechaNueva;
     }

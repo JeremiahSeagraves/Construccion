@@ -13,8 +13,7 @@ import Modelo.GeneradorReportesVentas;
 import Modelo.Venta;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 /**
  *
  * @author rodrigopeniche
@@ -45,8 +44,11 @@ public class AdministradorVentas implements Administrador {
             }
         }
         if(!articuloEncontrado){
+            try{
             articulo.getDetalleArticulo().setCantidad(1);
             articulosEnCarrito.add(articulo);
+            }catch(NullPointerException e){
+            }
         }
     }
     
@@ -60,6 +62,7 @@ public class AdministradorVentas implements Administrador {
     
     public void realizarVenta( String claveCliente ) throws ClassNotFoundException, SQLException{
         Venta venta = new Venta(articulosEnCarrito);
+        
         
         double monto;
         double ganancia;
@@ -121,7 +124,7 @@ public class AdministradorVentas implements Administrador {
         try{
             accesoBDVentas.insertarVenta((Venta) registro);
         } catch (ClassNotFoundException | SQLException ex) {
-            Logger.getLogger(AdministradorVentas.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "Error al agregar venta");
         }
     
     }
@@ -148,7 +151,7 @@ public class AdministradorVentas implements Administrador {
         try {   
             ventas = accesoBDVentas.obtenerVentas();
         } catch (ClassNotFoundException | SQLException ex) {
-            Logger.getLogger(AdministradorVentas.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "Error al obtener datos de ventas");
         }
         
         return ventas;

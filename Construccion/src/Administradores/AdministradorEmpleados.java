@@ -9,8 +9,8 @@ import Modelo.Datos.AccesoBDEmpleados;
 import Modelo.Empleado;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
 
 /**
  *
@@ -31,7 +31,7 @@ public class AdministradorEmpleados implements Administrador {
         try{
             accesoBDEmpleados.insertarEmpleado((Empleado) registro);
         } catch (SQLException | ClassNotFoundException ex) {
-            Logger.getLogger(AdministradorEmpleados.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "Error al agregar el empleado");
         }
     }
 
@@ -40,7 +40,7 @@ public class AdministradorEmpleados implements Administrador {
         try{
             accesoBDEmpleados.eliminarEmpleado((String) registro);
         } catch (SQLException | ClassNotFoundException ex) {
-            Logger.getLogger(AdministradorEmpleados.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "Error al eliminar el empleado");
         }
     }
 
@@ -50,7 +50,7 @@ public class AdministradorEmpleados implements Administrador {
         try{
             empleado = accesoBDEmpleados.buscarEmpleado((String)registro);
         } catch (SQLException | ClassNotFoundException ex) {
-            Logger.getLogger(AdministradorEmpleados.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "Error al buscar el empleado");
         }
         
         return empleado;
@@ -61,7 +61,7 @@ public class AdministradorEmpleados implements Administrador {
         try{
             accesoBDEmpleados.actualizarProveedor((Empleado) registro);
         } catch (SQLException | ClassNotFoundException ex) {
-            Logger.getLogger(AdministradorEmpleados.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "Error al actualizar el empleado");
         }
     }
 
@@ -72,7 +72,7 @@ public class AdministradorEmpleados implements Administrador {
         try{
             empleados = accesoBDEmpleados.obtenerEmpleados();
         } catch (ClassNotFoundException | SQLException ex) {
-            Logger.getLogger(AdministradorEmpleados.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "Error al obtener datos de los empleados");
         }
         
         return empleados;

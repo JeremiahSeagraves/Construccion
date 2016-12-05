@@ -9,8 +9,7 @@ import Modelo.Datos.AccesoBDInventario;
 import Modelo.Articulo;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 
 /**
@@ -32,7 +31,7 @@ public class AdministradorInventario implements Administrador{
             accesoBDInventario.insertarArticulo(( Articulo )registro );
         } 
         catch ( SQLException | ClassNotFoundException ex ) {
-            Logger.getLogger( AdministradorInventario.class.getName( ) ).log( Level.SEVERE, null, ex );
+            JOptionPane.showMessageDialog(null, "Error al agregar el artículo");
         }
     }
 
@@ -42,7 +41,7 @@ public class AdministradorInventario implements Administrador{
             accesoBDInventario.eliminarArticulo(( String )registro );
         } 
         catch ( SQLException | ClassNotFoundException ex ) {
-            Logger.getLogger( AdministradorInventario.class.getName( ) ).log( Level.SEVERE, null, ex );
+            JOptionPane.showMessageDialog(null, "Error al eliminar el artículo");
         }
     }
 
@@ -54,7 +53,7 @@ public class AdministradorInventario implements Administrador{
             articulo = accesoBDInventario.buscarArticulo(( String )registro );
         } 
         catch ( SQLException | ClassNotFoundException ex ) {
-            Logger.getLogger( AdministradorInventario.class.getName( ) ).log(Level.SEVERE, null, ex );
+            JOptionPane.showMessageDialog(null, "Error al buscar el artículo");
         }
         
         return articulo; 
@@ -66,7 +65,7 @@ public class AdministradorInventario implements Administrador{
             accesoBDInventario.actualizarArticulo((Articulo)registro );
         } 
         catch (SQLException | ClassNotFoundException ex) {
-            Logger.getLogger( AdministradorInventario.class.getName( ) ).log(Level.SEVERE, null, ex );
+            JOptionPane.showMessageDialog(null, "Error al actualizar el empleado");
         }
     }
 
@@ -78,7 +77,7 @@ public class AdministradorInventario implements Administrador{
             inventario = accesoBDInventario.obtenerInventario();
         } 
         catch ( ClassNotFoundException | SQLException ex ) {
-            Logger.getLogger( AdministradorInventario.class.getName( ) ).log( Level.SEVERE, null, ex );
+            JOptionPane.showMessageDialog(null, "Error al obtener datos de los artículos");
         }
         
         return inventario;

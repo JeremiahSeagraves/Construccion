@@ -67,9 +67,11 @@ public class ControladorPanelEliminarProveedor {
 
         ControladorPanelVerProveedores controladorPanelVerProveedores = ControladorPanelVerProveedores.obtenerControladorPanelVerProveedores();
         try {
+            if(adminProveedores.buscar(claveProveedor)!=null){
             adminProveedores.eliminar(claveProveedor);
             controladorPanelVerProveedores.actualizarTablaProveedores();
             JOptionPane.showMessageDialog(null, "Proveedor eliminado exitosamente");
+            }
         } catch (SQLException | ClassNotFoundException ex) {
             JOptionPane.showMessageDialog(null, "Hubo un error al actualizar el proveedor");
             Logger.getLogger(ControladorVentanaInventario.class.getName()).log(Level.SEVERE, null, ex);

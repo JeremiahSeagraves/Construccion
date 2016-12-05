@@ -67,11 +67,12 @@ public class ControladorPanelActualizarProveedor {
         String nuevoTel = panelActualizarProveedor.getCampoTextoTel().getText();
         String nuevaDireccion = panelActualizarProveedor.getCampoTextoDireccion().getText();
 
-        Proveedor proveedor;
+        Proveedor proveedor=null;
         proveedor = new Proveedor(claveProveedor, nuevoNombre, nuevoTel, nuevaDireccion);
 
         AdministradorProveedores adminProveedores = new AdministradorProveedores();
 
+        
         try {
             adminProveedores.actualizar(proveedor);
             JOptionPane.showMessageDialog(null, "El proveedor ha sido actualizado exitosamente");

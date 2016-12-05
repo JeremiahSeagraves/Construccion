@@ -82,10 +82,14 @@ public class ControladorPanelBuscarArticulo {
         AdministradorInventario admin = new AdministradorInventario();
         Articulo articulo = admin.buscar(claveArticulo);
 
+        try{
         panelBuscarArticulo.setCampoTextoDescripcion(articulo.getDescripcion());
         panelBuscarArticulo.setCampoTextoCantidad(String.valueOf(articulo.getDetalleArticulo().getCantidad()));
         panelBuscarArticulo.setCampoTextoPrecioCompra(String.valueOf(articulo.getDetalleArticulo().getPrecioCompra().getPrecio()));
         panelBuscarArticulo.setCampoTextoPrecioVenta(String.valueOf(articulo.getDetalleArticulo().getPrecioVenta().getPrecio()));
+        }
+        catch(NullPointerException e){
+        }
     }
 
     private void configurarPanelBuscarArticulo() {

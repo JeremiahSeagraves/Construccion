@@ -111,11 +111,16 @@ public class AccesoBDVentas extends AccesoBD {
          ManejadorConexionBD.obtenerInstancia( ).conectarConBD( );
          conexionBD = ManejadorConexionBD.obtenerConexion( );
         
+
+         try{
          consultaBD = COMANDO_INSERT + COMANDO_INTO + TABLA_VENTAS + COMANDO_VALUES+ "(\""+ venta.getClave()+ "\","
                                                  + "\"" + venta.getEmpleado().getClave() + "\", "
                                                  + "\"" + venta.getMontoVenta()+ "\", "
                                                  + "\"" + venta.getGanancia() + "\", "
                                                  + "\"" + venta.getFecha() + "\")";
+         }catch(NullPointerException e){
+             throw new SQLException();
+         }
          System.out.println(consultaBD);
          sentenciaConsulta = conexionBD.createStatement( );
          sentenciaConsulta.executeUpdate( consultaBD );

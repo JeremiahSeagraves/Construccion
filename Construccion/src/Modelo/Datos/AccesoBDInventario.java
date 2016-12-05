@@ -133,6 +133,9 @@ public class AccesoBDInventario extends AccesoBD {
          ManejadorConexionBD.obtenerInstancia( ).conectarConBD( );
          conexionBD = ManejadorConexionBD.obtenerConexion( );
         
+         if(articuloModificado == null){
+             throw new SQLException();
+         }
          consultaBD = COMANDO_UPDATE + TABLA_ARTICULOS + COMANDO_SET + " " + CLAVE_PROVEEDOR + " = \""
                  + articuloModificado.getClaveProveedor( ) + "\", "
                  + DESCRIPCION + " = \"" + articuloModificado.getDescripcion( ) + "\" "

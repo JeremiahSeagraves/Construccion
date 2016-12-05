@@ -70,14 +70,22 @@ public class ControladorPanelActualizarArticulo {
         String nuevoPrecioCompra = panelActualizarArticulo.getCampoTextoPrecioCompra().getText();
         String nuevoPrecioVenta = panelActualizarArticulo.getCampoTextoPrecioVenta().getText();
 
-        Articulo articulo;
+        Articulo articulo=null;
+        try{
         articulo = new Articulo(claveArticulo, nuevaClaveProveedor, nuevaDescripcion,
                 new DetalleArticulo(Integer.parseInt(nuevaCantidad),
                         new Precio(Double.parseDouble(nuevoPrecioCompra)),
                         new Precio(Double.parseDouble(nuevoPrecioVenta))));
+        
+        }catch(NumberFormatException e){
+            JOptionPane.showMessageDialog(null, "Error al actualizar el artículo");
+        }
 
         AdministradorInventario admin = new AdministradorInventario();
         try {
+            if(articulo == null){
+                throw new HeadlessException();
+            }
             admin.actualizar(articulo);
             JOptionPane.showMessageDialog(null, "El artículo ha sido actualizado exitosamente");
         } catch (HeadlessException updateException) {

@@ -9,8 +9,7 @@ import Modelo.Datos.AccesoBDProveedores;
 import Modelo.Proveedor;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -30,7 +29,7 @@ public class AdministradorProveedores implements Administrador{
             accesoBDProveedores.insertarProveedor(( Proveedor )registro );
         } 
         catch ( SQLException | ClassNotFoundException ex ) {
-            Logger.getLogger( AdministradorInventario.class.getName( ) ).log(Level.SEVERE, null, ex );
+            JOptionPane.showMessageDialog(null, "Error al agregar el proveedor");
         }
     }
 
@@ -40,7 +39,7 @@ public class AdministradorProveedores implements Administrador{
             accesoBDProveedores.eliminarProveedor(( String )registro );
         } 
         catch ( SQLException | ClassNotFoundException ex ) {
-            Logger.getLogger( AdministradorInventario.class.getName( ) ).log( Level.SEVERE, null, ex );
+            JOptionPane.showMessageDialog(null, "Error al eliminar el proveedor");
         }
     }
 
@@ -52,7 +51,7 @@ public class AdministradorProveedores implements Administrador{
             proveedor = accesoBDProveedores.buscarProveedor(( String )registro );
         } 
         catch ( SQLException | ClassNotFoundException ex ) {
-            Logger.getLogger( AdministradorInventario.class.getName( ) ).log(Level.SEVERE, null, ex );
+            JOptionPane.showMessageDialog(null, "Error al buscar el proveedor");
         }
         
         return proveedor;
@@ -64,7 +63,7 @@ public class AdministradorProveedores implements Administrador{
             accesoBDProveedores.actualizarProveedor(( Proveedor )registro );
         } 
         catch ( SQLException | ClassNotFoundException ex ) {
-            Logger.getLogger( AdministradorInventario.class.getName( ) ).log( Level.SEVERE, null, ex );
+            JOptionPane.showMessageDialog(null, "Error al actualizar el proveedor");
         }
     }
 
@@ -76,7 +75,7 @@ public class AdministradorProveedores implements Administrador{
             proveedores = accesoBDProveedores.obtenerProveedores( );
         }
         catch ( ClassNotFoundException | SQLException ex ) {
-            Logger.getLogger( AdministradorInventario.class.getName( ) ).log( Level.SEVERE, null, ex );
+            JOptionPane.showMessageDialog(null, "Error al obtener datos de los proveedores.");
         }
         
         return proveedores;

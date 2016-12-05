@@ -69,9 +69,14 @@ public class ControladorPanelBuscarProveedor {
         AdministradorProveedores adminProveedores = new AdministradorProveedores();
         Proveedor proveedor = adminProveedores.buscar(claveProveedor);
 
+        try{
         panelBuscarProveedor.setCampoTextoNombre(proveedor.getNombre());
         panelBuscarProveedor.setCampoTextoTel(proveedor.getTelefono());
         panelBuscarProveedor.setCampoTextoDireccion(proveedor.getDireccion());
+        }
+        catch(NullPointerException e){
+            
+        }
     }
 
     public void agregarEventoBotonCancelarBusqueda() {

@@ -208,6 +208,7 @@ public class GeneradorReportesVentas {
     
     private void filtrarVentas(Date fechaInicial, Date fechaFinal) {
         ArrayList<Venta> ventasFiltradas = new ArrayList<>();
+        try{
         for(Venta venta : ventas){
            Date fechaVenta = cambiarStringADate(venta.getFecha());
            boolean estaDentroRangoInicial = fechaVenta.compareTo(fechaInicial)>=0;
@@ -215,6 +216,9 @@ public class GeneradorReportesVentas {
            if( estaDentroRangoInicial && estaDentroRangoFinal){
                ventasFiltradas.add(venta);
            }
+        }
+        }catch(NullPointerException e){
+            
         }
         this.ventas = ventasFiltradas;
     }
