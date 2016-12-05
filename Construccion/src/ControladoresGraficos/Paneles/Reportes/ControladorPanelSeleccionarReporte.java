@@ -107,7 +107,6 @@ public class ControladorPanelSeleccionarReporte {
         JComboBox comboBox = panelSeleccionarReporte.getComboBoxReporte();
         switch (comboBox.getSelectedItem().toString()) {
             case "Empleados": {
-                
                 Reporte reporte = administradorVentas.getGeneradorReportes().hacerReporteEmpleados(administradorEmpleados.obtenerDatos());
                 controladorPanelVerReporte.desplegarPanelVerReporte(reporte);
             }
@@ -135,7 +134,7 @@ public class ControladorPanelSeleccionarReporte {
 
     private String mostrarVentanaEntradaDatos(){
         String nombreProveedor = null;
-        nombreProveedor   = JOptionPane.showInputDialog("Ingresa el nombre del proveedor, para generar el reporte");
+        nombreProveedor = JOptionPane.showInputDialog("Ingresa el nombre del proveedor, para generar el reporte");
         return nombreProveedor;
     }
     public PanelSeleccionarReporte getPanelSeleccionarReporte() {

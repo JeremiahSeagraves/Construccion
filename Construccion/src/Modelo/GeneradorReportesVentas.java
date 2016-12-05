@@ -99,7 +99,8 @@ public class GeneradorReportesVentas {
         Reporte reporteArticulosVendidos = new Reporte("Articulos Vendidos ");
         TablaReporte tablaReporte = crearTablaReporteArticulosVendidos();
         llenarTablaReporteArticulosVendidos(tablaReporte);
-        agregarCampoAdicionalReporteAritculosVendidos(reporteArticulosVendidos);
+        agregarCampoAdicionalReporteArticulosVendidos(reporteArticulosVendidos);
+        reporteArticulosVendidos.setTablaDatos(tablaReporte);
         return reporteArticulosVendidos;
     }
 
@@ -124,7 +125,7 @@ public class GeneradorReportesVentas {
         }
     }
 
-    private void agregarCampoAdicionalReporteAritculosVendidos(Reporte reporte) {
+    private void agregarCampoAdicionalReporteArticulosVendidos(Reporte reporte) {
         double gananciaPeriodo = 0;
         for (Venta venta : ventas) {
             ArrayList<Articulo> articulos = venta.getArticulosVendidos();
@@ -144,6 +145,7 @@ public class GeneradorReportesVentas {
         Reporte reporteProveedor = new Reporte("Proveedor: " + proveedor.getNombre());
         TablaReporte tablaReporte = crearTablaReporteProveedor();
         llenarTablaReporteProveedor(tablaReporte, proveedor);
+        reporteProveedor.setTablaDatos(tablaReporte);
         return reporteProveedor;
     }
 

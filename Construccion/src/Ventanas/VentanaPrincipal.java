@@ -58,7 +58,7 @@ public class VentanaPrincipal extends JFrame {
         menuItemVerEmpleados = new javax.swing.JMenuItem();
         menuItemGenerarReporte = new javax.swing.JMenuItem();
 
-//        cargarImagenDeFondo();
+        cargarImagenDeFondo();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
