@@ -35,6 +35,8 @@ public class PanelVerReporte extends javax.swing.JPanel {
         tituloReporte = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaReporte = new javax.swing.JTable();
+        etiquetaGanancia = new javax.swing.JLabel();
+        campoGanancia = new javax.swing.JTextField();
 
         tablaReporte.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -49,19 +51,26 @@ public class PanelVerReporte extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(tablaReporte);
 
+        etiquetaGanancia.setText("Ganancia:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(162, 162, 162)
+                .addComponent(tituloReporte, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(182, 182, 182))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(286, 286, 286)
+                        .addComponent(etiquetaGanancia, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(campoGanancia))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 418, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(162, 162, 162)
-                        .addComponent(tituloReporte, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(157, 157, 157)))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 418, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(25, 25, 25))
         );
         layout.setVerticalGroup(
@@ -69,13 +78,19 @@ public class PanelVerReporte extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(23, 23, 23)
                 .addComponent(tituloReporte, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(42, 42, 42))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(etiquetaGanancia)
+                    .addComponent(campoGanancia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(14, 14, 14))
         );
     }// </editor-fold>//GEN-END:initComponents
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField campoGanancia;
+    private javax.swing.JLabel etiquetaGanancia;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tablaReporte;
     private javax.swing.JLabel tituloReporte;
@@ -118,4 +133,36 @@ public class PanelVerReporte extends javax.swing.JPanel {
     public void setContenidoTabla(javax.swing.table.DefaultTableModel contenidoTablaReporte) {
         tablaReporte.setModel(contenidoTablaReporte);
     }
+
+    /**
+     * @return the campoGanancia
+     */
+    public javax.swing.JTextField getCampoGanancia() {
+        return campoGanancia;
+    }
+
+    /**
+     * @param campoGanancia the campoGanancia to set
+     */
+    public void setCampoGanancia(javax.swing.JTextField campoGanancia) {
+        this.campoGanancia = campoGanancia;
+    }
+
+    /**
+     * @return the etiquetaGanancia
+     */
+    public javax.swing.JLabel getEtiquetaGanancia() {
+        return etiquetaGanancia;
+    }
+
+    /**
+     * @param etiquetaGanancia the etiquetaGanancia to set
+     */
+    public void setEtiquetaGanancia(javax.swing.JLabel etiquetaGanancia) {
+        this.etiquetaGanancia = etiquetaGanancia;
+    }
+
+   
+    
+    
 }

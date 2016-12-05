@@ -46,6 +46,7 @@ public class GeneradorReportesVentas {
         for (int i = 0; i < numeroEmpleados; i++) {
             int cantidadVenta = 0;
             int cantidadArticulos =0;
+            int gananciaPeriodo = 0;
             String nombreEmpleado = empleados.obtenerDatos().get(i).getNombre();
         
             for (Venta venta : ventas) {
@@ -53,12 +54,14 @@ public class GeneradorReportesVentas {
                 if ((venta.getEmpleado().getNombre()).equals(nombreEmpleado)) {
                     cantidadVenta++;
                     venta.getArticulosVendidos().get(i).getDetalleArticulo().getCantidad();
+                    
                 }
             }
             
             Object[] fila = {nombreEmpleado, cantidadVenta};
 
             tablaDatos.agregarFila(fila);
+            
         }
         reporteEmpleados.setTablaDatos(tablaDatos);
 
@@ -70,16 +73,22 @@ public class GeneradorReportesVentas {
         Reporte reporteVentas = new Reporte("Reporte Ventas");
 
         String[] encabezados = {"ClaveVenta", "MontoVenta", "Ganancia", "Fecha"};
-
         TablaReporte tablaDatos = new TablaReporte();
         tablaDatos.setEncabezados(encabezados);
         ArrayList<Object[]> filas = new ArrayList<Object[]>();
+        double gananciaPeriodo = 0;
         for (Venta venta : ventas) {
             Object[] fila = {venta.getClave(), venta.getMontoVenta(), venta.getGanancia(), venta.getFecha()};
-
+            gananciaPeriodo = gananciaPeriodo + venta.getGanancia();
             tablaDatos.agregarFila(fila);
         }
+        
         reporteVentas.setTablaDatos(tablaDatos);
+        
+        String[] camposAdicionales = new String[1];
+        camposAdicionales[0] =String.valueOf(gananciaPeriodo) ;
+        reporteVentas.setCamposAdicionales(camposAdicionales);
+        
         return reporteVentas;
     }
 
@@ -92,17 +101,26 @@ public class GeneradorReportesVentas {
         TablaReporte tablaDatos = new TablaReporte();
         tablaDatos.setEncabezados(encabezados);
         ArrayList<Object[]> filas = new ArrayList<Object[]>();
+        double gananciaPeriodo = 0;
         for (Venta venta : ventas) {
             ArrayList<Articulo> articulos = venta.getArticulosVendidos();
 
             for (Articulo articulo : articulos) {
-                Object[] fila = {articulo.getClaveArticulo(),articulo.getDetalleArticulo().getCantidad(),articulo.getDetalleArticulo().getPrecioVenta().getPrecio(), venta.getFecha()};
+                int cantidadArticulo = articulo.getDetalleArticulo().getCantidad();
+                double precioArticulo = articulo.getDetalleArticulo().getPrecioVenta().getPrecio();
+                Object[] fila = {articulo.getClaveArticulo(),cantidadArticulo,precioArticulo, venta.getFecha()};
                 tablaDatos.agregarFila(fila);
+                gananciaPeriodo = gananciaPeriodo + (cantidadArticulo * precioArticulo) ;
             }
 
         }
         
         reporteArticulosVendidos.setTablaDatos(tablaDatos);
+        
+        String[] camposAdicionales = new String[1];
+        camposAdicionales[0] =String.valueOf(gananciaPeriodo) ;
+        reporteArticulosVendidos.setCamposAdicionales(camposAdicionales);
+       
         return reporteArticulosVendidos;
     }
 

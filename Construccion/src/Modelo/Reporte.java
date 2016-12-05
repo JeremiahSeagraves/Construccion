@@ -17,6 +17,7 @@ public class Reporte {
     private String encabezado;
     private Date fechaCreacion;
     private TablaReporte tablaDatos;
+    private String[] camposAdicionales;
 
     public Reporte(String encabezado) {
         this.encabezado = encabezado;
@@ -53,6 +54,20 @@ public class Reporte {
      */
     public void setTablaDatos(TablaReporte tablaDatos) {
         this.tablaDatos = tablaDatos;
+    }
+
+    /**
+     * @return the camposAdicionales
+     */
+    public String[] getCamposAdicionales() {
+        return camposAdicionales;
+    }
+
+    /**
+     * @param camposAdicionales the camposAdicionales to set
+     */
+    public void setCamposAdicionales(String[] camposAdicionales) {
+        this.camposAdicionales = camposAdicionales;
     }
 
     

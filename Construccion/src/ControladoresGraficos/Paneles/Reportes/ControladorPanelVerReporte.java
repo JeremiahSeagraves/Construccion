@@ -39,6 +39,12 @@ public class ControladorPanelVerReporte {
          configurarPanelVerReporte();
          establecerTituloReporte(reporte.getEncabezado());
          llenarTablaReporte(reporte.getTablaDatos());
+         ocultarCampoGanancia();
+         ocultarEtiquetaGanancia();
+         if(reporte.getCamposAdicionales()!= null){
+             mostrarGanancia(reporte.getCamposAdicionales()[0]);
+         }
+        
         
     }
    
@@ -92,4 +98,28 @@ public class ControladorPanelVerReporte {
        modeloTabla.setRowCount(0);
        panelVerReporte.setContenidoTabla(modeloTabla);
     }
+   
+   private void mostrarGanancia(String ganancia){
+       panelVerReporte.getCampoGanancia().setText(ganancia);
+       mostrarEtiquetaGanancia();
+       mostrarCampoGanancia();
+   }
+   
+   private void ocultarCampoGanancia(){
+       panelVerReporte.getCampoGanancia().setVisible(false);
+   }
+   
+   private void ocultarEtiquetaGanancia(){
+       panelVerReporte.getEtiquetaGanancia().setVisible(false);
+   }
+   
+   private void mostrarCampoGanancia(){
+       panelVerReporte.getCampoGanancia().setVisible(true);
+       panelVerReporte.getCampoGanancia().setEnabled(true);
+   }
+   
+   private void mostrarEtiquetaGanancia(){
+       panelVerReporte.getEtiquetaGanancia().setVisible(true);
+       
+   }
 }

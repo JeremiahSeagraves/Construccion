@@ -48,6 +48,8 @@ public class TablaReporte {
    public ArrayList<Object> getFilasDatos(){
        return (ArrayList<Object>) filasDatos.clone();
    }
+
+    
     
     
 }
