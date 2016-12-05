@@ -115,7 +115,7 @@ public class ControladorPanelVerReporte {
    
    private void mostrarCampoGanancia(){
        panelVerReporte.getCampoGanancia().setVisible(true);
-       panelVerReporte.getCampoGanancia().setEnabled(true);
+       panelVerReporte.getCampoGanancia().setEditable(false);
    }
    
    private void mostrarEtiquetaGanancia(){
