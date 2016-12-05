@@ -70,9 +70,13 @@ public class ControladorPanelBuscarEmpleado {
         AdministradorEmpleados adminEmpleados = new AdministradorEmpleados();
         Empleado empleado = (Empleado) adminEmpleados.buscar(claveEmpleado);
 
+        try{
         panelBuscarEmpleado.setCampoTextoNombre(empleado.getNombre());
         panelBuscarEmpleado.setCampoTextoTel(empleado.getTelefono());
         panelBuscarEmpleado.setCampoTextoDireccion(empleado.getDireccion());
+        }catch(NullPointerException e){
+            
+        }
     }
 
     public void agregarEventoBotonCancelarBusqueda() {

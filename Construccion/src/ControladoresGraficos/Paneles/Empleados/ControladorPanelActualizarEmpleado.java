@@ -65,12 +65,15 @@ public class ControladorPanelActualizarEmpleado {
         String nuevoTel = panelActualizarEmpleado.getCampoTextoTel().getText();
         String nuevaDireccion = panelActualizarEmpleado.getCampoTextoDireccion().getText();
 
-        Empleado empleado;
+        Empleado empleado= null;
         empleado = new Empleado(claveEmpleado, nuevoNombre, nuevoTel, nuevaDireccion);
 
         AdministradorEmpleados adminEmpleados = new AdministradorEmpleados();
 
         try {
+            if(adminEmpleados.buscar(claveEmpleado) == null){
+                throw new HeadlessException();
+            }
             adminEmpleados.actualizar(empleado);
             JOptionPane.showMessageDialog(null, "El empleado ha sido actualizado exitosamente");
         } catch (HeadlessException updateException) {

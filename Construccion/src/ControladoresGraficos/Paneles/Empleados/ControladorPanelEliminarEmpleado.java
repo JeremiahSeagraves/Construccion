@@ -61,11 +61,14 @@ public class ControladorPanelEliminarEmpleado {
         AdministradorEmpleados adminEmpleados = new AdministradorEmpleados();
         String claveEmpleado = panelEliminarEmpleado.getCampoTextoClave().getText();
 
+        if(adminEmpleados.buscar(claveEmpleado)==null){
+            JOptionPane.showMessageDialog(null, "Error al eliminar el Empleado");
+        }else{
         adminEmpleados.eliminar(claveEmpleado);
         ControladorPanelVerEmpleados controladorPanelEmpleados = ControladorPanelVerEmpleados.obtenerControladorPanelVerEmpleados();
         controladorPanelEmpleados.actualizarTablaEmpleados();
 
-        JOptionPane.showMessageDialog(null, "Empleado eliminado exitosamente");
+        JOptionPane.showMessageDialog(null, "Empleado eliminado exitosamente");}
     }
 
     public void agregarEventoBotonCancelarEliminacion() {

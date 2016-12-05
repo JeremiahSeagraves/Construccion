@@ -76,13 +76,26 @@ public class ControladorPanelAgregarEmpleado {
 
         Empleado empleado = new Empleado(claveEmpleado, nombre, telefono, direccion);
 
+        
         try {
+            if(sonCamposLlenos()){
+                throw new HeadlessException();
+            }
             adminEmpleados.agregar(empleado);
             JOptionPane.showMessageDialog(null, "El empleado se ha agregado exitosamente");
             panelAgregarEmpleado.vaciarCamposAgregarEmpleado();
         } catch (HeadlessException createException) {
             JOptionPane.showMessageDialog(null, "Ha ocurrido un error al agregar el empleado");
         }
+    }
+    
+    private boolean sonCamposLlenos(){
+        if(panelAgregarEmpleado.getCampoTextoClave().getText()==""||
+           panelAgregarEmpleado.getCampoTextoDireccion().getText()==""||
+           panelAgregarEmpleado.getCampoTextoNombre().getText()==""||
+           panelAgregarEmpleado.getCampoTextoTel().getText()=="")
+            return false;
+        return true;
     }
 
     private void agregarEventoBotonCancelarAgregacion() {

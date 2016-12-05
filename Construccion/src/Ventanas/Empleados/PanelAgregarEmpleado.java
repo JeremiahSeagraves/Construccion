@@ -153,9 +153,7 @@ public class PanelAgregarEmpleado extends javax.swing.JPanel {
 
     public void setBotonCancelar(JButton botonCancelar) {
         this.botonCancelar = botonCancelar;
-    }
-
-    public JTextField getCampoTextoClave() {
+    }public JTextField getCampoTextoClave() {
         return campoTextoClave;
     }
 
