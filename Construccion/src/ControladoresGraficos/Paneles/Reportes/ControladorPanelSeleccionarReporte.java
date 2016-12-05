@@ -5,7 +5,10 @@
  */
 package ControladoresGraficos.Paneles.Reportes;
 
-import Modelo.GeneradorReportesVentas;
+import Administradores.AdministradorEmpleados;
+import Administradores.AdministradorProveedores;
+import Administradores.AdministradorVentas;
+import Modelo.Proveedor;
 import Modelo.Reporte;
 import Ventanas.reportes.PanelSeleccionarReporte;
 import Ventanas.reportes.VentanaReportes;
@@ -23,10 +26,15 @@ public class ControladorPanelSeleccionarReporte {
 
     private static PanelSeleccionarReporte panelSeleccionarReporte;
     private static ControladorPanelSeleccionarReporte controladorPanelSeleccionarReporte = null;
+    private final AdministradorEmpleados administradorEmpleados ;
+    private final AdministradorProveedores administradorProveedores ;
+    private final AdministradorVentas administradorVentas ;
     private final int itemProveedor = 1;
 
     private ControladorPanelSeleccionarReporte() {
-
+        administradorEmpleados = new AdministradorEmpleados();
+        administradorProveedores = new AdministradorProveedores();
+        administradorVentas = new AdministradorVentas();
     }
 
     public static ControladorPanelSeleccionarReporte obtenerControladorPanelSeleccionarReporte() {
@@ -95,28 +103,29 @@ public class ControladorPanelSeleccionarReporte {
     }
 
     private void accionarBotonGenerarReporte() {
-        GeneradorReportesVentas generadorReportesVentas = new GeneradorReportesVentas();
         ControladorPanelVerReporte controladorPanelVerReporte = ControladorPanelVerReporte.obtenerControladorPanelVerReporte();
         JComboBox comboBox = panelSeleccionarReporte.getComboBoxReporte();
         switch (comboBox.getSelectedItem().toString()) {
             case "Empleados": {
-                Reporte reporte = generadorReportesVentas.generarReporteVentasEmpleados();
+                
+                Reporte reporte = administradorVentas.getGeneradorReportes().hacerReporteEmpleados(administradorEmpleados.obtenerDatos());
                 controladorPanelVerReporte.desplegarPanelVerReporte(reporte);
             }
             break;
             case "Proveedor": {   
-                String criterio = mostrarVentanaEntradaDatos();
-                Reporte reporte = generadorReportesVentas.generarReporteProveedor(criterio);
+                String nombreProveedor = mostrarVentanaEntradaDatos();
+                Proveedor proveedor = buscarProveedor(nombreProveedor);
+                Reporte reporte = administradorVentas.getGeneradorReportes().hacerReporteProveedor(proveedor);
                 controladorPanelVerReporte.desplegarPanelVerReporte(reporte);
             }
             break;
             case "Ventas": {
-                Reporte reporte = generadorReportesVentas.generarReporteVentas();
+                Reporte reporte = administradorVentas.getGeneradorReportes().hacerReporteVentas();
                 controladorPanelVerReporte.desplegarPanelVerReporte(reporte);
             }
             break;
             case "Articulos Vendidos": {
-                Reporte reporte = generadorReportesVentas.generarReporteArticulosVendidos();
+                Reporte reporte = administradorVentas.getGeneradorReportes().hacerReporteArticulosVendidos();
                 controladorPanelVerReporte.desplegarPanelVerReporte(reporte);
             }
             break;
@@ -141,8 +150,13 @@ public class ControladorPanelSeleccionarReporte {
         panelSeleccionarReporte.setVisible(false);
     }
     
-    private void mostrarEtiquetaGanancia(){
-        
+    private Proveedor buscarProveedor(String nombreProveedor){
+        for(Proveedor proveedor : administradorProveedores.obtenerDatos()){
+            if(proveedor.getNombre().equals(nombreProveedor)){
+                return proveedor;
+            }
+        }
+        return null;
     }
   
 

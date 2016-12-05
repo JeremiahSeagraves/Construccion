@@ -9,6 +9,7 @@ import Modelo.Datos.AccesoBDVentas;
 import Modelo.Articulo;
 import Modelo.CarritoCompras;
 import Modelo.Empleado;
+import Modelo.GeneradorReportesVentas;
 import Modelo.Venta;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -23,12 +24,14 @@ public class AdministradorVentas implements Administrador {
     private final AccesoBDVentas accesoBDVentas;
     private final CarritoCompras carritoCompras;
     private final ArrayList<Articulo> articulosEnCarrito;
+    private final GeneradorReportesVentas generadorReportes;
  
     
     public AdministradorVentas( ){
         accesoBDVentas = new AccesoBDVentas( );
         carritoCompras = new CarritoCompras();
         articulosEnCarrito = carritoCompras.getArticulosEnCarrito();
+        generadorReportes = new GeneradorReportesVentas((ArrayList<Venta>) obtenerDatos());   
     }
     
     public void agregarArticuloACarrito(Articulo articulo){
@@ -154,6 +157,12 @@ public class AdministradorVentas implements Administrador {
     public CarritoCompras getCarritoCompras() {
         return carritoCompras;
     }
+
+    public GeneradorReportesVentas getGeneradorReportes() {
+        return generadorReportes;
+    }
+    
+    
 
     
 }
