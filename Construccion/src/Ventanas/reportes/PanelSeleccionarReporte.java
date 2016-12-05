@@ -29,6 +29,11 @@ public class PanelSeleccionarReporte extends javax.swing.JPanel {
 
         comboBoxReporte = new javax.swing.JComboBox();
         botonGenerarReporte = new javax.swing.JButton();
+        etiquetaTipoReporte = new javax.swing.JLabel();
+        etiquetaInicial = new javax.swing.JLabel();
+        etiquetaFechaFinal = new javax.swing.JLabel();
+        campoFechaInicial = new javax.swing.JTextField();
+        campoFechaFinal = new javax.swing.JTextField();
 
         comboBoxReporte.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Empleados", "Proveedor", "Articulos Vendidos", "Ventas" }));
         comboBoxReporte.addActionListener(new java.awt.event.ActionListener() {
@@ -39,25 +44,57 @@ public class PanelSeleccionarReporte extends javax.swing.JPanel {
 
         botonGenerarReporte.setText("GenerarReporte");
 
+        etiquetaTipoReporte.setText("Tipo Reporte");
+
+        etiquetaInicial.setText("Fecha Inicial (dd-mm-yyyy)");
+
+        etiquetaFechaFinal.setText("Fecha Final (dd-mm-yyyy)");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(29, 29, 29)
-                .addComponent(comboBoxReporte, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 124, Short.MAX_VALUE)
-                .addComponent(botonGenerarReporte)
-                .addGap(62, 62, 62))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(etiquetaTipoReporte, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(comboBoxReporte, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(etiquetaInicial))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 106, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(botonGenerarReporte)
+                                .addGap(62, 62, 62))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(campoFechaFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(etiquetaFechaFinal))
+                                .addGap(43, 43, 43))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(campoFechaInicial, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(19, 19, 19)
+                .addComponent(etiquetaTipoReporte)
+                .addGap(5, 5, 5)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(comboBoxReporte, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(botonGenerarReporte))
-                .addContainerGap(60, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(etiquetaInicial)
+                    .addComponent(etiquetaFechaFinal))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(campoFechaInicial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(campoFechaFinal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -68,7 +105,12 @@ public class PanelSeleccionarReporte extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonGenerarReporte;
+    private javax.swing.JTextField campoFechaFinal;
+    private javax.swing.JTextField campoFechaInicial;
     private javax.swing.JComboBox comboBoxReporte;
+    private javax.swing.JLabel etiquetaFechaFinal;
+    private javax.swing.JLabel etiquetaInicial;
+    private javax.swing.JLabel etiquetaTipoReporte;
     // End of variables declaration//GEN-END:variables
 
     /**
@@ -99,5 +141,37 @@ public class PanelSeleccionarReporte extends javax.swing.JPanel {
     public void setComboBoxReporte(javax.swing.JComboBox comboBoxReporte) {
         this.comboBoxReporte = comboBoxReporte;
     }
+
+    /**
+     * @return the campoFechaFinal
+     */
+    public javax.swing.JTextField getCampoFechaFinal() {
+        return campoFechaFinal;
+    }
+
+    /**
+     * @param campoFechaFinal the campoFechaFinal to set
+     */
+    public void setCampoFechaFinal(javax.swing.JTextField campoFechaFinal) {
+        this.campoFechaFinal = campoFechaFinal;
+    }
+
+    /**
+     * @return the campoFechaInicial
+     */
+    public javax.swing.JTextField getCampoFechaInicial() {
+        return campoFechaInicial;
+    }
+
+    /**
+     * @param campoFechaInicial the campoFechaInicial to set
+     */
+    public void setCampoFechaInicial(javax.swing.JTextField campoFechaInicial) {
+        this.campoFechaInicial = campoFechaInicial;
+    }
+
+  
+    
+    
    
 }

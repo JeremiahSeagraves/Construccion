@@ -14,44 +14,40 @@ import javax.swing.JFrame;
  * @author rodrigopeniche
  */
 public class VentanaReportes extends JFrame {
-    
-  
+
     private PanelVerReporte panelVerReporte;
     private javax.swing.JComboBox comboBoxReportes;
     private javax.swing.JLabel etiquetaVentanaReporte;
     private javax.swing.JTextField campoCriterio;
     private javax.swing.JButton botonGenerar;
     private static VentanaReportes ventanaReportes = null;
-    
-    private VentanaReportes(){
-       setTitle("Reportes");
-        
-        setDefaultCloseOperation( javax.swing.WindowConstants.DISPOSE_ON_CLOSE );
 
+    private VentanaReportes() {
+        setTitle("Reportes");
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 452, Short.MAX_VALUE)
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(0, 475, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 370, Short.MAX_VALUE)
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(0, 407, Short.MAX_VALUE)
         );
-
         pack();
 
     }
-       
-    
-     public static  VentanaReportes obtenerVentanaReportes (){
-        if(ventanaReportes == null){
+
+    public static VentanaReportes obtenerVentanaReportes() {
+        if (ventanaReportes == null) {
             ventanaReportes = new VentanaReportes();
         }
         return ventanaReportes;
     }
-    
-    public static Container obtenerContenedorVentanaReportes(){
+
+    public static Container obtenerContenedorVentanaReportes() {
         return ventanaReportes.getContentPane();
     }
 
@@ -96,5 +92,5 @@ public class VentanaReportes extends JFrame {
     public void setBotonGenerar(javax.swing.JButton botonGenerar) {
         this.botonGenerar = botonGenerar;
     }
-   
+
 }

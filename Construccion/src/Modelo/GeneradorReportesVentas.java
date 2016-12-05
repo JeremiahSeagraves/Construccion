@@ -7,7 +7,12 @@ package Modelo;
 
 
 import Administradores.AdministradorVentas;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -20,12 +25,12 @@ public class GeneradorReportesVentas {
     public GeneradorReportesVentas(ArrayList<Venta> ventas) {
         this.ventas = ventas;
     }
-
-
-    public Reporte hacerReporteEmpleados(ArrayList<Empleado> empleados) {
+    
+    public Reporte hacerReporteEmpleados(ArrayList<Empleado> empleados,Date fechaInicial, Date fechaFinal) {
 
         Reporte reporteEmpleados = new Reporte("Reporte Ventas Empleados");
         TablaReporte tablaReporte = crearTablaReporteEmpleados();
+        filtrarVentas(fechaInicial,fechaFinal);
         llenarTablaReporteEmpleados(tablaReporte, empleados);
         reporteEmpleados.setTablaDatos(tablaReporte);
         return reporteEmpleados;
@@ -56,9 +61,10 @@ public class GeneradorReportesVentas {
         }
     }
 
-    public Reporte hacerReporteVentas() {
+    public Reporte hacerReporteVentas(Date fechaInicial, Date fechaFinal) {
         Reporte reporteVentas = new Reporte("Reporte Ventas");
         TablaReporte tablaReporte = crearTablaReporteVentas();
+        filtrarVentas(fechaInicial,fechaFinal);
         llenarTablaReporteVentas(tablaReporte);
         reporteVentas.setTablaDatos(tablaReporte);
         agregarCampoAdicionalReporteVentas(reporteVentas);
@@ -78,8 +84,8 @@ public class GeneradorReportesVentas {
         ArrayList<Object[]> filas = new ArrayList<Object[]>();
         double gananciaPeriodo = 0;
         for (Venta venta : ventas) {
-            System.out.println(venta.getClave());
-            Object[] fila = {venta.getClave(), venta.getMontoVenta(), venta.getGanancia(), venta.getFecha()};
+           String fecha = formatearFecha(venta.getFecha());
+            Object[] fila = {venta.getClave(), venta.getMontoVenta(), venta.getGanancia(),fecha};
             gananciaPeriodo = gananciaPeriodo + venta.getGanancia();
             tabla.agregarFila(fila);
         }
@@ -95,9 +101,10 @@ public class GeneradorReportesVentas {
         reporteVentas.setCamposAdicionales(campoAdicional);
     }
 
-    public Reporte hacerReporteArticulosVendidos() {
+    public Reporte hacerReporteArticulosVendidos(Date fechaInicial, Date fechaFinal) {
         Reporte reporteArticulosVendidos = new Reporte("Articulos Vendidos ");
         TablaReporte tablaReporte = crearTablaReporteArticulosVendidos();
+        filtrarVentas(fechaInicial,fechaFinal);
         llenarTablaReporteArticulosVendidos(tablaReporte);
         agregarCampoAdicionalReporteArticulosVendidos(reporteArticulosVendidos);
         reporteArticulosVendidos.setTablaDatos(tablaReporte);
@@ -119,7 +126,8 @@ public class GeneradorReportesVentas {
             for (Articulo articulo : articulos) {
                 int cantidadArticulo = articulo.getDetalleArticulo().getCantidad();
                 double precioArticulo = articulo.getDetalleArticulo().getPrecioVenta().getPrecio();
-                Object[] fila = {venta.getClave(), articulo.getClaveArticulo(), cantidadArticulo, precioArticulo, venta.getFecha()};
+                String fecha = formatearFecha(venta.getFecha());
+                Object[] fila = {venta.getClave(), articulo.getClaveArticulo(), cantidadArticulo, precioArticulo, fecha};
                 tabla.agregarFila(fila);
             }
         }
@@ -141,9 +149,10 @@ public class GeneradorReportesVentas {
         reporte.setCamposAdicionales(campoAdicional);
     }
 
-    public Reporte hacerReporteProveedor(Proveedor proveedor) {
+    public Reporte hacerReporteProveedor(Proveedor proveedor,Date fechaInicial, Date fechaFinal) {
         Reporte reporteProveedor = new Reporte("Proveedor: " + proveedor.getNombre());
         TablaReporte tablaReporte = crearTablaReporteProveedor();
+        filtrarVentas(fechaInicial,fechaFinal);
         llenarTablaReporteProveedor(tablaReporte, proveedor);
         reporteProveedor.setTablaDatos(tablaReporte);
         return reporteProveedor;
@@ -164,7 +173,8 @@ public class GeneradorReportesVentas {
             for (Articulo articulo : articulos) {
 
                 if (articulo.getClaveProveedor().equals(proveedor.getClave())) {
-                    Object[] fila = {articulo.getClaveArticulo(), articulo.getDetalleArticulo().getCantidad(), articulo.getDetalleArticulo().getPrecioVenta().getPrecio(), venta.getFecha()};
+                    String fecha = formatearFecha(venta.getFecha());
+                    Object[] fila = {articulo.getClaveArticulo(), articulo.getDetalleArticulo().getCantidad(), articulo.getDetalleArticulo().getPrecioVenta().getPrecio(),fecha };
                     tabla.agregarFila(fila);
                 }
 
@@ -172,20 +182,46 @@ public class GeneradorReportesVentas {
 
         }
     }
+    
+    private String formatearFecha(String fecha){
+        Date fechaDate = cambiarStringADate(fecha);
+        String fechaString = cambiarDateAString(fechaDate);
+        return fechaString;
+    }
 
-//    private Date cambiarStringADate(String fecha) {
-//        SimpleDateFormat formatoFecha = new SimpleDateFormat("yyyyMMdd");
-//        Date fechaNueva = null;
-//        try {
-//            fechaNueva = (Date) formatoFecha.parse(fecha);
-//        } catch (ParseException ex) {
-//            Logger.getLogger(GeneradorReportesVentas.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//        return fechaNueva;
-//    }
-//
-//    private String cambiarDateAString(Date fecha) {
-//        SimpleDateFormat formatoFecha = new SimpleDateFormat("yyyyMMdd");
-//        return formatoFecha.format(fecha);
-//    }
+    private Date cambiarStringADate(String fecha) {
+        SimpleDateFormat formatoFecha = new SimpleDateFormat("yyyyMMdd");
+        Date fechaNueva = null;
+        try {
+            fechaNueva = (Date) formatoFecha.parse(fecha);
+        } catch (ParseException ex) {
+            Logger.getLogger(GeneradorReportesVentas.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return fechaNueva;
+    }
+
+    private String cambiarDateAString(Date fecha) {
+        SimpleDateFormat formatoFecha = new SimpleDateFormat("dd-MM-yyyy");
+        return formatoFecha.format(fecha);
+    }
+
+    
+    private void filtrarVentas(Date fechaInicial, Date fechaFinal) {
+        ArrayList<Venta> ventasFiltradas = new ArrayList<>();
+        for(Venta venta : ventas){
+           Date fechaVenta = cambiarStringADate(venta.getFecha());
+           boolean estaDentroRangoInicial = fechaVenta.compareTo(fechaInicial)>=0;
+            boolean estaDentroRangoFinal = fechaVenta.compareTo(fechaFinal)<=0;
+           if( estaDentroRangoInicial && estaDentroRangoFinal){
+               ventasFiltradas.add(venta);
+           }
+        }
+        this.ventas = ventasFiltradas;
+    }
+
+    public void setVentas(ArrayList<Venta> ventas) {
+        this.ventas = ventas;
+    }
+    
+    
 }

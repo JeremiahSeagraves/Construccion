@@ -159,6 +159,7 @@ public class AdministradorVentas implements Administrador {
     }
 
     public GeneradorReportesVentas getGeneradorReportes() {
+        generadorReportes.setVentas((ArrayList<Venta>) obtenerDatos());
         return generadorReportes;
     }
     

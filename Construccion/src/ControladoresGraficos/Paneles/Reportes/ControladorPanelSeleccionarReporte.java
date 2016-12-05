@@ -8,12 +8,20 @@ package ControladoresGraficos.Paneles.Reportes;
 import Administradores.AdministradorEmpleados;
 import Administradores.AdministradorProveedores;
 import Administradores.AdministradorVentas;
+import Modelo.GeneradorReportesVentas;
 import Modelo.Proveedor;
 import Modelo.Reporte;
 import Ventanas.reportes.PanelSeleccionarReporte;
 import Ventanas.reportes.VentanaReportes;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.AdjustmentEvent;
+import java.awt.event.AdjustmentListener;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
@@ -103,28 +111,34 @@ public class ControladorPanelSeleccionarReporte {
     }
 
     private void accionarBotonGenerarReporte() {
+        
+        
+        Date fechaInicial = convertirADate(panelSeleccionarReporte.getCampoFechaInicial().getText());
+        Date fechaFinal = convertirADate(panelSeleccionarReporte.getCampoFechaFinal().getText());
+        
         ControladorPanelVerReporte controladorPanelVerReporte = ControladorPanelVerReporte.obtenerControladorPanelVerReporte();
         JComboBox comboBox = panelSeleccionarReporte.getComboBoxReporte();
         switch (comboBox.getSelectedItem().toString()) {
             case "Empleados": {
-                Reporte reporte = administradorVentas.getGeneradorReportes().hacerReporteEmpleados(administradorEmpleados.obtenerDatos());
+                
+                Reporte reporte = administradorVentas.getGeneradorReportes().hacerReporteEmpleados(administradorEmpleados.obtenerDatos(),fechaInicial, fechaFinal);
                 controladorPanelVerReporte.desplegarPanelVerReporte(reporte);
             }
             break;
             case "Proveedor": {   
                 String nombreProveedor = mostrarVentanaEntradaDatos();
                 Proveedor proveedor = buscarProveedor(nombreProveedor);
-                Reporte reporte = administradorVentas.getGeneradorReportes().hacerReporteProveedor(proveedor);
+                Reporte reporte = administradorVentas.getGeneradorReportes().hacerReporteProveedor(proveedor,fechaInicial, fechaFinal);
                 controladorPanelVerReporte.desplegarPanelVerReporte(reporte);
             }
             break;
             case "Ventas": {
-                Reporte reporte = administradorVentas.getGeneradorReportes().hacerReporteVentas();
+                Reporte reporte = administradorVentas.getGeneradorReportes().hacerReporteVentas(fechaInicial, fechaFinal);
                 controladorPanelVerReporte.desplegarPanelVerReporte(reporte);
             }
             break;
             case "Articulos Vendidos": {
-                Reporte reporte = administradorVentas.getGeneradorReportes().hacerReporteArticulosVendidos();
+                Reporte reporte = administradorVentas.getGeneradorReportes().hacerReporteArticulosVendidos(fechaInicial, fechaFinal);
                 controladorPanelVerReporte.desplegarPanelVerReporte(reporte);
             }
             break;
@@ -143,6 +157,7 @@ public class ControladorPanelSeleccionarReporte {
 
     private void mostrarPanelSeleccionarReporte() {
         panelSeleccionarReporte.setVisible(true);
+      
     }
 
     private void ocultarPanelSeleccionarReporte() {
@@ -156,6 +171,17 @@ public class ControladorPanelSeleccionarReporte {
             }
         }
         return null;
+    }
+
+    private Date convertirADate(String fecha) {
+        SimpleDateFormat formatoFecha = new SimpleDateFormat("dd-MM-yyyy");
+        Date fechaNueva = null;
+        try {
+            fechaNueva = (Date) formatoFecha.parse(fecha);
+        } catch (ParseException ex) {
+            Logger.getLogger(GeneradorReportesVentas.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return fechaNueva;
     }
   
 

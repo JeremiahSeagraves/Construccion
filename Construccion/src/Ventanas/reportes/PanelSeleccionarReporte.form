@@ -18,22 +18,59 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
-              <Component id="comboBoxReporte" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="124" max="32767" attributes="0"/>
-              <Component id="botonGenerarReporte" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Component id="etiquetaTipoReporte" min="-2" pref="104" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="comboBoxReporte" min="-2" max="-2" attributes="0"/>
+                          <Component id="etiquetaInicial" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace pref="106" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="botonGenerarReporte" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="campoFechaFinal" min="-2" pref="103" max="-2" attributes="0"/>
+                                  <Component id="etiquetaFechaFinal" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="campoFechaInicial" min="-2" pref="104" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
+          <Group type="102" attributes="0">
+              <Component id="etiquetaTipoReporte" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="comboBoxReporte" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="botonGenerarReporte" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="60" max="32767" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="etiquetaInicial" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="etiquetaFechaFinal" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="campoFechaInicial" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="campoFechaFinal" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="26" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -58,6 +95,25 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="GenerarReporte"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="etiquetaTipoReporte">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Tipo Reporte"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="etiquetaInicial">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Fecha Inicial (dd-mm-yyyy)"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="etiquetaFechaFinal">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Fecha Final (dd-mm-yyyy)"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="campoFechaInicial">
+    </Component>
+    <Component class="javax.swing.JTextField" name="campoFechaFinal">
     </Component>
   </SubComponents>
 </Form>
