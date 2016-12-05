@@ -19,17 +19,17 @@ import java.util.logging.Logger;
  */
 public class AdministradorInventario implements Administrador{
     
-    private final AccesoBDInventario accesoBDArticulos;
+    private final AccesoBDInventario accesoBDInventario;
     
     
     public AdministradorInventario( ){
-      accesoBDArticulos = new AccesoBDInventario();
+      accesoBDInventario = new AccesoBDInventario();
     }
 
     @Override
     public void agregar( Object registro ) {
         try {
-            accesoBDArticulos.insertarArticulo(( Articulo )registro );
+            accesoBDInventario.insertarArticulo(( Articulo )registro );
         } 
         catch ( SQLException | ClassNotFoundException ex ) {
             Logger.getLogger( AdministradorInventario.class.getName( ) ).log( Level.SEVERE, null, ex );
@@ -39,7 +39,7 @@ public class AdministradorInventario implements Administrador{
     @Override
     public void eliminar( Object registro ) {
         try {
-            accesoBDArticulos.eliminarArticulo(( String )registro );
+            accesoBDInventario.eliminarArticulo(( String )registro );
         } 
         catch ( SQLException | ClassNotFoundException ex ) {
             Logger.getLogger( AdministradorInventario.class.getName( ) ).log( Level.SEVERE, null, ex );
@@ -51,7 +51,7 @@ public class AdministradorInventario implements Administrador{
         Articulo articulo = null;
         
         try {
-            articulo = accesoBDArticulos.buscarArticulo(( String )registro );
+            articulo = accesoBDInventario.buscarArticulo(( String )registro );
         } 
         catch ( SQLException | ClassNotFoundException ex ) {
             Logger.getLogger( AdministradorInventario.class.getName( ) ).log(Level.SEVERE, null, ex );
@@ -63,7 +63,7 @@ public class AdministradorInventario implements Administrador{
     @Override
     public void actualizar( Object registro ) {
         try {
-            accesoBDArticulos.actualizarArticulo((Articulo)registro );
+            accesoBDInventario.actualizarArticulo((Articulo)registro );
         } 
         catch (SQLException | ClassNotFoundException ex) {
             Logger.getLogger( AdministradorInventario.class.getName( ) ).log(Level.SEVERE, null, ex );
@@ -75,13 +75,24 @@ public class AdministradorInventario implements Administrador{
         ArrayList<Articulo> inventario=null;
         
         try {
-            inventario = accesoBDArticulos.obtenerInventario();
+            inventario = accesoBDInventario.obtenerInventario();
         } 
         catch ( ClassNotFoundException | SQLException ex ) {
             Logger.getLogger( AdministradorInventario.class.getName( ) ).log( Level.SEVERE, null, ex );
         }
         
         return inventario;
+    }
+    
+    public void actualizarCantidadArticulos(ArrayList<Articulo> articulosVendidos) throws SQLException, ClassNotFoundException{
+        Articulo articuloVendido;
+        Articulo articuloEnInventario;
+
+        for(int i = 0; i<articulosVendidos.size(); i++){
+            articuloVendido = articulosVendidos.get(i);
+            articuloEnInventario = accesoBDInventario.buscarArticulo(articulosVendidos.get(i).getClaveArticulo());
+            accesoBDInventario.decrementarCantidadArticulos(articuloVendido, articuloEnInventario);
+        }
     }
 
     

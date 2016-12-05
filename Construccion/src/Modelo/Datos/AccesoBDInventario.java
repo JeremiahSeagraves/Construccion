@@ -154,4 +154,27 @@ public class AccesoBDInventario extends AccesoBD {
        
     }
 
+    public void decrementarCantidadArticulos(Articulo articuloVendido, Articulo articuloEnInventario) throws ClassNotFoundException, SQLException {
+        ManejadorConexionBD.obtenerInstancia( ).conectarConBD( );
+        conexionBD = ManejadorConexionBD.obtenerConexion( );
+        
+        int cantidadArticuloVendido  = articuloVendido.getDetalleArticulo().getCantidad();
+        int cantidadArticuloEnInventario = articuloEnInventario.getDetalleArticulo().getCantidad();
+        int nuevaCantidad = cantidadArticuloEnInventario - cantidadArticuloVendido;
+        
+        consultaBD = COMANDO_UPDATE + TABLA_DETALLES_ARTICULOS + COMANDO_SET + " "
+                + CANTIDAD + " = " + nuevaCantidad + " " 
+                + COMANDO_WHERE + " " + CLAVE + " = \"" + articuloEnInventario.getClaveArticulo() + "\""; 
+        
+        sentenciaConsulta = conexionBD.createStatement( );
+        sentenciaConsulta.executeUpdate( consultaBD );
+         
+         ManejadorConexionBD.obtenerInstancia( ).desconectarConBD( );
+         
+        System.out.println( consultaBD = COMANDO_UPDATE + TABLA_DETALLES_ARTICULOS + COMANDO_SET + " "
+                + CANTIDAD + " = " + nuevaCantidad + " " 
+                + COMANDO_WHERE + " " + CLAVE + " = \"" + articuloEnInventario.getClaveArticulo() + "\"");
+        
+    }
+
 }
