@@ -48,7 +48,7 @@ public class AccesoBDVentas extends AccesoBD {
 
          AdministradorEmpleados adminEmpleado = new AdministradorEmpleados();
 
-         String claveVenta;
+         int claveVenta;
          double monto;
          double ganancia;
          String fecha;
@@ -56,7 +56,7 @@ public class AccesoBDVentas extends AccesoBD {
          Empleado empleado;
          
          while ( resultadoConsultaVentas.next()) {
-            claveVenta = resultadoConsultaVentas.getString(CLAVE_VENTA);
+            claveVenta = resultadoConsultaVentas.getInt(CLAVE_VENTA);
             monto  = resultadoConsultaVentas.getDouble(MONTO);
             ganancia = resultadoConsultaVentas.getDouble(GANANCIA);
             fecha = resultadoConsultaVentas.getString(FECHA);
@@ -64,6 +64,7 @@ public class AccesoBDVentas extends AccesoBD {
             empleado = (Empleado) adminEmpleado.buscar(claveEmpleado);
             
             venta = new Venta(obtenerDetallesVentas(claveVenta));
+            venta.setClave(claveVenta);
             venta.setMonto(monto);
             venta.setGanancia(ganancia);
             venta.setFecha(fecha);
@@ -77,7 +78,7 @@ public class AccesoBDVentas extends AccesoBD {
          return ventas;
     }
     
-    public ArrayList<Articulo> obtenerDetallesVentas(String claveVenta) throws ClassNotFoundException, SQLException{
+    public ArrayList<Articulo> obtenerDetallesVentas(int claveVenta) throws ClassNotFoundException, SQLException{
         ManejadorConexionBD.obtenerInstancia( ).conectarConBD( );
         conexionBD = ManejadorConexionBD.obtenerConexion( );
         ArrayList<Articulo> articulosEnVenta = new ArrayList<>();

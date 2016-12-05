@@ -140,6 +140,10 @@ public class ControladorPanelSeleccionarReporte {
     private void ocultarPanelSeleccionarReporte() {
         panelSeleccionarReporte.setVisible(false);
     }
+    
+    private void mostrarEtiquetaGanancia(){
+        
+    }
   
 
 }

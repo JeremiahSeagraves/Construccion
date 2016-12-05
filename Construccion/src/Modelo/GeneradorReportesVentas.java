@@ -74,13 +74,18 @@ public class GeneradorReportesVentas {
         TablaReporte tablaDatos = new TablaReporte();
         tablaDatos.setEncabezados(encabezados);
         ArrayList<Object[]> filas = new ArrayList<Object[]>();
+        double gananciaPeriodo = 0;        
         for (Venta venta : ventas) {
             System.out.println(venta.getClave());
             Object[] fila = {venta.getClave(), venta.getMontoVenta(), venta.getGanancia(), venta.getFecha()};
-
+            gananciaPeriodo = gananciaPeriodo + venta.getGanancia();
             tablaDatos.agregarFila(fila);
         }
         reporteVentas.setTablaDatos(tablaDatos);
+        
+        String[] campoAdicional = new String[1];
+        campoAdicional[0] =String.valueOf(gananciaPeriodo);
+        reporteVentas.setCamposAdicionales(campoAdicional);
         return reporteVentas;
     }
 
@@ -89,22 +94,30 @@ public class GeneradorReportesVentas {
         
         Reporte reporteArticulosVendidos = new Reporte("Articulos Vendidos ");
 
-        String[] encabezados = {"ClaveArticulo", "Cantidad", "Precio", "Fecha"};
+        String[] encabezados = {"ClaveVenta","ClaveArticulo", "Cantidad", "Precio", "Fecha"};
 
         TablaReporte tablaDatos = new TablaReporte();
         tablaDatos.setEncabezados(encabezados);
         ArrayList<Object[]> filas = new ArrayList<Object[]>();
+        
+        double gananciaPeriodo = 0;
         for (Venta venta : ventas) {
             ArrayList<Articulo> articulos = venta.getArticulosVendidos();
-            System.out.println("Tamano lista Articulos Vendidos"+ articulos.size());
             for (Articulo articulo : articulos) {
-                Object[] fila = {articulo.getClaveArticulo(),articulo.getDetalleArticulo().getCantidad(),articulo.getDetalleArticulo().getPrecioVenta().getPrecio(), venta.getFecha()};
+                int cantidadArticulo = articulo.getDetalleArticulo().getCantidad();
+                double precioArticulo = articulo.getDetalleArticulo().getPrecioVenta().getPrecio();
+                Object[] fila = {venta.getClave(),articulo.getClaveArticulo(),cantidadArticulo,precioArticulo, venta.getFecha()};
                 tablaDatos.agregarFila(fila);
+                gananciaPeriodo = gananciaPeriodo + (cantidadArticulo*precioArticulo);
             }
 
         }
         
         reporteArticulosVendidos.setTablaDatos(tablaDatos);
+        
+        String[] campoAdicional = new String[1];
+        campoAdicional[0] =String.valueOf(gananciaPeriodo);
+        reporteArticulosVendidos.setCamposAdicionales(campoAdicional);
         return reporteArticulosVendidos;
     }
 
