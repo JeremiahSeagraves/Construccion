@@ -94,6 +94,23 @@ public class AdministradorInventario implements Administrador{
             accesoBDInventario.decrementarCantidadArticulos(articuloVendido, articuloEnInventario);
         }
     }
+    
+     public boolean validarExistenciaEnInventario(ArrayList<Articulo> articulosVendidos) throws SQLException, ClassNotFoundException {
+        boolean existenciaTodosLosArticulos = true;
+        Articulo articulo;
+        int cantidadActualArticulo;
+        
+        for(int i = 0; i< articulosVendidos.size(); i++){
+            articulo = accesoBDInventario.buscarArticulo(articulosVendidos.get(i).getClaveArticulo());
+            cantidadActualArticulo = articulo.getDetalleArticulo().getCantidad();
+            
+            if(cantidadActualArticulo == 0){
+                existenciaTodosLosArticulos = false;
+            }
+        }
+        
+        return existenciaTodosLosArticulos;
+    }
 
     
 }

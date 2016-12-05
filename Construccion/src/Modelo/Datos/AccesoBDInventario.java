@@ -169,11 +169,7 @@ public class AccesoBDInventario extends AccesoBD {
         sentenciaConsulta = conexionBD.createStatement( );
         sentenciaConsulta.executeUpdate( consultaBD );
          
-         ManejadorConexionBD.obtenerInstancia( ).desconectarConBD( );
-         
-        System.out.println( consultaBD = COMANDO_UPDATE + TABLA_DETALLES_ARTICULOS + COMANDO_SET + " "
-                + CANTIDAD + " = " + nuevaCantidad + " " 
-                + COMANDO_WHERE + " " + CLAVE + " = \"" + articuloEnInventario.getClaveArticulo() + "\"");
+         ManejadorConexionBD.obtenerInstancia( ).desconectarConBD( );       
         
     }
 
