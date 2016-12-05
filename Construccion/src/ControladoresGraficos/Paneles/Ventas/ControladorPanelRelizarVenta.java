@@ -28,10 +28,12 @@ public class ControladorPanelRelizarVenta {
     private static PanelRealizarVenta panelRealizarVenta = null;
         private final CarritoCompras carritoCompras;
         private final AdministradorVentas adminVentas;
+        private final AdministradorInventario adminInventario;
     
     private ControladorPanelRelizarVenta(){
         adminVentas = new AdministradorVentas();
         carritoCompras = adminVentas.getCarritoCompras();
+        adminInventario = new AdministradorInventario();
         
     }
     
@@ -151,24 +153,30 @@ public class ControladorPanelRelizarVenta {
     }
     
     
-    private void accionarBotonEventoRealizarVenta(){
+    private void accionarBotonEventoRealizarVenta() {
         String claveEmpleado;
         String montoVenta = String.valueOf(adminVentas.calcularMontoVenta());
-        
+        ArrayList<Articulo> articulosVendidos = carritoCompras.getArticulosEnCarrito();
+
         JOptionPane.showMessageDialog(null, "Monto total de la venta: $" + montoVenta);
         claveEmpleado = JOptionPane.showInputDialog("Ingrese la clave del empleado");
         try {
-            adminVentas.realizarVenta( claveEmpleado );
-            JOptionPane.showMessageDialog(null, "Venta exitosa");
-            borrarContenidoTablaCarrito();
+            if (adminInventario.validarExistenciaEnInventario(articulosVendidos)) {
+                adminVentas.realizarVenta(claveEmpleado);
+                adminInventario.actualizarCantidadArticulos(articulosVendidos);
+                
+                JOptionPane.showMessageDialog(null, "Venta exitosa");
+                borrarContenidoTablaCarrito();
+            } else {
+                JOptionPane.showMessageDialog(null, "Alguno de los artículos está agotado");
+            }
+
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(ControladorVentanaVentas.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
             Logger.getLogger(ControladorVentanaVentas.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        
-        
+
     }
     
     public void desplegarPanelRealizarVenta(){
