@@ -4,13 +4,16 @@
  * and open the template in the editor.
  */
 package ControladoresGraficos.Paneles.Reportes;
+
 import Modelo.GeneradorReportesVentas;
 import Modelo.Reporte;
 import Ventanas.reportes.PanelSeleccionarReporte;
 import Ventanas.reportes.VentanaReportes;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -54,27 +57,29 @@ public class ControladorPanelSeleccionarReporte {
         );
     }
 
-   
-
     public void desplegarPanelSeleccionarReporte() {
         configurarPanelSeleccionarReporte();
-        panelSeleccionarReporte.getCampoCriterio().setVisible(false);
         panelSeleccionarReporte.getBotonGenerarReporte().setVisible(true);
     }
 
-    public void agregarEventoComboBoxReporte() {
-        JComboBox comboBoxReporte = panelSeleccionarReporte.getComboBoxReporte();
-        comboBoxReporte.addActionListener(new java.awt.event.ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-            int numeroItemSeleccionado = comboBoxReporte.getSelectedIndex();
-                System.out.println(numeroItemSeleccionado);
-                if (numeroItemSeleccionado==itemProveedor) {
-                    panelSeleccionarReporte.getCampoCriterio().setVisible(true);
-                }}
-        });
-        panelSeleccionarReporte.setComboBoxReporte(comboBoxReporte);
-    }
+//    public void agregarEventoComboBoxReporte() {
+//        JComboBox comboBoxReporte = panelSeleccionarReporte.getComboBoxReporte();
+//
+//        comboBoxReporte.addActionListener(new ActionListener() {
+//
+//            @Override
+//            public void actionPerformed(ActionEvent e) {
+//                int numeroItemSeleccionado = comboBoxReporte.getSelectedIndex();
+//                if (numeroItemSeleccionado == itemProveedor) {
+//                    mostrarCampoCriterio();
+//                    return;
+//                } else {
+//                    ocultarCampoCriterio();
+//                }
+//            }
+//        });
+//        panelSeleccionarReporte.setComboBoxReporte(comboBoxReporte);
+//    }
 
     public void agregarEventoBotonGenerar() {
         JButton botonGenerar = panelSeleccionarReporte.getBotonGenerarReporte();
@@ -83,6 +88,7 @@ public class ControladorPanelSeleccionarReporte {
             @Override
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 accionarBotonGenerarReporte();
+                
             }
         });
         panelSeleccionarReporte.setBotonGenerarReporte(botonGenerar);
@@ -98,8 +104,8 @@ public class ControladorPanelSeleccionarReporte {
                 controladorPanelVerReporte.desplegarPanelVerReporte(reporte);
             }
             break;
-            case "Proveedores": {
-                String criterio = VentanaReportes.obtenerVentanaReportes().getCampoCriterio().getText();
+            case "Proveedor": {   
+                String criterio = mostrarVentanaEntradaDatos();
                 Reporte reporte = generadorReportesVentas.generarReporteProveedor(criterio);
                 controladorPanelVerReporte.desplegarPanelVerReporte(reporte);
             }
@@ -115,20 +121,25 @@ public class ControladorPanelSeleccionarReporte {
             }
             break;
         }
-        System.out.println(comboBox.getSelectedItem().toString());
 
     }
-    
+
+    private String mostrarVentanaEntradaDatos(){
+        String nombreProveedor = null;
+        nombreProveedor   = JOptionPane.showInputDialog("Ingresa el nombre del proveedor, para generar el reporte");
+        return nombreProveedor;
+    }
     public PanelSeleccionarReporte getPanelSeleccionarReporte() {
         return panelSeleccionarReporte;
     }
-    
+
     private void mostrarPanelSeleccionarReporte() {
         panelSeleccionarReporte.setVisible(true);
     }
-    
-     private void ocultarPanelSeleccionarReporte() {
+
+    private void ocultarPanelSeleccionarReporte() {
         panelSeleccionarReporte.setVisible(false);
     }
-    
+  
+
 }

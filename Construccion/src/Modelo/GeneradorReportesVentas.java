@@ -6,6 +6,7 @@
 package Modelo;
 
 import Administradores.AdministradorEmpleados;
+import Administradores.AdministradorProveedores;
 import Administradores.AdministradorVentas;
 import java.util.ArrayList;
 //import java.util.Date;
@@ -38,30 +39,26 @@ public class GeneradorReportesVentas {
         System.out.println(ventas.size());
 //        String fechaInicialString = cambiarDate();
         Reporte reporteEmpleados = new Reporte("Reporte Ventas Empleados");
-        String[] encabezados = {"Nombre", " Numero de ventas"};
+        String[] encabezados = {"Nombre", "Cantidad"};
 
         TablaReporte tablaDatos = new TablaReporte();
         tablaDatos.setEncabezados(encabezados);
         ArrayList<Object[]> filas = new ArrayList<Object[]>();
         for (int i = 0; i < numeroEmpleados; i++) {
             int cantidadVenta = 0;
-            int cantidadArticulos =0;
-            int gananciaPeriodo = 0;
             String nombreEmpleado = empleados.obtenerDatos().get(i).getNombre();
         
             for (Venta venta : ventas) {
                
                 if ((venta.getEmpleado().getNombre()).equals(nombreEmpleado)) {
                     cantidadVenta++;
-                    venta.getArticulosVendidos().get(i).getDetalleArticulo().getCantidad();
-                    
+
                 }
             }
             
             Object[] fila = {nombreEmpleado, cantidadVenta};
 
             tablaDatos.agregarFila(fila);
-            
         }
         reporteEmpleados.setTablaDatos(tablaDatos);
 
@@ -73,27 +70,23 @@ public class GeneradorReportesVentas {
         Reporte reporteVentas = new Reporte("Reporte Ventas");
 
         String[] encabezados = {"ClaveVenta", "MontoVenta", "Ganancia", "Fecha"};
+
         TablaReporte tablaDatos = new TablaReporte();
         tablaDatos.setEncabezados(encabezados);
         ArrayList<Object[]> filas = new ArrayList<Object[]>();
-        double gananciaPeriodo = 0;
         for (Venta venta : ventas) {
+            System.out.println(venta.getClave());
             Object[] fila = {venta.getClave(), venta.getMontoVenta(), venta.getGanancia(), venta.getFecha()};
-            gananciaPeriodo = gananciaPeriodo + venta.getGanancia();
+
             tablaDatos.agregarFila(fila);
         }
-        
         reporteVentas.setTablaDatos(tablaDatos);
-        
-        String[] camposAdicionales = new String[1];
-        camposAdicionales[0] =String.valueOf(gananciaPeriodo) ;
-        reporteVentas.setCamposAdicionales(camposAdicionales);
-        
         return reporteVentas;
     }
 
     public Reporte generarReporteArticulosVendidos() {
         ArrayList<Venta> ventas = (ArrayList<Venta>) administrador.obtenerDatos();
+        
         Reporte reporteArticulosVendidos = new Reporte("Articulos Vendidos ");
 
         String[] encabezados = {"ClaveArticulo", "Cantidad", "Precio", "Fecha"};
@@ -101,44 +94,38 @@ public class GeneradorReportesVentas {
         TablaReporte tablaDatos = new TablaReporte();
         tablaDatos.setEncabezados(encabezados);
         ArrayList<Object[]> filas = new ArrayList<Object[]>();
-        double gananciaPeriodo = 0;
         for (Venta venta : ventas) {
             ArrayList<Articulo> articulos = venta.getArticulosVendidos();
-
+            System.out.println("Tamano lista Articulos Vendidos"+ articulos.size());
             for (Articulo articulo : articulos) {
-                int cantidadArticulo = articulo.getDetalleArticulo().getCantidad();
-                double precioArticulo = articulo.getDetalleArticulo().getPrecioVenta().getPrecio();
-                Object[] fila = {articulo.getClaveArticulo(),cantidadArticulo,precioArticulo, venta.getFecha()};
+                Object[] fila = {articulo.getClaveArticulo(),articulo.getDetalleArticulo().getCantidad(),articulo.getDetalleArticulo().getPrecioVenta().getPrecio(), venta.getFecha()};
                 tablaDatos.agregarFila(fila);
-                gananciaPeriodo = gananciaPeriodo + (cantidadArticulo * precioArticulo) ;
             }
 
         }
         
         reporteArticulosVendidos.setTablaDatos(tablaDatos);
-        
-        String[] camposAdicionales = new String[1];
-        camposAdicionales[0] =String.valueOf(gananciaPeriodo) ;
-        reporteArticulosVendidos.setCamposAdicionales(camposAdicionales);
-       
         return reporteArticulosVendidos;
     }
 
     public Reporte generarReporteProveedor(String nombreProveedor) {
         ArrayList<Venta> ventas = (ArrayList<Venta>) administrador.obtenerDatos();
+        
         Reporte reporteProveedor = new Reporte("Proveedor: " + nombreProveedor);
 
         String[] encabezados = {"ClaveArticulo", "Cantidad", "Precio", "Fecha"};
-
+    
         TablaReporte tablaDatos = new TablaReporte();
         tablaDatos.setEncabezados(encabezados);
-        ArrayList<Object[]> filas = new ArrayList<Object[]>();
+        ArrayList<Object[]> filas = new ArrayList<Object[]>();  
+        String claveProveedor = buscarClaveProveedorSolicitado(nombreProveedor);
         for (Venta venta : ventas) {
             ArrayList<Articulo> articulos = venta.getArticulosVendidos();
-
+        
             for (Articulo articulo : articulos) {
-                if (articulo.getClaveArticulo().equals(nombreProveedor)) {
-                    Object[] fila = {articulo.getClaveArticulo(), articulo.getDetalleArticulo().getPrecioVenta(), venta.getFecha()};
+          
+                if (articulo.getClaveProveedor().equals(claveProveedor)) {
+                    Object[] fila = {articulo.getClaveArticulo(),articulo.getDetalleArticulo().getCantidad(), articulo.getDetalleArticulo().getPrecioVenta().getPrecio(), venta.getFecha()};
                     tablaDatos.agregarFila(fila);
                 }
 
@@ -147,6 +134,18 @@ public class GeneradorReportesVentas {
         }
         reporteProveedor.setTablaDatos(tablaDatos);
         return reporteProveedor;
+    }
+    
+    private String  buscarClaveProveedorSolicitado(String nombreProveedor){
+        AdministradorProveedores administradorProveedor = new AdministradorProveedores();
+        ArrayList<Proveedor> proveedores = (ArrayList<Proveedor>) administradorProveedor.obtenerDatos();
+        
+        for(Proveedor proveedor : proveedores){
+            if(proveedor.getNombre().equals(nombreProveedor)){
+               return proveedor.getClave();
+            }
+        }
+        return null;
     }
 
     private Date cambiarStringADate(String fecha) {

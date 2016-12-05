@@ -28,7 +28,6 @@ public class PanelSeleccionarReporte extends javax.swing.JPanel {
     private void initComponents() {
 
         comboBoxReporte = new javax.swing.JComboBox();
-        campoCriterio = new javax.swing.JTextField();
         botonGenerarReporte = new javax.swing.JButton();
 
         comboBoxReporte.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Empleados", "Proveedor", "Articulos Vendidos", "Ventas" }));
@@ -47,11 +46,9 @@ public class PanelSeleccionarReporte extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(29, 29, 29)
                 .addComponent(comboBoxReporte, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(34, 34, 34)
-                .addComponent(campoCriterio, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 124, Short.MAX_VALUE)
                 .addComponent(botonGenerarReporte)
-                .addGap(19, 19, 19))
+                .addGap(62, 62, 62))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -59,9 +56,8 @@ public class PanelSeleccionarReporte extends javax.swing.JPanel {
                 .addGap(19, 19, 19)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(comboBoxReporte, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(campoCriterio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(botonGenerarReporte))
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap(60, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -72,7 +68,6 @@ public class PanelSeleccionarReporte extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonGenerarReporte;
-    private javax.swing.JTextField campoCriterio;
     private javax.swing.JComboBox comboBoxReporte;
     // End of variables declaration//GEN-END:variables
 
@@ -90,20 +85,7 @@ public class PanelSeleccionarReporte extends javax.swing.JPanel {
         this.botonGenerarReporte = botonGenerarReporte;
     }
 
-    /**
-     * @return the campoCriterio
-     */
-    public javax.swing.JTextField getCampoCriterio() {
-        return campoCriterio;
-    }
-
-    /**
-     * @param campoCriterio the campoCriterio to set
-     */
-    public void setCampoCriterio(javax.swing.JTextField campoCriterio) {
-        this.campoCriterio = campoCriterio;
-    }
-
+  
     /**
      * @return the comboBoxReporte
      */

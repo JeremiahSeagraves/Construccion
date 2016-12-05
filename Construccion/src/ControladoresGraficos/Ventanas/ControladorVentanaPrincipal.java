@@ -163,7 +163,6 @@ public class ControladorVentanaPrincipal {
      private void inicializarPanelReportes(){
         controladorVentanaReportes = new ControladorVentanaReportes();
         controladorVentanaReportes.getControladorPanelSeleccionarReporte().desplegarPanelSeleccionarReporte();
-        controladorVentanaReportes.getControladorPanelSeleccionarReporte().agregarEventoComboBoxReporte();
         controladorVentanaReportes.getControladorPanelSeleccionarReporte().agregarEventoBotonGenerar();
 
     }
